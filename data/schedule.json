@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "version": "0.3",
+    "window": "2026.06.22(월) ~ 07.03(금), 06.26(금) 제외",
+    "studyDays": 11,
+    "examDay": "2026-07-06",
+    "note": "06.22는 월요일. 06.26(금) 제외. 07.04(토)~07.05(일)은 별도 카드 없이 컨디션 조절·약점 보충·복장/동선 점검 자율일(7.06 빅4 1차 직전). 자기소개서 검토 일정 제거 — 모든 자료(계통 케이스+기본간호학+통합)를 11일 안에 1회전 이상.",
+    "principle": "한 계통을 공부한 날 저녁에 바로 그 계통 케이스를 발표한다."
+  },
+  "days": [
+    {
+      "d": "D1", "date": "06.22", "dow": "MON", "topic": "킥오프 · 케이스 프레임 정립",
+      "external": false, "caseCount": 0,
+      "dayWork": "널스에듀 아산·삼성 case로 분석 프레임(추가사정→진단→중재) 숙지. 1분 발표 틀 잡기.",
+      "nightWork": "케이스 프레임 함께 정립(RESP-01 예시 분석, 발표 X) · 4인 담당 배정 확정 · 11일 운영 룰 합의.",
+      "cases": [],
+      "checks": ["케이스 프레임 이해", "1분 발표 룰 체득", "4인 담당 배정"]
+    },
+    {
+      "d": "D2", "date": "06.23", "dow": "TUE", "topic": "기본간호학 총정리",
+      "external": false, "caseCount": 0,
+      "dayWork": "기본간호학 18문항 정리(손위생·5/7 Rights·욕창·수혈·억제대·도뇨·GCS·CVP·CAP). 산소기기 용량·정상수치 암기.",
+      "nightWork": "MODE-C 기본간호학 Q&A 1바퀴 + 플래시카드(수치) 속사포 점검.",
+      "cases": [],
+      "checks": ["기본간호학 18개 답변 가능", "수치 정상범위 암기", "산소기기 용량 암기"]
+    },
+    {
+      "d": "D3", "date": "06.24", "dow": "WED", "topic": "호흡기 · 삼성 데이",
+      "external": false, "caseCount": 3,
+      "dayWork": "폐렴·COPD·천식·기흉·흉관 + 산소기기 용량·ABGA 정상범위 암기. 아산 호흡 케이스 추가 풀이.",
+      "nightWork": "MODE-A→B 발표 후 삼성 노티 롤플레이 + 호흡 Q&A 8문항.",
+      "cases": ["RESP-01", "RESP-09", "RESP-08"],
+      "checks": ["ABGA 해석 가능", "산소기기 용량 암기", "노티 1회 성공"]
+    },
+    {
+      "d": "D4", "date": "06.25", "dow": "THU", "topic": "순환기 · 아산 데이",
+      "external": false, "caseCount": 3,
+      "dayWork": "CHF·AMI·협심증·심근병증 + CVP·심효소(CK-MB/Troponin)·NTG 기전.",
+      "nightWork": "MODE-A 수치 기전 꼬리 집중 + 순환 Q&A 8문항.",
+      "cases": ["CARD-08", "CARD-02", "CARD-04"],
+      "checks": ["심근경색 vs 협심증", "Morphine 주의(RR12)", "이뇨제 기전 설명"]
+    },
+    {
+      "d": "D5", "date": "06.27", "dow": "SAT", "topic": "소화기 · 세브란스 데이",
+      "external": false, "caseCount": 3,
+      "dayWork": "간경화·복수·간성뇌증·식도정맥류·위장관출혈·장루 + Albumin·Ammonia·간수치.",
+      "nightWork": "MODE-A + MODE-C 기본간호학 정의 암송(GCS·CVP·욕창·수혈).",
+      "cases": ["GI-01", "GI-02", "GI-03"],
+      "checks": ["복수 간호", "식도정맥류 쇼크 대응", "기본간호학 정의 막힘 X"]
+    },
+    {
+      "d": "D6", "date": "06.28", "dow": "SUN", "topic": "신경 · 서울대 데이",
+      "external": true, "caseCount": 3,
+      "dayWork": "뇌졸중·SAH·IICP·경련·연하장애 + GCS·신경사정 3가지(LOC·동공·운동).",
+      "nightWork": "외부 3명 초청 — MODE-B 단독 면접 + MODE-D 우선순위 판단 시뮬(흉통/간질/컴플레인/콜).",
+      "cases": ["NEU-01", "NEU-03", "NEU-04"],
+      "checks": ["IICP 3대징후", "GCS 설명", "우선순위 논리 정립"]
+    },
+    {
+      "d": "D7", "date": "06.29", "dow": "MON", "topic": "내분비 · 여성 · 정신",
+      "external": false, "caseCount": 3,
+      "dayWork": "당뇨·갑상선·전해질(고K·저Ca) + 자간전증·황산마그네슘 + 우울/섬망.",
+      "nightWork": "MODE-B 자간전증 노티 롤플레이 + 정신 우선순위(자살위험 사정).",
+      "cases": ["WOMEN-01", "ENDO-02", "PSYCH-01"],
+      "checks": ["황산마그네슘 이유·부작용", "저칼슘혈증 증상", "자살위험 우선순위"]
+    },
+    {
+      "d": "D8", "date": "06.30", "dow": "TUE", "topic": "혈액 · 항암",
+      "external": false, "caseCount": 3,
+      "dayWork": "백혈병(AML/ALL/CML)·항암 부작용·종양용해증후군·수혈 + ANC·역격리.",
+      "nightWork": "MODE-A 출혈/감염 위험 발표 + 혈액 Q&A 8문항.",
+      "cases": ["HEMA-01", "HEMA-05", "HEMA-04"],
+      "checks": ["수혈 기준(Hb8/plt2만)", "ANC 계산", "역격리 vs 격리"]
+    },
+    {
+      "d": "D9", "date": "07.01", "dow": "WED", "topic": "비뇨 · 근골격 · 응급",
+      "external": false, "caseCount": 3,
+      "dayWork": "ESRD·투석·전립선 + 고관절치환·척추전이 + 화상·쇼크·파크랜드.",
+      "nightWork": "MODE-A 수치 꼬리(ESRD) + 응급 우선순위 발표.",
+      "cases": ["URO-01", "ORTHO-01", "EMER-01"],
+      "checks": ["요흔성부종 진단법", "고칼륨혈증 합병증", "파크랜드 수액 공식"]
+    },
+    {
+      "d": "D10", "date": "07.02", "dow": "THU", "topic": "통합 · 실전",
+      "external": true, "caseCount": 3,
+      "dayWork": "약물계산·기본간호학 총정리. 복합/우선순위 케이스 정리(생명위협>신체>심리).",
+      "nightWork": "외부 3명 초청 — 면접복 입은 실전 시뮬레이션(MODE 혼합) + 복합 케이스.",
+      "cases": ["COMPLEX-01", "COMPLEX-04", "COMPLEX-03"],
+      "checks": ["약물계산 정확", "다중상황 우선순위", "실전 긴장 적응"]
+    },
+    {
+      "d": "D11", "date": "07.03", "dow": "FRI", "topic": "전체 랜덤 모의 · 병원별 차별화 · 최종 점검",
+      "external": false, "caseCount": 0,
+      "dayWork": "병원별 차별화 정리(삼성 노티/아산 수치/세브란스 정의/서울대 우선순위/이화 뽑기). 약점 파트만 집중 보충.",
+      "nightWork": "전 계통 랜덤 모의 1~2바퀴 + 기록관 Lv1/2/3 최종 피드백 + 7.06 동선·복장 점검.",
+      "cases": [],
+      "checks": ["전 계통 랜덤 대응", "병원별 차별화 숙지", "7.06 동선·복장 확정"]
+    }
+  ]
+}

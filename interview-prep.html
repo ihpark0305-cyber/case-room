@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>2026 신규간호사 직무면접 · 케이스 연습실</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#143C44;--ink-2:#2E5A62;--ink-soft:#4B6B70;
+  --paper:#F6F4EE;--panel:#ECEFEC;--card:#FFFFFF;
+  --coral:#E0603F;--coral-deep:#BF4626;
+  --lv1:#C0392B;--lv2:#C2882B;--lv3:#5E8390;--safe:#5F9374;
+  --line:#DED6C6;--line-2:#E7E0D2;
+  --shadow:0 1px 2px rgba(20,60,68,.05),0 8px 24px -16px rgba(20,60,68,.25);
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --sans:'IBM Plex Sans KR',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--coral);outline-offset:2px}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(246,244,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:10px 22px;overflow-x:auto}
+.nav-brand{font-family:var(--mono);font-weight:600;font-size:13px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+.nav-brand b{color:var(--coral)}
+.nav-links{display:flex;gap:3px;margin-left:auto;flex-shrink:0}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--ink-soft);text-decoration:none;padding:5px 9px;border-radius:6px;white-space:nowrap;transition:.15s}
+.nav-links a:hover{background:var(--panel);color:var(--ink)}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+section{padding:54px 0;border-bottom:1px solid var(--line-2)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral-deep);font-weight:600;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--coral)}
+h2.sec{font-size:28px;font-weight:700;letter-spacing:-.01em;line-height:1.2;margin-bottom:8px}
+.sec-sub{color:var(--ink-soft);font-size:15px;max-width:780px;margin-bottom:28px}
+
+/* HERO */
+.hero{padding:46px 0 44px;border-bottom:1px solid var(--line-2)}
+.hero-eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;color:var(--ink-soft);font-weight:500;margin-bottom:16px}
+.hero-eyebrow b{color:var(--coral-deep)}
+.hero h1{font-size:clamp(30px,5vw,50px);font-weight:700;line-height:1.07;letter-spacing:-.025em;margin-bottom:16px}
+.hero h1 .em{color:var(--coral)}
+.hero-lead{font-size:16px;color:var(--ink-2);max-width:620px;margin-bottom:30px}
+.hero-lead b{color:var(--ink);font-weight:600}
+.monitor{background:var(--ink);color:#EAF1EF;border-radius:14px;padding:24px 26px;display:grid;grid-template-columns:auto 1fr;gap:24px 32px;align-items:center;box-shadow:0 18px 50px -28px rgba(20,60,68,.55);position:relative;overflow:hidden}
+.monitor::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.mon-label{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:#8FB3AE;text-transform:uppercase;margin-bottom:6px}
+.mon-num{font-family:var(--mono);font-weight:600;font-size:60px;line-height:.9;letter-spacing:-.02em;color:#fff;display:flex;align-items:baseline;gap:4px}
+.mon-num .d{color:var(--coral);font-size:28px;font-weight:500}
+.mon-num .blink{width:10px;height:42px;background:var(--coral);margin-left:6px;align-self:center;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.mon-foot{font-family:var(--mono);font-size:11.5px;color:#9CBDB8;margin-top:9px}
+.mon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:8px;overflow:hidden}
+.mon-cell{background:#163F47;padding:11px 14px}
+.mon-cell .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:#85A9A4;text-transform:uppercase;margin-bottom:3px}
+.mon-cell .v{font-family:var(--mono);font-size:14px;color:#EAF1EF;font-weight:500}
+.mon-cell .v small{color:#8FB3AE;font-size:11px}
+.stat-strip{display:flex;flex-wrap:wrap;gap:0;margin-top:24px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+.stat{flex:1;min-width:120px;padding:15px 20px;border-right:1px solid var(--line-2)}
+.stat:last-child{border-right:0}
+.stat .n{font-family:var(--mono);font-size:24px;font-weight:600;letter-spacing:-.01em}
+.stat .n .u{font-size:13px;color:var(--coral-deep);font-weight:500}
+.stat .l{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+
+/* CASE ROOM */
+.room-ctrl{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;padding:18px 20px;border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow);margin-bottom:18px}
+.ctrl-group{display:flex;flex-direction:column;gap:7px}
+.ctrl-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.seg{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{background:var(--card);border:0;padding:7px 12px;font-size:12.5px;color:var(--ink-soft);border-right:1px solid var(--line-2)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--ink);color:#fff}
+.sys-select{font-family:var(--sans);font-size:13px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:150px}
+.star-toggle{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-2);user-select:none;cursor:pointer;padding-bottom:6px}
+.star-toggle input{width:16px;height:16px;accent-color:var(--coral)}
+.draw-btn{margin-left:auto;background:var(--coral);color:#fff;border:0;font-family:var(--mono);font-weight:600;font-size:14px;letter-spacing:.04em;padding:12px 26px;border-radius:9px;box-shadow:0 8px 20px -10px rgba(224,96,63,.7);transition:.15s}
+.draw-btn:hover{background:var(--coral-deep);transform:translateY(-1px)}
+.pool-note{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-bottom:18px}
+.pool-note b{color:var(--coral-deep)}
+
+.stage{border:1px solid var(--line);border-radius:14px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}
+.stage-empty{padding:52px 24px;text-align:center;color:var(--ink-soft)}
+.stage-empty .big{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:6px}
+.stage-head{background:var(--ink);color:#EAF1EF;padding:16px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.stage-id{font-family:var(--mono);font-weight:600;font-size:13px;color:#fff;background:rgba(255,255,255,.12);padding:4px 10px;border-radius:6px}
+.stage-title{font-size:17px;font-weight:600;color:#fff;flex:1;min-width:180px}
+.stage-star{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--ink);background:var(--coral);padding:3px 8px;border-radius:5px}
+.stage-src{font-family:var(--mono);font-size:10.5px;color:#8FB3AE}
+.stage-body{padding:22px}
+.stage-scn{font-size:15px;color:var(--ink);line-height:1.65;margin-bottom:16px}
+.vl-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.vl{font-family:var(--mono);font-size:12px;background:var(--panel);border:1px solid var(--line-2);border-radius:7px;padding:6px 11px}
+.vl .vk{color:var(--ink-soft);text-transform:uppercase;font-size:10px;letter-spacing:.06em;margin-right:5px}
+.vl.lab{background:#F4EEE6;border-color:#E7DAC6}
+
+.timerbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 18px;border-radius:11px;background:var(--ink);color:#fff;margin-bottom:18px}
+.timer-num{font-family:var(--mono);font-weight:600;font-size:38px;letter-spacing:.02em;line-height:1;min-width:120px}
+.timer-num.warn{color:var(--coral)}
+.timer-phase{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8FB3AE}
+.timer-phase b{color:#fff}
+.timer-btns{display:flex;gap:8px;margin-left:auto}
+.tbtn{font-family:var(--mono);font-size:12px;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:8px 14px;border-radius:7px;transition:.15s}
+.tbtn:hover{background:rgba(255,255,255,.12)}
+.tbtn.primary{background:var(--coral);border-color:var(--coral)}
+.tbtn.primary:hover{background:var(--coral-deep)}
+
+.act-row{display:flex;gap:10px;flex-wrap:wrap}
+.reveal-btn{flex:1;min-width:160px;background:var(--ink);color:#fff;border:0;font-family:var(--mono);font-weight:600;font-size:13.5px;letter-spacing:.04em;padding:13px;border-radius:9px;transition:.15s}
+.reveal-btn:hover{background:var(--ink-2)}
+.next-btn{background:var(--panel);color:var(--ink);border:1px solid var(--line);font-family:var(--mono);font-size:13px;padding:13px 20px;border-radius:9px}
+.next-btn:hover{background:var(--line-2)}
+
+.answer{margin-top:20px;border-top:2px dashed var(--line);padding-top:20px}
+.answer[hidden]{display:none}
+.ablock{margin-bottom:16px}
+.ablock:last-child{margin-bottom:0}
+.atag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:7px;display:flex;align-items:center;gap:8px}
+.dx-primary{border-left:4px solid var(--lv1);background:#FBEDEB;border-radius:0 9px 9px 0;padding:12px 16px}
+.dx-primary .atag{color:var(--lv1)}
+.dx-primary .dxtext{font-size:15px;font-weight:600;color:var(--ink)}
+.prio-rule{font-family:var(--mono);font-size:10.5px;color:var(--lv1);margin-top:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:5px 11px;border-radius:7px;background:var(--panel);border:1px solid var(--line-2);color:var(--ink-2)}
+.chip.dx{background:#EEF2F0}
+.chip.iv{background:#EDF3EF;border-color:#D9E7DE}
+.chip.fu{background:#FBF1EC;border-color:#F0DACD;color:var(--coral-deep)}
+.list-line{font-size:13.5px;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:5px}
+.list-line::before{content:"›";position:absolute;left:0;color:var(--coral);font-family:var(--mono)}
+
+/* CASE BANK */
+.bank-intro{font-size:14px;color:var(--ink-soft);margin-bottom:18px}
+details.sys{border:1px solid var(--line);border-radius:11px;margin-bottom:10px;background:var(--card);overflow:hidden}
+details.sys[open]{box-shadow:var(--shadow)}
+summary{list-style:none;cursor:pointer;padding:14px 18px;display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";margin-left:auto;font-family:var(--mono);font-size:20px;color:var(--coral)}
+details[open] summary::after{content:"–"}
+.sys-tag{font-family:var(--mono);font-size:11px;font-weight:600;color:#fff;background:var(--ink-2);padding:3px 8px;border-radius:5px}
+.sys-count{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);font-weight:400}
+.case-list{padding:0 18px 14px}
+.bcase{border-top:1px solid var(--line-2);padding:13px 0}
+.bcase-id{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--coral-deep);margin-bottom:3px}
+.bcase-id .st{color:var(--coral)}
+.bcase-sc{font-size:13.5px;color:var(--ink-2);margin-bottom:6px}
+.bcase-dx{font-size:13px;margin-bottom:4px}
+.bcase-dx .l{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);text-transform:uppercase;margin-right:6px}
+.bcase-dx b{color:var(--ink)}
+.bcase-q{font-size:12.5px;color:var(--ink-soft)}
+.bcase-q .l{font-family:var(--mono);font-size:10.5px;color:var(--coral-deep);text-transform:uppercase;margin-right:6px}
+
+/* DAY CARDS */
+.daygrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.day{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.day.ext{border:1.5px solid var(--coral)}
+.day-head{background:var(--ink);color:#EAF1EF;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.day.ext .day-head{background:var(--coral-deep)}
+.day-d{font-family:var(--mono);font-weight:600;font-size:18px;color:#fff;line-height:1}
+.day-meta{display:flex;flex-direction:column;gap:1px;flex:1}
+.day-date{font-family:var(--mono);font-size:11px;color:#9CBDB8}
+.day.ext .day-date{color:#F4CBBE}
+.day-topic{font-size:14px;font-weight:600;color:#fff}
+.day-flag{font-family:var(--mono);font-size:10px;font-weight:600;background:#fff;color:var(--coral-deep);padding:3px 7px;border-radius:5px;white-space:nowrap}
+.day-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:11px}
+.dblock .dl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.dblock .dl.night::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.dblock .dl.dayp::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lv3)}
+.dblock p{font-size:13px;color:var(--ink-2)}
+.cases{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.cchip{font-family:var(--mono);font-size:11px;background:var(--panel);color:var(--ink);padding:3px 8px;border-radius:5px;border:1px solid var(--line-2);cursor:pointer}
+.cchip:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+.day-check{border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.day-check .ct{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink-soft);text-transform:uppercase;margin-bottom:5px}
+.day-check ul{list-style:none}
+.day-check li{font-size:12px;color:var(--ink-2);padding-left:18px;position:relative;margin-bottom:3px}
+.day-check li::before{content:"☐";position:absolute;left:0;color:var(--coral)}
+
+/* HOSPITALS */
+.hgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.hosp{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;box-shadow:var(--shadow)}
+.hosp-top{padding:16px 18px 14px;border-bottom:1px solid var(--line-2);display:flex;align-items:flex-start;gap:12px}
+.hosp-tier{font-family:var(--mono);font-size:11px;font-weight:600;padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+.t-A{background:#FBE6DF;color:var(--coral-deep)}
+.t-B{background:#E0EAE7;color:var(--ink)}
+.t-C{background:#EAEFE5;color:#5C7344}
+.hosp h3{font-size:17px;font-weight:700;line-height:1.2}
+.hosp .hdate{font-family:var(--mono);font-size:12px;color:var(--ink-soft);margin-top:3px}
+.hosp-body{padding:14px 18px 17px}
+.hosp-mode{font-family:var(--mono);font-size:12px;color:var(--coral-deep);font-weight:600;margin-bottom:8px}
+.hosp-body p{font-size:13.5px;color:var(--ink-2);margin-bottom:9px}
+.hosp-body p:last-child{margin-bottom:0}
+.hosp-body .lab{font-weight:600;color:var(--ink);font-size:12.5px}
+.src-note{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:11px;padding-top:9px;border-top:1px dashed var(--line)}
+
+/* Q&A + FLASHCARDS */
+.tool-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.qa-card,.fc-card{border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow);padding:22px}
+.qa-cat{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--coral-deep);font-weight:600;margin-bottom:8px}
+.qa-q{font-size:17px;font-weight:600;color:var(--ink);margin-bottom:14px}
+.qa-a{font-size:14px;color:var(--ink-2);line-height:1.65;border-top:1px dashed var(--line);padding-top:14px}
+.qa-a[hidden]{display:none}
+.qa-host{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:12px}
+.fcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.fc{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:16px 16px 14px;cursor:pointer;box-shadow:var(--shadow);min-height:104px;display:flex;flex-direction:column;transition:.15s}
+.fc:hover{border-color:var(--coral)}
+.fc-name{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--ink)}
+.fc-val{font-family:var(--mono);font-size:13px;color:var(--coral-deep);margin-top:8px;font-weight:500}
+.fc-note{font-size:12px;color:var(--ink-soft);margin-top:6px}
+.fc.hide .fc-val,.fc.hide .fc-note{visibility:hidden}
+.fc-hint{font-family:var(--mono);font-size:10px;color:var(--ink-soft);margin-top:auto;padding-top:8px}
+
+/* RUBRIC */
+.rubric{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
+.rb{border-radius:12px;padding:18px 20px;color:#fff}
+.rb.l1{background:var(--lv1)}.rb.l2{background:var(--lv2)}.rb.l3{background:var(--lv3)}
+.rb .rl{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;opacity:.92;margin-bottom:4px}
+.rb h4{font-size:16px;font-weight:700;margin-bottom:10px}
+.rb ul{list-style:none}
+.rb li{font-size:12.5px;padding-left:18px;position:relative;margin-bottom:5px;opacity:.96}
+.rb li::before{content:"☐";position:absolute;left:0;opacity:.85}
+.warn{border-left:4px solid var(--lv1);background:#FBEDEB;border-radius:0 10px 10px 0;padding:14px 18px;margin-bottom:12px}
+.warn .wt{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--lv1);letter-spacing:.06em;margin-bottom:5px}
+.warn p{font-size:13.5px;color:var(--ink-2)}
+.warn p b{color:var(--ink)}
+
+/* SCORING BOARD */
+.member-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.m-inputs{display:flex;gap:8px;flex-wrap:wrap}
+.m-name{font-family:var(--mono);font-size:13px;width:92px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.score-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.score-card{border:1px solid var(--line);border-radius:12px;background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+.sc-h{display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;margin-bottom:12px}
+.sc-legend{font-family:var(--mono);font-size:11px;color:var(--ink-soft);font-weight:400}
+.sc-legend i{margin:0 1px 0 8px;font-style:normal}
+.sc-mem{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line-2)}
+.sc-mem:last-child{border-bottom:0}
+.sc-mem-n{font-weight:600;font-size:14px}
+.sc-tallies{display:flex;gap:16px}
+.tal{font-family:var(--mono);font-weight:600;font-size:18px;min-width:16px;text-align:right}
+.wrow{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.wlbl{font-size:12.5px;width:72px;flex-shrink:0;color:var(--ink-2)}
+.wbar{flex:1;height:9px;background:var(--panel);border-radius:5px;overflow:hidden}
+.wbar span{display:block;height:100%;background:var(--coral);border-radius:5px}
+.wn{font-family:var(--mono);font-size:12px;color:var(--coral-deep);width:22px;text-align:right}
+.sc-empty{font-size:12.5px;color:var(--ink-soft);padding:6px 0}
+.logrow{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);padding:7px 0;border-bottom:1px solid var(--line-2)}
+.logrow:last-child{border-bottom:0}
+.lg-lv{font-family:var(--mono);font-size:10.5px;font-weight:600;color:#fff;padding:2px 7px;border-radius:5px}
+.lg-x{margin-left:auto;border:0;background:transparent;color:var(--ink-soft);font-size:16px;line-height:1;padding:2px 7px;border-radius:5px}
+.lg-x:hover{background:var(--panel);color:var(--lv1)}
+@media(max-width:860px){.score-grid{grid-template-columns:1fr}}
+
+/* persistent checklist */
+.day-check li.chk{cursor:pointer}
+.day-check li.done{color:var(--ink-soft);text-decoration:line-through}
+.day-check li.done::before{content:"☑";color:var(--safe)}
+
+.foot{padding:34px 0 46px;text-align:center}
+.foot p{font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.8}
+.foot .big{font-size:15px;color:var(--ink);font-weight:600;margin-bottom:8px;font-family:var(--sans)}
+
+@media(max-width:860px){
+  .daygrid,.hgrid,.rubric{grid-template-columns:1fr}
+  .monitor{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .draw-btn{margin-left:0;width:100%}
+  .room-ctrl{flex-direction:column;align-items:stretch}
+}
+@media(max-width:520px){section{padding:42px 0}h2.sec{font-size:23px}.mon-num{font-size:48px}.stat{min-width:50%}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">SMC<b>·</b>STUDY / 케이스 연습실</span>
+    <div class="nav-links">
+      <a href="#room">케이스룸</a>
+      <a href="#bank">케이스뱅크</a>
+      <a href="#schedule">일정</a>
+      <a href="#hospitals">병원</a>
+      <a href="#qa">Q&amp;A</a>
+      <a href="#cards">플래시카드</a>
+      <a href="#score">채점</a>
+      <a href="#rubric">평가</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">2026 신규간호사 1차(직무) 면접 · <b>4인 스터디</b> · 케이스 랜덤 연습</div>
+    <h1>처음 보는 케이스를<br><span class="em">랜덤으로 뽑아</span> 5분 안에 푼다</h1>
+    <p class="hero-lead">아산65·삼성24·빅6에서 추출한 <b id="caseTotal">82</b>개 케이스를 계통·모드별로 랜덤 출제한다. 시나리오만 먼저 보고 타이머를 돌린 뒤 정답을 펼친다 — 실전 5분/1분 압박을 그대로.</p>
+    <div class="monitor">
+      <div>
+        <div class="mon-label">D-DAY · 빅4 1차 면접까지</div>
+        <div class="mon-num"><span id="dday">--</span><span class="d">일</span><span class="blink"></span></div>
+        <div class="mon-foot" id="ddaysub">계산 중…</div>
+      </div>
+      <div class="mon-grid">
+        <div class="mon-cell"><div class="k">준비 기간</div><div class="v">06.22 → 07.03 <small>(11일·26일 제외)</small></div></div>
+        <div class="mon-cell"><div class="k">빅4 1차</div><div class="v">07.06(월) → 07.10</div></div>
+        <div class="mon-cell"><div class="k">이화 최종</div><div class="v">07.14 → 07.16</div></div>
+        <div class="mon-cell"><div class="k">인하 / 인천성모</div><div class="v">07.20 → 07.24</div></div>
+      </div>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><div class="n" id="statCases">82<span class="u">개</span></div><div class="l">케이스 뱅크</div></div>
+      <div class="stat"><div class="n">11<span class="u">일</span></div><div class="l">집중 준비(26일 제외)</div></div>
+      <div class="stat"><div class="n">8<span class="u">개</span></div><div class="l">목표 병원</div></div>
+      <div class="stat"><div class="n" id="statStar">10<span class="u">개</span></div><div class="l">★빈출 핵심</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CASE ROOM -->
+<section id="room">
+  <div class="wrap">
+    <div class="eyebrow">Case Room</div>
+    <h2 class="sec">케이스 룸 — 랜덤 뽑기</h2>
+    <p class="sec-sub">모드와 계통을 고르고 <b>랜덤 뽑기</b>를 누른다. 시나리오·바이탈만 먼저 보고 타이머를 돌린 뒤, “정답 보기”로 진단·중재·꼬리를 펼친다. 진단은 <b>생명 위협 &gt; 신체 &gt; 심리</b> 순서.</p>
+
+    <div class="room-ctrl">
+      <div class="ctrl-group">
+        <span class="ctrl-label">모드 / 타이머</span>
+        <div class="seg" id="modeSeg">
+          <button data-mode="A" class="on">아산형 5+1분</button>
+          <button data-mode="B">삼성형 5분</button>
+          <button data-mode="free">자유</button>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <span class="ctrl-label">계통</span>
+        <select class="sys-select" id="sysSelect"></select>
+      </div>
+      <label class="star-toggle"><input type="checkbox" id="starOnly"> ★빈출만</label>
+      <button class="draw-btn" id="drawBtn">랜덤 뽑기 →</button>
+    </div>
+    <div class="pool-note" id="poolNote"></div>
+
+    <div class="stage" id="stage">
+      <div class="stage-empty">
+        <div class="big">아직 뽑은 케이스가 없습니다</div>
+        <div>위에서 모드·계통을 고르고 <b>랜덤 뽑기</b>를 눌러 시작하세요.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE BANK -->
+<section id="bank">
+  <div class="wrap">
+    <div class="eyebrow">Case Bank</div>
+    <h2 class="sec">케이스 뱅크 — 계통별 전체</h2>
+    <p class="bank-intro">아산65·삼성24·삼성2024기출·빅6에서 추출·병합한 전체 케이스. 계통을 눌러 펼친다. <span style="color:var(--coral-deep)">★</span> 는 빈출·실제 출제.</p>
+    <div id="bankWrap"></div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="wrap">
+    <div class="eyebrow">11-Day Schedule</div>
+    <h2 class="sec">11일 일정 — 06.22(월) ~ 07.03(금)</h2>
+    <p class="sec-sub">06.26(금) 제외. 계통을 공부한 날 저녁에 그 계통 케이스를 발표한다. 케이스 칩을 누르면 케이스 룸으로 불러온다. <span style="color:var(--coral-deep);font-weight:600">빨간 테두리</span>는 외부 3명 초청일.</p>
+    <div class="daygrid" id="dayGrid"></div>
+  </div>
+</section>
+
+<!-- HOSPITALS -->
+<section id="hospitals">
+  <div class="wrap">
+    <div class="eyebrow">Hospitals</div>
+    <h2 class="sec">병원별 1차 면접 — 형식이 다 다르다</h2>
+    <p class="sec-sub">병원마다 케이스 깊이·인원·방식이 완전히 다르다. 색이 진할수록 케이스 비중이 높다. 인하·인천성모는 자료 없음(추정).</p>
+    <div class="hgrid" id="hospGrid"></div>
+  </div>
+</section>
+
+<!-- Q&A -->
+<section id="qa">
+  <div class="wrap">
+    <div class="eyebrow">Q&amp;A Room</div>
+    <h2 class="sec">직무 Q&amp;A — 랜덤 출제</h2>
+    <p class="sec-sub">기본간호학·계통 직무 질문을 랜덤으로 뽑는다. 먼저 입으로 답하고 “정답 보기”로 확인.</p>
+    <div class="tool-bar">
+      <div class="ctrl-group"><span class="ctrl-label">분류</span><select class="sys-select" id="qaCat"></select></div>
+      <button class="draw-btn" id="qaBtn" style="margin-left:0">질문 뽑기 →</button>
+    </div>
+    <div id="qaStage"></div>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section id="cards">
+  <div class="wrap">
+    <div class="eyebrow">Flashcards</div>
+    <h2 class="sec">플래시카드 — 수치·정상범위</h2>
+    <p class="sec-sub">카드를 눌러 값을 가렸다 펼친다. 면접 직전 속사포 점검용.</p>
+    <div class="tool-bar">
+      <button class="next-btn" id="fcHideAll">전부 가리기</button>
+      <button class="next-btn" id="fcShowAll">전부 펼치기</button>
+      <span class="ctrl-label" id="fcCount"></span>
+    </div>
+    <div class="fcgrid" id="fcGrid"></div>
+  </div>
+</section>
+
+<!-- SCORING BOARD -->
+<section id="score">
+  <div class="wrap">
+    <div class="eyebrow">Scoring Board</div>
+    <h2 class="sec">채점 보드 — 4인 Lv1/2/3 누적</h2>
+    <p class="sec-sub">라운드마다 기록관이 입력한다. 멤버·계통·레벨을 기록하면 약점 파트가 자동 누적된다. 이 브라우저에 저장(localStorage)되어 새로고침해도 남는다.</p>
+    <div class="member-row"><span class="ctrl-label">멤버 이름</span><div id="memberRow" class="m-inputs"></div></div>
+    <div class="room-ctrl" style="margin-top:14px">
+      <div class="ctrl-group"><span class="ctrl-label">멤버</span><select class="sys-select" id="scMember"></select></div>
+      <div class="ctrl-group"><span class="ctrl-label">계통</span><select class="sys-select" id="scSys"></select></div>
+      <div class="ctrl-group"><span class="ctrl-label">레벨</span><div class="seg" id="scLvl"><button data-lvl="Lv1" class="on">Lv1 치명</button><button data-lvl="Lv2">Lv2 개선</button><button data-lvl="Lv3">Lv3 선택</button></div></div>
+      <div class="ctrl-group" style="flex:1;min-width:170px"><span class="ctrl-label">메모(선택)</span><input class="sys-select" id="scMemo" style="width:100%" placeholder="예: ABGA 해석 막힘" maxlength="60"></div>
+      <button class="draw-btn" id="scAdd" style="margin-left:0">기록 +</button>
+    </div>
+    <div class="score-grid">
+      <div class="score-card"><div class="sc-h">멤버별 누적 <span class="sc-legend"><i style="color:var(--lv1)">●</i>Lv1<i style="color:var(--lv2)">●</i>Lv2<i style="color:var(--lv3)">●</i>Lv3</span></div><div id="scMembers"></div></div>
+      <div class="score-card"><div class="sc-h">계통별 약점 <span class="ctrl-label">(Lv1+Lv2 누적)</span></div><div id="scWeak"></div></div>
+    </div>
+    <div class="score-card" style="margin-top:14px"><div class="sc-h">기록 <span class="ctrl-label" id="scCount"></span><button class="next-btn" id="scClear" style="margin-left:auto;padding:6px 12px">전체 초기화</button></div><div id="scLog"></div></div>
+  </div>
+</section>
+
+<!-- RUBRIC -->
+<section id="rubric">
+  <div class="wrap">
+    <div class="eyebrow">Scoring &amp; Cautions</div>
+    <h2 class="sec">채점 루브릭 — Lv1 / Lv2 / Lv3</h2>
+    <p class="sec-sub">기록관이 매 라운드 체크. 칭찬으로 완화하지 말고 개선점만, 근거와 함께.</p>
+    <div class="rubric">
+      <div class="rb l1"><div class="rl">LEVEL 1 · 치명적</div><h4>즉시 수정</h4><ul><li>의학 지식 오류(수치·기전)</li><li>간호진단 우선순위 역전</li><li>말 흐름 끊김 / 침묵 5초+</li><li>틀린 답 고집</li></ul></div>
+      <div class="rb l2"><div class="rl">LEVEL 2 · 개선 필요</div><h4>더 나은 방법 있음</h4><ul><li>진단 근거 부족</li><li>꼬리질문 대응 허술</li><li>추가사정 누락</li><li>(아산) 옆 지원자 경청 안 함</li></ul></div>
+      <div class="rb l3"><div class="rl">LEVEL 3 · 선택적</div><h4>취향·상황</h4><ul><li>발음·속도</li><li>시선처리</li><li>습관적 추임새</li><li>미소·표정</li></ul></div>
+    </div>
+    <div class="warn"><div class="wt">LV1 · 우선순위</div><p>간호진단은 <b>생명 위협 &gt; 신체 문제 &gt; 심리 문제</b> 순. 장루 케이스에서 자존감 저하를 1순위로 잡으면 감점. 심리 진단은 2~3순위에 추가.</p></div>
+    <div class="warn"><div class="wt">LV1 · 태도</div><p>모르면 <b>“공부해오겠습니다” 즉시 선언.</b> 고집 부리다 틀린 것 들키면 감점. 아산은 지식보다 태도가 더 중요하다는 게 합격자 공통 후기.</p></div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="big">7.06까지 케이스 프레임 + 기본간호학 완성 — 그게 전부다.</p>
+    <p>4인 스터디 케이스 연습실 · 직무(1차) 면접 전용<br>데이터: 아산65 · 삼성24 · 삼성2024기출 · 빅6 추출 · <span id="footTotal">82</span> 케이스</p>
+  </div>
+</footer>
+
+<script>
+window.DATA = {"cases": [{"id": "RESP-01", "system": "respiratory", "day": "D3", "source": "아산65 #35 / 아산65 CASE21", "star": true, "title": "COPD+폐렴 악화 → ICU 인공호흡", "scenario": "68세 남성, 20년 COPD(만성기관지염+폐기종)+5년 폐렴. 한 달 전부터 기침·가래, 자가 비강캐뉼라 관리 중 수면 중 호흡곤란으로 ER→ICU 인공호흡기 적용. L-tube로 Old bloody 양상(Vent stress ulcer 위험↑). SpO2 40~50%.", "vitals": {"BP": "145/105", "HR": 128, "RR": 24, "BT": 36.8, "SpO2": "40~50%"}, "labs": null, "primaryDx": "폐포 저환기와 관련된 비효과적 호흡양상", "additionalDx": ["가스교환장애", "비효과적 기도청결", "출혈위험성", "감염위험성"], "additionalAssessment": ["V/S(저산소증 초기-HR·RR·BP↑)", "ABGA", "SpO2", "호흡양상·부속근 사용·견축", "객담 양상", "호흡음", "X-ray", "I/O"], "interventions": ["저농도 산소 1~2L/min(COPD)", "반좌위+입술오므리기·가로막 호흡", "기관지확장제·진해거담제", "흡인으로 객담 배출", "수분 3000~4000mL(금기 아니면)"], "followUps": ["L-tube 위치확인법(X-ray·청진·위내용물·pH)", "COPD에서 저농도 산소 주는 이유", "Pursed-lip 호흡 원리"]}, {"id": "RESP-02", "system": "respiratory", "day": "D3", "source": "아산65 CASE14", "star": false, "title": "COPD+고혈압 복합, 말초부종", "scenario": "10년 전 COPD·고혈압 진단받은 75세 남성, 극심한 호흡곤란으로 ER 내원. Clubbing finger(곤봉지), 안와주위·말초 Grade1 부종. 보호자가 '담배 좀 끊으라니까…' 하며 슬퍼함.", "vitals": {"BP": "175/110", "HR": 120, "RR": 14, "SpO2": "50%대"}, "labs": {"ABGA": "PaO2 55 / PaCO2 48", "기타": "plt·Hb 상승"}, "primaryDx": "폐 기능 저하로 인한 폐포 저환기와 관련된 가스교환장애", "additionalDx": ["비효과적 호흡양상", "체액 불균형", "불안", "수면양상장애", "자가간호결핍"], "additionalAssessment": ["V/S(저산소증 초기증상)", "ABGA", "SpO2", "호흡부속근 사용·견축·청색증", "호흡음", "흡연력", "부종", "객담·객혈"], "interventions": ["저농도 산소 1~3L/min", "반좌위+입술오므리기·가로막 호흡", "흡인간호로 객담 배출", "기관지확장제(Ventolin·Atrovent)·진해거담제", "편안하고 조용한 환경"], "followUps": ["저산소증 초기증상", "Clubbing finger의 의미", "고농도 산소가 위험한 이유"]}, {"id": "RESP-03", "system": "respiratory", "day": "D3", "source": "아산65 CASE11", "star": false, "title": "천식 급성 악화 → 쇼크 위험", "scenario": "천식 악화로 응급실 실려옴. V/S 악화, 천명음(wheezing), 차고 축축한 피부, 정신상태 혼미·불안.", "vitals": {"RR": 28, "BT": 37.4}, "labs": null, "primaryDx": "천식의 악화와 관련된 쇼크의 위험", "additionalDx": ["가스교환장애", "비효과적 호흡양상", "불안"], "additionalAssessment": ["V/S", "호흡양상·견축·부속근 사용", "ABGA", "SpO2", "LOC", "청색증·차고 축축한 피부", "호흡음", "말초순환(SMC)"], "interventions": ["기도유지: 앉아 앞으로 기댄 자세(침상탁자에 팔)", "epinephrine 피하·aminophylline IV", "PaO2<60이면 습화산소 1~2L", "수분 3000~4000mL(불감성 손실)", "정서적 지지·곁에 있어줌"], "followUps": ["천식의 주요 증상(wheezing·호기 연장)", "저유량 vs 고유량 산소 구분 기준", "왜 피로·불안을 1순위로 두지 않는가"]}, {"id": "RESP-04", "system": "respiratory", "day": "D3", "source": "아산65 CASE3", "star": false, "title": "심장수술 후 ABGA 악화", "scenario": "심장수술 환자, PCA 보유. ABGA 전반 악화(PO2↓·PCO2↑·pH 산성), 호흡수 증가, 호흡곤란+혼돈, 산소마스크 6L에도 SpO2 85%.", "vitals": {"RR": "상승", "SpO2": "85%"}, "labs": {"ABGA": "PO2↓ / PCO2↑ / pH 산성(호흡성 산증)"}, "primaryDx": "수술 후 폐 합병증과 관련된 가스교환장애", "additionalDx": ["비효과적 호흡양상", "비효과적 심장 조직관류", "불안", "감염위험성"], "additionalAssessment": ["V/S", "ABGA", "SpO2", "EKG", "심근효소(CK-MB·CPK·Troponin)", "통증(NRS·PQRST)", "청색증", "호흡음·심음"], "interventions": ["V/S·ABGA·SpO2·EKG 사정", "반좌위+산소공급", "침상안정·조용한 환경", "필요시 흡인", "기관지확장제·점액용해제(mucomyst)"], "followUps": ["ABGA 호흡성 산증 해석", "저유량(비강캐뉼라·단순마스크) vs 고유량(venturi·t-piece) 구분 기준"]}, {"id": "RESP-05", "system": "respiratory", "day": "D3", "source": "아산65 CASE13", "star": false, "title": "후두암 전체후두절제술 후 객담 정체", "scenario": "48세 남성, 2달 전 후두암 진단·전체후두절제술. L-tube feeding 중, 평생 말 못한다는 우울감에 매일 밤 욺. POD3, 호기 시 꿀꿀 소리(객담 多), crackle, Tracheostomy 흡인 시 rusty sputum 다량.", "vitals": {"BP": "130/90", "HR": 110, "RR": 30, "BT": 40}, "labs": null, "primaryDx": "기관지의 부적절한 분비물과 관련된 비효과적 기도청결", "additionalDx": ["감염위험성", "가스교환장애", "고체온", "영양불균형", "우울감/신체상 손상"], "additionalAssessment": ["ABGA·SpO2", "객담 양상·호흡음", "오한·발한", "곤봉지", "감염수치(CRP·ESR·WBC)", "수술부위·배액", "Blood/Sputum/Urine Cx"], "interventions": ["V/S·ABGA·SpO2 사정", "가습 산소 제공", "흡인간호로 객담 배출", "반좌위·구강간호(상기도 수술)", "기관지확장제·항생제·진해거담제", "조기이상·Incentive spirometer"], "followUps": ["흡인간호 시 주의점", "고체온 동반 시 우선순위", "감염 vs 우울 진단 우선순위"]}, {"id": "RESP-06", "system": "respiratory", "day": "D3", "source": "아산65 CASE12", "star": false, "title": "수혈 후 호흡곤란(수혈 부작용)", "scenario": "54세 여성, HBV 생체간이식, 폐렴 호전 중 적혈구 1unit·혈소판 10unit 수혈 후 갑자기 호흡 가빠지고 불안. 수면제에도 잠 못 잠. Room air에서 SaO2 93~94%.", "vitals": {"RR": 24, "SpO2": "93~94%(room air)"}, "labs": null, "primaryDx": "수혈 부작용과 관련된 비효과적 호흡양상", "additionalDx": ["체액과다(순환과부담)", "불안", "감염위험성"], "additionalAssessment": ["V/S·호흡음·호흡양상", "ABGA·SpO2", "수혈 혈액·기타 수혈부작용(오심·발적·발열)", "CVP·PCWP", "경정맥 팽창·부종·체중", "X-ray"], "interventions": ["수혈 즉시 중단·N/S 유지·혈액은행 송부", "상체 상승·산소 2~4L", "순환과부담 시 이뇨제", "입술오므리기·가로막 호흡", "정서적 지지"], "followUps": ["수혈 부작용 종류(용혈·순환과부담·알레르기)", "수혈 중 간호(15분 후 V/S, 4시간 내 완료)", "혈액과 섞을 수 있는 용액은 N/S뿐인 이유"]}, {"id": "RESP-07", "system": "respiratory", "day": "D3", "source": "아산65 #26", "star": false, "title": "천식 만성 악화, 좌식호흡", "scenario": "HTN·asthma 과거력, 1년 전 천식 악화로 입원력. 내원 5일 전부터 기침·whitish sputum·호흡곤란, 당일 악화로 ER. 말할 때 숨차고, 좌식호흡(+)·흉곽확장·흉쇄유돌근 사용·입술오므림·비익호흡. 말하며 얼굴 굳고 한숨 쉬는 불안.", "vitals": {"HR": "93~107", "RR": "20~22", "SpO2": "92~94%"}, "labs": {"P/E": "both lung wheezing(+)"}, "primaryDx": "기관지 경련과 관련된 비효과적 호흡양상", "additionalDx": ["가스교환장애", "활동지속성 장애", "불안"], "additionalAssessment": ["V/S·SpO2", "호흡음(wheezing)·부속근 사용", "ABGA", "객담 양상", "운동 시 호흡곤란 정도", "투약(흡입제) 이행"], "interventions": ["기관지확장제(aminophylline·B2 효현제)", "PaO2<60이면 저농도 산소", "반좌위+입술오므리기 호흡", "충분한 휴식", "정서적 지지로 불안 완화"], "followUps": ["천식 발작 시 응급간호 순서", "흡입제 사용법 교육"]}, {"id": "RESP-08", "system": "respiratory", "day": "D3", "source": "삼성24 호흡기 / 삼성2024 #18", "star": false, "title": "폐렴 SpO2 저하·천명음·가래", "scenario": "폐렴 환자가 SpO2 저하되고 천명음 들리며 가래가 많다. 숨쉬기 힘들어함.", "vitals": {"SpO2": "저하"}, "labs": null, "primaryDx": "분비물 축적과 관련된 비효과적 기도청결", "additionalDx": ["가스교환장애", "비효과적 호흡양상", "감염위험성"], "additionalAssessment": ["V/S·SpO2", "호흡음·객담 양상", "ABGA", "감염수치(WBC·CRP)", "X-ray", "객담 배양"], "interventions": ["흡인으로 객담 제거", "반좌위·가습 산소", "수분 섭취로 객담 묽게", "기관지확장제·거담제·항생제", "심호흡·기침 교육·체위배액"], "followUps": ["객담 배양 검사 목적", "산소기기별 용량"]}, {"id": "RESP-09", "system": "respiratory", "day": "D3", "source": "삼성2024 기출#2 / 삼성24 호흡기", "star": true, "title": "파킨슨 연하곤란 → 흡인(실제 출제, 보호자 컴플레인)", "scenario": "파킨슨병 연하곤란·기침 환자. 바륨연하검사 후 점액성 끈끈한 식이 제공. 보호자가 몰래 보리차를 먹였고 저녁식사 중 기침 심해 흡인하니 소량 음식+노란 끈끈한 객담 배출. ABGA·chest X-ray 예정. ABGA 후 보호자가 아플까봐 압박 약하게 함. 다른 보호자들이 와서 상황·치료를 계속 물어봄.", "vitals": {"HR": 115, "RR": 25, "SpO2": "85~88%"}, "labs": null, "primaryDx": "연하곤란과 관련된 흡인위험성 / 비효과적 기도청결", "additionalDx": ["가스교환장애", "비효과적 호흡양상", "신체기동성 장애"], "additionalAssessment": ["V/S·SpO2·청색증", "호흡음·객담 양상", "ABGA·X-ray", "연하능력(식사 전 물 삼키기)", "의식수준"], "interventions": ["흡인·반좌위·산소 공급", "기도흡인으로 분비물 제거", "식사 시 고개 약간 숙여 삼키기·점도 조절", "ABGA 후 충분한 압박지혈 교육", "흡인성 폐렴 모니터링"], "followUps": ["지금 무엇을 의심하는가(흡인성 폐렴)", "바쁜 상황에서 보호자가 계속 질문하면 어떻게 할 것인가(롤플레이)", "연하곤란 환자 식이 교육"]}, {"id": "RESP-10", "system": "respiratory", "day": "D3", "source": "삼성24 호흡기 / 삼성2024 #17", "star": false, "title": "흉관 배액관 반복 빠짐", "scenario": "수술 후 폐 배액관(흉관) 삽입 환자가 관리를 잘 못해 수차례 배액관이 빠진 상태. 화장실 다녀온 후 호흡곤란·SpO2 저하, 확인하니 연결관이 빠져 있음.", "vitals": {"SpO2": "저하"}, "labs": null, "primaryDx": "흉관 개방과 관련된 비효과적 호흡양상", "additionalDx": ["감염위험성", "가스교환장애", "지식부족"], "additionalAssessment": ["V/S·SpO2·호흡양상", "흉관 삽입부위·배액 양상", "배액병 위치(부위보다 아래)·꼬임", "호흡음"], "interventions": ["흉관 빠지면 즉시 바세린거즈로 막고 의사 노티", "배액병을 삽입부위보다 아래 유지·꼬임 방지", "삽입부위 사정·드레싱", "배액관 손으로 만지지 않기 교육"], "followUps": ["흉관 빠졌을 때 가장 먼저 할 중재", "바세린거즈가 없으면?", "공기제거(2번 늑간)/혈액(8~9번 늑간) 삽입 위치"]}, {"id": "RESP-11", "system": "respiratory", "day": "D3", "source": "삼성24 호흡기", "star": false, "title": "흉관 빠짐 + 피하기종", "scenario": "흉관 삽입 중인 환자의 흉관이 빠지고 삽입 부위에 피하기종(subcutaneous emphysema)이 생긴 상황.", "vitals": null, "labs": null, "primaryDx": "흉관 개방 소실과 관련된 가스교환장애", "additionalDx": ["감염위험성", "불안"], "additionalAssessment": ["V/S·SpO2", "삽입부위 피하기종 범위(촉진 시 捻髮음)", "호흡음·흉곽 대칭", "호흡양상"], "interventions": ["흉관 빠지면 멸균 바세린거즈로 폐쇄·의사 노티", "피하기종 경계 표시 후 진행 여부 관찰", "반좌위·산소", "흉관 환자 교육(배액병 위치·꼬임)"], "followUps": ["피하기종이 무엇이고 어떻게 사정하는가", "흉관 환자 교육 내용"]}, {"id": "RESP-12", "system": "respiratory", "day": "D3", "source": "삼성24 호흡기", "star": false, "title": "기관절개관 빠짐, 환자 불안", "scenario": "기관절개관(tracheostomy)을 가지고 있던 환자의 기관절개관이 빠진 상황이며 환자가 불안을 호소.", "vitals": null, "labs": null, "primaryDx": "기도 개방 유지 불능과 관련된 비효과적 기도청결", "additionalDx": ["가스교환장애", "불안"], "additionalAssessment": ["V/S·SpO2", "호흡양상·호흡음", "절개부위 상태", "의식수준"], "interventions": ["같은 크기·한 단계 작은 기관절개관 침상 비치, 재삽입 준비·의사 노티", "기도 유지·산소", "흡인으로 분비물 제거", "환자 안심·정서적 지지"], "followUps": ["기관절개관 간호", "환자에게 교육할 내용"]}, {"id": "RESP-13", "system": "respiratory", "day": "D3", "source": "삼성24 호흡기 / 삼성2024 #6 / 빅6 삼성 CASE6", "star": false, "title": "유방암 폐전이 폐부종, 체액과다", "scenario": "유방암 부분절제 후 폐로 전이되어 흉수·호흡곤란·기침으로 일주일 전 입원. I/O 3500/1000, 체중 2kg 증가.", "vitals": null, "labs": {"요비중": "참고 1.015~1.030"}, "primaryDx": "수분 과다와 관련된 체액과다", "additionalDx": ["비효과적 호흡양상", "가스교환장애"], "additionalAssessment": ["I/O·체중", "V/S·SpO2", "호흡음·부종", "전해질·요비중"], "interventions": ["수분·나트륨 제한", "이뇨제 투여", "반좌위·산소", "I/O·체중 매일 측정", "침상안정"], "followUps": ["체액과다 vs 체액부족 사정 지표", "이뇨제 효과 판정"]}, {"id": "CARD-01", "system": "cardiac", "day": "D4", "source": "아산65 CASE9 / 아산65 #20", "star": false, "title": "울혈성 심부전 + 지지체계 상실", "scenario": "52세 여성, 관상동맥질환. 2년 전 남편 사망 후 말수 줄고 혈압·건강관리 소홀. 일상생활 못할 정도 허약감, 발목 부종, 야간 4회 소변(소량), 가슴 답답함으로 ER 입원. 진단: 울혈성 심부전.", "vitals": null, "labs": null, "primaryDx": "심박출량 감소로 인한 비효과적 조직관류와 관련된 체액과다", "additionalDx": ["심박출량 감소", "비효과적 호흡양상", "자가간호결핍", "지지체계 상실과 관련된 우울감"], "additionalAssessment": ["V/S·I/O·CVP·PCWP", "심음(S3)·호흡음(crackle)", "체중(0.5kg/일↑ 유의)", "부종(0~4+)", "EF·EKG·심근효소", "기좌호흡·경정맥 팽창"], "interventions": ["상체 상승·산소 6~9L", "이뇨제·Digoxin(심근수축력)", "부종 사정·피부통합성 유지(항혈전스타킹·IPC)", "저염식·수분제한 교육", "입술오므리기 호흡"], "followUps": ["좌심부전 vs 우심부전 증상 차이", "Digoxin 투여 시 주의(투약 전 심첨맥박 1분, 60회 미만 중단)", "CVP 정상범위(5~10cmH2O)"]}, {"id": "CARD-02", "system": "cardiac", "day": "D4", "source": "아산65 CASE29", "star": false, "title": "급성심근경색(심부전+CRF, 도보 내원)", "scenario": "심부전+만성신부전(합병증 부종) 환자. 간병하던 배우자 사망 후 혼자 지내며 투약 등 자기관리 못함. 사망 후 우울·불안. 현재 급성심근경색으로 응급실 도보 내원.", "vitals": null, "labs": null, "primaryDx": "급성 심근경색으로 인한 관상동맥허혈과 관련된 비효과적 조직관류", "additionalDx": ["급성 통증", "좌심실 부전으로 인한 비효과적 호흡양상", "지지체계 상실과 관련된 치료불이행/우울감"], "additionalAssessment": ["V/S·I/O(핍뇨)", "통증양상(NRS·PQRST·방사통)", "심근효소(CK-MB·Troponin·LDH)", "EKG(ST 상승·T 역전·이상 Q파)", "차고 축축한 피부(심인성 쇼크)"], "interventions": ["O2 & NTG(산소공급+혈관확장)", "V/S·EKG 확인(NTG IV 시 저혈압 주의)", "침상안정(산소요구량↓)", "Morphine(RR>12에서)·Aspirin", "반좌위"], "followUps": ["심근경색 vs 협심증 차이", "Morphine 투여 주의(RR12, 길항제 Naloxone)", "ONMA 기억법"]}, {"id": "CARD-03", "system": "cardiac", "day": "D4", "source": "아산65 CASE22", "star": false, "title": "심근경색 의심, 방사통 NRS 10점", "scenario": "심근경색 의심 49세, 오전 7:45 운전 중 NRS3 흉통 발생. 전날 발표준비로 수면부족, 커피 음용, ibuprofen 복용. 9시 NRS8로 악화 ER. 10:30 통증 NRS10, 왼쪽 팔·턱으로 방사. '괴롭고 계속되는 심한 통증'.", "vitals": null, "labs": null, "primaryDx": "관상동맥 허혈과 관련된 비효과적 조직관류", "additionalDx": ["급성 통증(흉통)", "불안"], "additionalAssessment": ["V/S·I/O", "통증(NRS·PQRST·방사·시간)", "심근효소·EKG", "차고 축축한 피부", "협심증 과거력", "CVP·말초순환"], "interventions": ["O2 & NTG", "V/S·EKG 확인(특히 BP·PR·RR)", "침상안정", "Morphine(RR>12)·Aspirin", "반좌위·원인 제거(카페인·NSAIDs)"], "followUps": ["심근경색 악화요인", "NTG 투여법(설하·5분 간격 3회)", "심인성 쇼크 징후"]}, {"id": "CARD-04", "system": "cardiac", "day": "D4", "source": "아산65 CASE20 / 삼성2024 #4 / 삼성24 심혈관", "star": false, "title": "협심증 r/o(DM·HTN·천식)", "scenario": "DM·HTN·천식 있고 매일 약 복용하던 환자, 갑자기 호흡곤란 심해지고 흉통 느껴 r/o angina로 입원. 소화 안 되고 가슴 답답함 호소.", "vitals": {"BP": "140/90", "HR": 98, "RR": 18, "BT": 36.7, "SpO2": "96%"}, "labs": null, "primaryDx": "관상동맥 허혈과 관련된 비효과적 조직관류 / 심박출량 감소", "additionalDx": ["급성 통증(흉통)", "비효과적 호흡양상", "불안"], "additionalAssessment": ["V/S·I/O", "통증양상(NRS·PQRST·방사)", "심근효소·EKG(협심증은 ST 상승 없음)", "폐음·심음", "과거력·투약력"], "interventions": ["NTG 투여·교육(B1 차단제 안정형 협심증 1차)", "2~4L 산소·반좌위", "조용한 환경에서 휴식", "생활습관 교육(금주·금연)", "정서적 지지"], "followUps": ["NTG 복용 방법", "B2 차단 시 천식 악화(B1 vs B2 수용체)", "협심증 vs 심근경색"]}, {"id": "CARD-05", "system": "cardiac", "day": "D4", "source": "아산65 CASE18 / 아산65 #14·29", "star": false, "title": "PCI 스텐트 삽입 후 출혈위험", "scenario": "64세 남성, HTN 약물 중. 2일 전 샤워 중 흉통으로 ER, CT상 관상동맥 협착. 금일 대퇴동맥 경피적 스텐트 삽입술. 오늘 밤부터 QD 아스피린 100mg 시작 예정.", "vitals": {"BP": "108/64", "HR": 84, "RR": 18, "BT": 36.8}, "labs": null, "primaryDx": "치료과정(항혈소판제·시술)과 관련된 출혈위험성", "additionalDx": ["관상동맥 재협착과 관련된 비효과적 조직관류", "급성 통증(시술부위)", "불안"], "additionalAssessment": ["V/S(HR↑·BP↓)", "혈액검사(Hb·Hct·PT/PTT·plt)", "양측 대퇴·슬와·족배동맥 맥박", "시술부위·삽입다리 SMC", "모래주머니·체위"], "interventions": ["4시간 ABR·모래주머니 적용", "시술부위 출혈양상 사정·말초순환 사정", "출혈 시 아스피린 중지·의사 보고", "아스피린 부작용 교육(이명·오심·위장출혈)", "필요시 수혈"], "followUps": ["PCI·PTCA·CABG 차이", "PCI 후 사정 내용", "수혈 기준(Hb 7~10)"]}, {"id": "CARD-06", "system": "cardiac", "day": "D4", "source": "아산65 CASE6", "star": false, "title": "심근경색 후 PCI, 항응고제 복용 중", "scenario": "심근경색 치료로 aspirin·coumarin 등 항응고제·혈전용해제 복용했으나 악화되어 ER 재내원. 금일 대퇴동맥 PCI·경피적 스텐트 삽입. 오늘 밤부터 QD 아스피린 투약 지시. 내일 아침 LAB·Cx 예정.", "vitals": {"BP": "106/87", "HR": 127, "BT": 37.8}, "labs": null, "primaryDx": "질병 치료과정과 관련된 출혈위험성", "additionalDx": ["비효과적 말초조직관류", "급성 통증", "감염위험성"], "additionalAssessment": ["V/S·I/O", "LAB(Hct·Hb·PT/PTT·plt)·요비중", "PCI 삽입부위", "족배동맥·말초 SMC·blanching test", "EKG·심근효소"], "interventions": ["시술 후 4시간 모래주머니·ABR", "출혈양상 사정·가는 바늘 사용", "출혈 시 아스피린 STOP·의사 보고", "필요시 수혈·수액·산소"], "followUps": ["심근경색 vs 협심증", "아스피린 부작용", "항응고제 복용 환자 사정"]}, {"id": "CARD-07", "system": "cardiac", "day": "D4", "source": "삼성2024 기출#9 / 삼성24 심혈관 / 빅6 삼성 CASE9", "star": false, "title": "확장성 심근병증, 이뇨제 증량 후 체액부족", "scenario": "확장성 심근병증, 이뇨제 복용 중 DOE(운동 시 호흡곤란)·기좌호흡으로 ER. 하지부종, 이뇨제 10mg/hr IV 중 소변 20ml/hr여서 20mg/hr로 증량, 하루 만에 체중 2.5kg 감소. I/O 380/2400. 부종 완화됐으나 아침 기상 시 어지러움.", "vitals": null, "labs": null, "primaryDx": "과도한 이뇨와 관련된 체액부족", "additionalDx": ["낙상위험성(기립성 저혈압)", "심박출량 감소"], "additionalAssessment": ["I/O·체중·V/S", "혈액검사·전해질 불균형", "기립성 혈압", "부종 정도"], "interventions": ["수액 공급·전해질 보충", "천천히 일어나도록 교육(기립성)", "I/O·체중 모니터링", "낙상예방(침상난간·콜벨)"], "followUps": ["이뇨제 효과 판정 지표(소변량·체중)", "기립성 저혈압 교육", "이뇨제 종류별 전해질 영향"]}, {"id": "CARD-08", "system": "cardiac", "day": "D4", "source": "삼성2024 기출(2024 실제) / 삼성24 심혈관", "star": true, "title": "CABG 후 출혈 → 쇼크(실제 출제, 보호자 컴플레인)", "scenario": "64세, 호흡부전으로 내원→초음파상 관상동맥 석회화로 CABG, POD2. 중환자실→병동 이동. 저녁에 갑자기 tachycardia + 흉관 배액 bloody + BP 94/61 + 얼굴 창백·축축. 주치의는 수술 중이라 유선 처방으로 수액 처치 중. 보호자 매우 불안 '중환자실에선 멀쩡했는데 왜 여기 오니까 이래요!?'.", "vitals": {"BP": "94/61", "HR": "tachycardia"}, "labs": null, "primaryDx": "출혈과 관련된 쇼크의 위험", "additionalDx": ["심박출량 감소", "불안(환자·보호자)"], "additionalAssessment": ["V/S·의식수준", "흉관 배액 양상·양", "I/O", "출혈양상·창백·축축", "배액관 꼬임·배액병 위치"], "interventions": ["V/S 사정·산소 공급", "처방에 따라 수액·수혈", "흉관 삽입부위 사정·배액병 위치 확인", "보호자 공감→상황설명→안심(롤플레이)"], "followUps": ["환자 상태 요약", "보호자라고 생각하고 상황 설명(롤플레이)", "흉관 빠지면 어떻게?", "CABG는 언제 시행하는가"]}, {"id": "CARD-09", "system": "cardiac", "day": "D4", "source": "삼성24 심혈관", "star": false, "title": "심실세동 발생", "scenario": "심실세동(VF)이 발생한 환자.", "vitals": null, "labs": null, "primaryDx": "심실세동과 관련된 심박출량 감소", "additionalDx": ["조직관류 장애", "심정지 위험"], "additionalAssessment": ["EKG 리듬", "맥박·의식·반응", "기도·호흡"], "interventions": ["즉시 제세동(defibrillation)·CPR", "산소·IV 확보", "항부정맥제(amiodarone)", "원인 사정·모니터링"], "followUps": ["제세동의 목적", "VF vs VT", "제세동 vs 심율동전환(cardioversion) 차이"]}, {"id": "CARD-10", "system": "cardiac", "day": "D4", "source": "아산65 #3", "star": false, "title": "승모판 협착 수술 대기, 보호자 불안", "scenario": "할머니, 25년 전 승모판 stenosis 진단·15년 전 1차 수술. 숨이 가쁘고 호흡 힘들어 내원, 승모판·대동맥판막 stenosis로 일주일 뒤 수술 위해 입원. 딸은 어머니 고령으로 수술 걱정하며 불안 호소.", "vitals": null, "labs": null, "primaryDx": "심박출량 감소로 인한 활동지속성 장애", "additionalDx": ["가스교환장애", "수술과 관련된 보호자 불안(지식부족)"], "additionalAssessment": ["V/S·SpO2", "호흡양상·활동 시 호흡곤란", "심음·EF", "수술 관련 지식·불안 정도"], "interventions": ["활동 시 휴식·산소", "수술 전 교육으로 불안 완화", "보호자 정서적 지지·정보 제공", "심부하 줄이는 활동 조절"], "followUps": ["판막질환 수술 후 간호", "보호자 불안 대처"]}, {"id": "GI-01", "system": "gi", "day": "D5", "source": "빅6 아산 CASE2", "star": true, "title": "간염+복수+간성뇌증", "scenario": "간염 환자, SGOT/SGPT 2000대로 입원 치료 중. 복수가 많이 차 호흡 힘들어하며 복수천자 받음. 사지 요흔성부종 level2. T.bil 22.4, Ammonia 50, SGOT/SGPT 700대로 호전. 그러나 의식 불명확(alert 아님), 간호사에게 발길질·난폭한 모습.", "vitals": null, "labs": {"AST/ALT": "2000→700", "T.bilirubin": "22.4", "Ammonia": "50"}, "primaryDx": "복수로 인한 횡격막 압박과 관련된 비효과적 호흡양상 / 암모니아 상승과 관련된 급성 혼돈", "additionalDx": ["체액과다(복수)", "요흔성부종 관련 피부통합성 장애 위험", "출혈위험성", "손상위험성"], "additionalAssessment": ["V/S·의식(LOC·GCS)", "Ammonia·간수치·전해질", "복부둘레·복수 정도", "PT/PTT·Hb·Hct(출혈)", "I/O·체중"], "interventions": ["반좌위·산소(복수 호흡곤란)", "암모니아↓: lactulose·neomycin, 단백질 제한", "이뇨제·저염식·수분제한", "낙상·손상 예방·안전환경", "출혈 사정·비타민K"], "followUps": ["복수 관련 간호진단", "요흔성부종 관련 진단", "간성혼수 시 진정제 가능 여부·종류", "간성뇌증 기전(암모니아)"]}, {"id": "GI-02", "system": "gi", "day": "D5", "source": "삼성2024 기출#1 / 삼성24 소화기", "star": true, "title": "간경변+위암 ESD 후 출혈 쇼크", "scenario": "56세 남성, 알코올성 간경변·식도정맥류. 조기위암으로 ESD(내시경점막하박리술) POD1. 수술 당일 V/S 안정, 보호자 급한 일로 자리 비움. 오늘 아침 어지러움 호소해 V/S 측정 후 바로 의식 잃고 쓰러짐.", "vitals": {"BP": "92/56", "HR": 112, "RR": 22, "BT": 36.0}, "labs": null, "primaryDx": "출혈과 관련된 쇼크의 위험", "additionalDx": ["출혈위험성", "낙상위험성", "흡인위험성"], "additionalAssessment": ["V/S·의식수준", "출혈양상(토혈·혈변)", "I/O", "Hb·Hct·PT/PTT", "피부(창백·축축)"], "interventions": ["고개를 옆으로(흡인 예방)", "처방에 따라 수액·수혈", "V/S·의식 지속 사정", "산소 공급·하지 거상", "출혈 부위 모니터링"], "followUps": ["식도정맥류 출혈 원인·양상", "수액 vs 수혈 우선순위", "쇼크 종류(저혈량성)"]}, {"id": "GI-03", "system": "gi", "day": "D5", "source": "아산65 CASE5 / 아산65 #28", "star": false, "title": "결장루 POD1, 교육 거부(자존감)", "scenario": "58세 남성, 1일 전 결장루 수술. 수술부위를 보려 하지 않고 목욕·샤워 가능 시점만 계속 물음. 결장루 교육 거부, 매우 예민·모든 일에 짜증. 수술부위 드레싱도 거부.", "vitals": null, "labs": null, "primaryDx": "결장루로 인한 신체변화와 관련된 신체상 손상 / 치료불이행", "additionalDx": ["지식부족", "감염위험성", "피부통합성 장애 위험성", "불안"], "additionalAssessment": ["V/S·결장루 부위(붉고 약간 돌출 정상)", "수술에 대한 반응·정서상태", "감염수치(WBC·CRP)", "가족 지지체계", "우울 척도"], "interventions": ["장루 자체 확인 잊지 않기(통증·피부)", "궁금증에 답하고 드레싱 중요성 설명", "결장루 관리 교육(I/O·식이)", "자조모임 연계·프라이버시 보호", "감정 표현 격려"], "followUps": ["장루 환자 식이(고단백·고칼로리·저잔여)", "거부 환자 접근법", "신체문제(통증·감염)를 심리보다 먼저 사정하는 이유"]}, {"id": "GI-04", "system": "gi", "day": "D5", "source": "아산65 #22", "star": false, "title": "대장절제 장루 POD3, 통증·조기이상 거부", "scenario": "46세 여성, S결장암으로 대장절제술 POD3, 장루 보유. 지속적 통증(NRS4, 쑤심). 수술 후 주의점 교육에도 듣지 않아 ambulation 안 하고, 장운동 저하·객담 배출 불량으로 거친 목소리. 낮엔 병실에만, 새벽에 나옴, 면회는 친한 언니 한 명뿐.", "vitals": null, "labs": null, "primaryDx": "수술과 관련된 급성 통증", "additionalDx": ["지식부족", "비효과적 기도청결", "지지체계 부족", "상황적 자존감 저하"], "additionalAssessment": ["통증(PQRST·NRS)", "V/S", "장운동·객담 배출", "조기이상 정도", "지지체계"], "interventions": ["진통제 투여·효과 사정(IV 15~20분, PO 1시간)", "이완·심상·전환요법(아이스팩 금지)", "조기이상 교육(장기능·폐합병증·감염예방)", "자조그룹·정서적 지지"], "followUps": ["통증사정 PQRST", "조기이상이 필요한 이유", "지지체계 부족 중재"]}, {"id": "GI-05", "system": "gi", "day": "D5", "source": "아산65 #1", "star": false, "title": "간경화 식도정맥류 반복, 흑색변·성격변화", "scenario": "5년 전 만성 B형간염으로 z계열 약 1년 투여, 3년 전 Liver Cirrhosis 진단 후 잦은 복막염·식도정맥류 출혈로 입퇴원 반복. 내원 1일 전 갑자기 화내고 폭력 쓰는 등 평소와 다른 행동, 가족이 ER 통해 입원. 입원 후 검은 대변 2회, 의사소통 안 됨.", "vitals": null, "labs": null, "primaryDx": "암모니아 상승과 관련된 급성 혼돈(간성뇌증)", "additionalDx": ["위장관 출혈과 관련된 출혈위험성", "손상위험성", "체액과다"], "additionalAssessment": ["의식(LOC·GCS)·Ammonia", "잠혈·흑색변 양상", "간수치·PT/PTT·Hb·Hct", "전해질·복수"], "interventions": ["lactulose·neomycin으로 암모니아↓", "단백질 제한·간대사 약물 중단", "안전환경·낙상예방", "출혈 사정·비타민K", "정신·신경학적 증상 지속 확인"], "followUps": ["간성뇌증 기전", "흑색변 vs 혈변 출혈 위치", "간경화 출혈 경향 이유"]}, {"id": "GI-06", "system": "gi", "day": "D5", "source": "아산65 #4 / 아산65 #7", "star": false, "title": "간이식 후 폐렴 재입원, 체액과다", "scenario": "58세 남성, 간경화로 생체간이식 후 폐렴으로 재입원. POD3까지 괜찮다가 갑자기 호흡곤란. 어제부터 소변량 감소, 복부둘레 증가, 손·발 부종, 야간 수면 곤란, 지남력 있으나 간혹 혼동. V/S 정상.", "vitals": {"기타": "V/S 정상"}, "labs": null, "primaryDx": "신기능 저하와 관련된 체액과다", "additionalDx": ["비효과적 호흡양상", "전해질 불균형", "급성 혼돈 위험"], "additionalAssessment": ["I/O·체중·복부둘레", "V/S·SpO2", "부종·호흡음", "전해질·신기능(BUN/Cr)", "의식수준"], "interventions": ["반좌위·산소", "이뇨제·수분/염분 제한", "I/O·체중·복부둘레 모니터링", "피부통합성 유지", "면역억제제 관련 감염 주의"], "followUps": ["간이식 후 거부반응 징후", "체액과다 사정 지표"]}, {"id": "GI-07", "system": "gi", "day": "D5", "source": "아산65 CASE8", "star": false, "title": "HCC 토혈·복수, 호흡곤란", "scenario": "58세 남성, 2년 전 HCV 진단, HCC. 3일 전 melena, 지금은 토혈 있어 내원. 배가 매우 부풀어 오르고 비위관 삽입. '호흡하기 힘들어요'.", "vitals": null, "labs": null, "primaryDx": "복수·출혈과 관련된 체액 불균형(체액과다) / 출혈위험성", "additionalDx": ["비효과적 호흡양상", "신체상 손상", "피부통합성 장애 위험", "급성 통증"], "additionalAssessment": ["V/S·I/O·체중", "PT/PTT·plt·Hb·Hct·간수치·Ammonia·Albumin", "복수(복부팽만·탁음)·복부둘레", "비위관 배액 양상", "CVP·PCWP·ABGA"], "interventions": ["반좌위·산소", "이뇨제·저염식·수분제한", "필요시 복수천자", "비타민K·비위관 양상 사정", "필요시 수혈"], "followUps": ["토혈 vs 객혈 차이 3가지 이상", "복수 발생 기전(문맥성 고혈압·저알부민)", "출혈위험성 중재"]}, {"id": "GI-08", "system": "gi", "day": "D5", "source": "아산65 #5·#13·#19", "star": false, "title": "담도암 PTBD 후 배액 bloody", "scenario": "75세 남성, 담도암으로 황달 있어 수술 미루고 PTBD(경피경간담도배액술) 시술. 하루 2~3회 통증 호소, 배액관에서 brownish하던 액이 bloody하게 나옴. 보호자가 달려와 '관에서 붉은 게 나와요'.", "vitals": {"BP": "100/80", "HR": 90, "RR": 18}, "labs": null, "primaryDx": "시술과 관련된 출혈위험성", "additionalDx": ["급성 통증", "감염위험성", "불안"], "additionalAssessment": ["V/S(출혈 시 HR↑·BP↓)", "배액 양상·양", "PT/PTT·Hb·Hct", "통증·시술부위", "황달·간수치"], "interventions": ["배액 양상·V/S 사정", "출혈 지속 시 의사 노티", "배액관 위치·고정 확인", "통증 조절", "감염 징후 모니터링"], "followUps": ["PTBD 시술 목적", "배액 색 변화의 의미", "보호자 불안 대처"]}, {"id": "GI-09", "system": "gi", "day": "D5", "source": "아산65 #8", "star": false, "title": "복강경 부분위절제 후 식이 문의(영양 함정)", "scenario": "복강경 부분위절제술 환자, JP 150cc 배액 중. '식사를 언제 시작하면 되느냐'고 물음. (수술 후 간호로 감염·출혈위험성만 생각하기 쉬우나, 핵심 진단은 영양불균형 — 면접관이 다른 방향으로 유도해도 진단 재확인.)", "vitals": null, "labs": null, "primaryDx": "섭취 제한과 관련된 영양불균형(영양부족 위험)", "additionalDx": ["지식부족", "감염위험성", "출혈위험성"], "additionalAssessment": ["체중·I/O·영양수치(알부민)", "JP 배액 양상", "연하능력(침 삼키기)", "감염징후", "식이 처방"], "interventions": ["식사 처방 시 연하 확인 후 SOW→유동식→연동식", "덤핑증후군 식이(고단백·저탄수·수분 적게·소량 자주)", "식후 누워 흡수 지연·천천히(40분 이상)", "영양상태 모니터링", "악성빈혈 시 B12"], "followUps": ["덤핑증후군 기전·식이", "면접관 유도에도 진단 고수하는 법", "위절제 후 식이 진행 순서"]}, {"id": "GI-10", "system": "gi", "day": "D5", "source": "아산65 #11·#17·#32", "star": false, "title": "위암 위절제 POD3, 통증·식이 교육", "scenario": "56세 여성, 위암으로 laparoscopic gastrectomy 70%. POD1 J-P 1개(serosanguinous), POD3 IV PCA, NRS5 쑤심 통증으로 진통제 1~2회 추가. 언제부터·어떻게 먹을 수 있는지 물어봄.", "vitals": null, "labs": null, "primaryDx": "수술과 관련된 급성 통증", "additionalDx": ["지식부족", "감염위험성", "영양불균형 위험"], "additionalAssessment": ["V/S·통증(PQRST)", "염증수치(WBC·CRP·ANC·ESR)", "수술부위 감염징후", "배액량·PCA 사용법", "연하능력"], "interventions": ["진통제 투여·부작용 사정", "PQRST 통증 사정", "심호흡·정서적 지지", "식이: SOW→유동식→연동식", "덤핑증후군 식이 교육"], "followUps": ["PCA란 무엇인가", "덤핑증후군 식이", "위절제 후 악성빈혈(B12)"]}, {"id": "GI-11", "system": "gi", "day": "D5", "source": "아산65 #23", "star": false, "title": "급성 담낭염 복강경 수술 후 감염", "scenario": "60세 여성, 주진단 Acute Cholecystitis, epigastric pain으로 입원. 기저질환 없음. Laparoscopic cholecystectomy 후 지속적 통증으로 ambulation 못함. 체온 지속 상승, WBC·CRP·neutrophil 증가, 통증으로 수면 곤란.", "vitals": {"BP": "130/87", "HR": 84, "RR": 20, "BT": "38.1→38.2"}, "labs": {"WBC": "15.7→22.37", "CRP": "3.16", "Neutrophil": "79.3→87.4%"}, "primaryDx": "수술부위 염증과 관련된 감염위험성 / 고체온", "additionalDx": ["급성 통증", "수면양상장애", "활동지속성 장애"], "additionalAssessment": ["V/S·체온 추이", "감염수치(WBC·CRP·neutrophil)", "수술부위 감염징후", "통증·수면", "배액 양상"], "interventions": ["항생제·해열제 투여", "수술부위 사정·드레싱", "통증 조절로 조기이상 격려", "수분 공급", "감염수치 모니터링"], "followUps": ["감염 검사 수치 의미(WBC·ESR·CRP)", "수술 후 조기이상 이유"]}, {"id": "GI-12", "system": "gi", "day": "D5", "source": "아산65 #24", "star": false, "title": "직장암 초저위전방절제+장루, 통증", "scenario": "40세 남성, 한 달 전부터 변비·혈변으로 CFS 후 직장암 소견, PCRT 후 laparoscopic ultralow anterior resection. 항문부위 통증으로 PCA 투여 중. 수술 후 일시적 장루 시행, 장루에 대해 전혀 모르는 상태. CRP·BT 상승.", "vitals": {"BT": "38.1~39.3", "PR": "82~92", "RR": "18~20", "BP": "104/68~134/78"}, "labs": {"CRP": "0.1→14.49", "E-Neutrophil": "82~85%"}, "primaryDx": "수술과 관련된 급성 통증", "additionalDx": ["장루 관련 지식부족", "감염위험성", "고체온"], "additionalAssessment": ["통증(PQRST)·V/S", "감염수치(CRP·neutrophil)", "장루 상태·배설", "수술부위"], "interventions": ["PCA·진통제 사정", "장루 교육(부위·식이·관리)", "항생제·감염 모니터링", "정서적 지지"], "followUps": ["장루 교육 내용", "임시 장루 vs 영구 장루"]}, {"id": "GI-13", "system": "gi", "day": "D5", "source": "빅6 아산 CASE5", "star": true, "title": "전대장절제 후 출혈 쇼크(항응고제 복용)", "scenario": "몇 년 전 PCA에 cerebral artery stenosis 진단으로 항응고제 복용 중. rectal cancer로 전대장절제술 후 watery bloody 배액. 환자가 '피가 나요. 배에다 똥꾸멍 만들어 놓으니까 이러는 거지!' 소리 지르다 쓰러짐.", "vitals": {"BP": "80/54", "HR": 120, "RR": 24, "BT": 36.8, "SpO2": "92~94%"}, "labs": null, "primaryDx": "출혈과 관련된 쇼크의 위험", "additionalDx": ["출혈위험성", "낙상위험성", "신체상 손상"], "additionalAssessment": ["V/S·의식수준", "배액 양상·출혈량", "응고검사(PT·aPTT·INR·plt)", "I/O", "피부(창백·축축)"], "interventions": ["고개 옆으로·산소·하지 거상", "처방에 따라 수액·수혈", "항응고제 관련 출혈 사정", "V/S·의식 지속 사정", "쓰러질 때 손상 예방"], "followUps": ["더 필요한 검사(응고검사 종류)", "혈액제제 종류", "melena와 hematochezia 차이"]}, {"id": "GI-14", "system": "gi", "day": "D5", "source": "삼성24 소화기", "star": false, "title": "식도암 PEG, 잦은 설사·욕창(업무 과중)", "scenario": "식도암 누공으로 PEG(경피적 내시경 위루술) 중이며 잦은 설사로 욕창이 생긴 상태. 다른 환자 간호로 욕창 간호를 제때 못 했고, 선배가 화난 상황.", "vitals": null, "labs": null, "primaryDx": "부동·습기와 관련된 피부통합성 장애(욕창)", "additionalDx": ["영양불균형", "감염위험성"], "additionalAssessment": ["욕창 단계·부위", "피부상태·습기", "영양상태(알부민)", "설사 양상·횟수", "PEG 부위"], "interventions": ["체위변경(2시간)·압력 분산", "피부 청결·건조 유지·드레싱", "설사 관리·둔부 보호", "영양 보충", "선배에게 상황 설명·도움 요청"], "followUps": ["욕창 단계별 간호", "PEG 시행 이유·PEG 간호", "선배에게 뭐라고 말할 것인가(롤플레이)"]}, {"id": "GI-15", "system": "gi", "day": "D5", "source": "삼성24 소화기", "star": false, "title": "위절제 PCD oozing, 패혈증 위험", "scenario": "위암으로 위절제술 시행, PCD(경피적 배액관) 보유. BT·HR·RR이 오르고 해당 부위 oozing 발생. 패혈증 쇼크까지 이어질 위험.", "vitals": {"BT": "상승", "HR": "상승", "RR": "상승"}, "labs": null, "primaryDx": "수술부위 감염과 관련된 감염위험성(패혈증 위험)", "additionalDx": ["출혈위험성", "고체온", "쇼크의 위험"], "additionalAssessment": ["V/S·체온", "감염수치(WBC·ESR·CRP)", "PCD 배액·oozing 양상", "수술부위", "혈액배양"], "interventions": ["항생제·수액", "PCD 부위 사정·드레싱", "V/S·감염수치 모니터링", "패혈증 징후 관찰"], "followUps": ["감염 수치 설명(WBC·ESR·CRP)", "패혈증이란·증상", "PCD 풀네임·PCD 간호"]}, {"id": "GI-16", "system": "gi", "day": "D5", "source": "삼성2024 기출#8 / 삼성24 소화기 / 빅6 삼성 CASE5", "star": false, "title": "소장출혈 ER, 자정 혈변·쇼크", "scenario": "36세, 소장출혈 혈변으로 응급실 내원, 소장내시경 지혈술 익일 예정. 금식 중 포도당·위산억제제 투여. 저녁 9시 BP 94/52, PR 94, RR·BT 정상. 자정에 변기 가득한 혈변, 창백·식은땀·어지러움 호소.", "vitals": {"BP": "94/52", "HR": 94}, "labs": null, "primaryDx": "출혈과 관련된 쇼크의 위험", "additionalDx": ["출혈위험성", "낙상위험성"], "additionalAssessment": ["V/S·의식", "혈변 양상·양", "Hb·Hct·PT/PTT", "I/O", "피부(창백·식은땀)"], "interventions": ["산소·수액·수혈 준비", "V/S·출혈 지속 사정", "낙상예방·침상안정", "NPO 유지·내시경 준비"], "followUps": ["쇼크 징후", "수액 우선 vs 수혈 우선", "내시경 지혈술 전 간호"]}, {"id": "GI-17", "system": "gi", "day": "D5", "source": "삼성24 소화기", "star": false, "title": "바터팽대부암 수술 후 식이 불이행", "scenario": "바터팽대부암(Vater ampulla) 수술 진행. 식이교육을 제대로 이행하지 않아 비위관 삽입 설득에 시간이 걸려 다른 일이 밀렸고, 선배가 밀린 업무로 화난 상황.", "vitals": null, "labs": null, "primaryDx": "식이요법 관련 지식부족(치료불이행)", "additionalDx": ["영양불균형 위험", "흡인위험성"], "additionalAssessment": ["식이 이행 정도·이해 수준", "영양상태·체중", "비위관 위치·배액", "오심·구토"], "interventions": ["식이 교육 재시행·이해 확인", "비위관 목적 설명·삽입 간호", "영양상태 모니터링", "선배에게 상황 공유·우선순위 조정"], "followUps": ["비위관 삽입 위치 확인법", "선배에게 뭐라고 할 것인가(롤플레이)"]}, {"id": "GI-18", "system": "gi", "day": "D5", "source": "삼성2024 기출#12", "star": false, "title": "간경변 복수천자 후 지남력 저하·진전", "scenario": "간경변 환자로 복수천자 후 지남력 저하되고 진전(tremor, asterixis)이 있었다. 락툴로스 복용 중.", "vitals": null, "labs": null, "primaryDx": "암모니아 상승과 관련된 급성 혼돈의 위험(간성뇌증)", "additionalDx": ["사고과정 장애", "손상위험성"], "additionalAssessment": ["의식(LOC·GCS)·지남력", "Ammonia·간수치", "진전(asterixis)·신경학적 사정", "전해질"], "interventions": ["lactulose 효과 사정(배변 횟수)", "단백질 제한", "안전환경·낙상예방", "암모니아·의식 모니터링"], "followUps": ["간성뇌증 단계", "복수천자 후 합병증", "asterixis(간성 떨림)"]}, {"id": "GI-19", "system": "gi", "day": "D5", "source": "삼성2024 기출#26", "star": false, "title": "위절제술 후 복통·수술부위 누출", "scenario": "위 절제술 후 복통·구역 호소. 수술 부위가 '샌다'고 표현하며 지속적 복통.", "vitals": null, "labs": null, "primaryDx": "수술과 관련된 급성 통증", "additionalDx": ["감염위험성", "출혈위험성", "영양불균형 위험"], "additionalAssessment": ["통증(PQRST)·V/S", "수술부위·배액 양상(누출)", "감염수치", "복부 사정"], "interventions": ["진통제 투여·사정", "수술부위·배액 관찰·드레싱", "누출 시 의사 노티", "감염·출혈 모니터링"], "followUps": ["문합부 누출(anastomotic leakage) 징후", "수술 후 합병증 사정"]}, {"id": "NEU-01", "system": "neuro", "day": "D6", "source": "아산65 CASE1", "star": false, "title": "지주막하출혈 수술 후", "scenario": "통증으로 병원 갔다가 지주막하출혈(SAH) 진단으로 수술. 현재 V/S 모두 정상(체온 미기재), 환자는 팔·다리에 힘이 없다고 함.", "vitals": {"기타": "V/S 정상"}, "labs": null, "primaryDx": "수술 후 두개내압 상승과 관련된 출혈위험성", "additionalDx": ["감염위험성", "신체손상위험성", "불안", "급성 통증"], "additionalAssessment": ["V/S(특히 BP)·I/O", "ICP·CPP·IICP 3대징후(구토·두통·유두부종)", "LOC·동공·운동(신경학적 사정 3가지)", "Hb·Hct·PT/PTT·plt", "혈관경련 징후(악화 두통·새 LOC 변화)"], "interventions": ["V/S·ICP·CPP·LOC 사정", "반좌위(뇌압 최소화)", "mannitol·변완화제·IICP 상승행위 금지(valsalva·목 굴곡)", "조용·낮은 조명 환경", "Ca channel blocker(nimodipine)로 혈관경련 예방"], "followUps": ["IICP 3대징후", "혈관경련(vasospasm) 징후", "nimodipine 역할"]}, {"id": "NEU-02", "system": "neuro", "day": "D6", "source": "아산65 CASE19", "star": false, "title": "뇌졸중 편마비, 자가간호결핍", "scenario": "67세 남성, 목욕탕에서 미끄러져 정신 잃고 ER. 내원 시 BP 188/109, SpO2 92%. 당뇨·고혈압 기저, 3년 전부터 한쪽 팔 불편. MRI상 뇌졸중, 현재 의식 회복. 식사 등 일상생활에 보호자 도움 필요.", "vitals": {"BP": "188/109", "SpO2": "92%"}, "labs": null, "primaryDx": "비효율적 뇌조직관류와 관련된 자가간호결핍", "additionalDx": ["불용증후군 위험성", "연하곤란", "낙상위험성", "감각지각장애", "무력감"], "additionalAssessment": ["V/S·ICP·혈당", "ADL·운동능력·편측마비 ROM", "연하능력·언어능력", "낙상/욕창 위험도", "PT/PTT·Hb"], "interventions": ["건측 사용 격려·개인위생 교육", "혈전성/출혈성에 따른 약물(warfarin·tPA·nimodipine)", "연하 사정·영양·수분 균형", "물리치료 연계 재활", "낙상예방(침상난간)·피부통합성 유지"], "followUps": ["Paraplegia vs Hemiplegia 구분", "의식수준 5단계(Alert~Coma)", "IICP 임상증상(쿠싱 3대증상)"]}, {"id": "NEU-03", "system": "neuro", "day": "D6", "source": "삼성24 신경 / 삼성2024(실제 출제)", "star": true, "title": "혈종제거술 후 경련(실제 출제, 보호자 분노)", "scenario": "혈종 수술 후 심한 두통 호소, 진통제 투여했으나 갑자기 경련 발생. 보호자는 '왜 두통 호소할 때 즉각 처치하지 않았느냐'며 분노하는 상태.", "vitals": null, "labs": null, "primaryDx": "두개내압 상승과 관련된 비효과적 뇌조직관류 위험", "additionalDx": ["손상위험성(경련)", "흡인위험성"], "additionalAssessment": ["GCS·LOC·동공", "경련 양상(부위·지속·실금)", "V/S·IICP 징후", "두통 양상", "산소포화도"], "interventions": ["경련 시 기도개방(고개 옆)·산소·주변 물건 제거", "억제하지 않고 양상 관찰·기록", "항경련제·만니톨·스테로이드", "조용·어두운 환경", "회복 후 IICP 간호"], "followUps": ["GCS가 무엇이고 환자의 GCS는", "보호자에게 뭐라고 설명할 것인가(롤플레이)", "두통의 원인은 무엇이라 생각하는가"]}, {"id": "NEU-04", "system": "neuro", "day": "D6", "source": "삼성24 신경 / 삼성2024 #3 / 빅6 삼성 CASE4", "star": false, "title": "유방절제술 스테로이드 중 뇌부종(IICP)", "scenario": "유방절제술 환자가 스테로이드 치료 중 뇌부종 발생. 바이탈·의식은 정상이나 갑자기 분출성(사출성) 구토를 하고 두통 호소(NRS3). 동공 P3/P3.", "vitals": {"BP": "110~129(수축기)", "HR": "80~90"}, "labs": {"Pupil": "P3/P3"}, "primaryDx": "뇌부종으로 인한 두개내압 상승과 관련된 비효과적 뇌조직관류 위험", "additionalDx": ["급성 통증(두통)", "손상위험성"], "additionalAssessment": ["GCS·LOC·동공", "IICP 3대징후(투사성 구토·두통·유두부종)", "V/S(쿠싱 3대증상)", "두통 양상"], "interventions": ["반좌위(30도)·뇌압 상승행위 금지", "만니톨·스테로이드", "조용·어두운 환경", "구토 시 흡인 예방", "V/S·신경학적 사정"], "followUps": ["GCS란·환자의 GCS", "투사성 구토 의미", "두통 원인(IICP)"]}, {"id": "NEU-05", "system": "neuro", "day": "D6", "source": "아산65 CASE27", "star": false, "title": "ICH 후유증 편마비, 연하장애", "scenario": "83세 여성, 2010년 ICH 진단 후유증으로 Lt. hemiparesis. 손목·손가락 관절 제한, ADL 4점으로 도움 없이 생활 불가, ABR·휠체어 거동. 식사 시 매번 연하곤란 호소, 유난히 느리게 식사, 사례 자주 들림, 음식 머금음.", "vitals": null, "labs": null, "primaryDx": "편측마비로 인한 저작기능 저하와 관련된 연하장애", "additionalDx": ["신체기동성 장애", "낙상위험성", "피부통합성 장애(장기 침상)", "사회적 고립 우울감"], "additionalAssessment": ["연하능력(식사 전 물 삼키기)", "V/S·I/O·영양상태", "구강상태·정서상태", "Alb·K·Ca", "피부상태·SMC"], "interventions": ["흡인 예방 위해 반좌위", "맑은 유동식 등 삼키기 쉬운 음식", "구강간호", "삼킬 때 고개 약간 숙이기 교육", "필요시 위관영양"], "followUps": ["연하곤란 환자 식사 자세", "흡인 예방법", "장기 침상 합병증"]}, {"id": "NEU-06", "system": "neuro", "day": "D6", "source": "빅6 아산 CASE6", "star": false, "title": "ACA 경색 후 흡인·낙상 위험", "scenario": "78세 남성, DM·고지혈증. 2주 전부터 감기 증상과 오른쪽 팔·다리 약화로 Rt. ACA infarction 진단. Heparin·aspirin 투여 중. 발음장애 있고 연하곤란 호전된 것처럼 보여 연하곤란식으로 식이 진행. 식사 중 계속 기침하고 식후 바로 누움.", "vitals": null, "labs": null, "primaryDx": "연하곤란과 관련된 흡인위험성", "additionalDx": ["낙상위험성", "비효율적 뇌조직관류", "출혈위험성(항응고제)"], "additionalAssessment": ["연하능력·기침 양상", "V/S·SpO2", "Morse fall scale", "신경학적 사정·ADL", "PT/PTT(헤파린)"], "interventions": ["식사 시 좌위·식후 30분 앉아 있기", "점도 조절식·천천히 섭취", "흡인 시 흡인·산소", "낙상예방·헤파린 출혈 사정"], "followUps": ["Morse fall scale 설명", "낙상 발생 시 어떻게 할 것인가", "ADL이 무엇인가"]}, {"id": "NEU-07", "system": "neuro", "day": "D6", "source": "삼성2024 기출#7", "star": false, "title": "경막하혈종 제거 후 경련", "scenario": "69세 여성, 간경변·HTN. 경막하혈종 제거 수술 후 JP 배액관 1개, 부위 oozing 있어 노티 후 1땀 suture. 이후 갑자기 통증 호소·진통제 요청, BP 변화 없고 GCS E4V5M6, 동공 3+/3+. 진통제 투여 후 보호자 '갑자기 왈칵 토하더니 이상해요'. 환자 입 쩝쩝, 눈 우측 상방 고정, 팔다리 쭉 편 채 떪.", "vitals": {"기타": "BP 변화 없음"}, "labs": {"GCS": "E4V5M6", "Pupil": "3+/3+"}, "primaryDx": "경련과 관련된 손상위험성 / 비효과적 뇌조직관류 위험", "additionalDx": ["흡인위험성", "출혈위험성"], "additionalAssessment": ["GCS·동공·경련 양상", "기도·SpO2", "JP 배액·oozing", "IICP 징후"], "interventions": ["기도개방(고개 옆)·흡인 예방·산소", "주변 물건 치우기·억제 금지", "경련 양상 사정·기록", "어둡고 조용한 환경", "회복 후 IICP 간호"], "followUps": ["경련 시 우선순위(기도)", "GCS 점수 해석", "수술 후 경련 원인"]}, {"id": "NEU-08", "system": "neuro", "day": "D6", "source": "삼성2024 기출#22", "star": false, "title": "TSA 뇌하수체선종 제거 후 CSF 누출", "scenario": "TSA(경접형동 접근) 뇌하수체선종 제거술 시행한 환자, 아침에 밥 먹다가 맑은 콧물이 흐른다고 말함.", "vitals": null, "labs": null, "primaryDx": "뇌척수액 누출과 관련된 감염위험성", "additionalDx": ["비효과적 뇌조직관류 위험", "출혈위험성"], "additionalAssessment": ["콧물 양상(당검사로 CSF 확인)", "두통·발열·경부강직", "IICP 징후", "코 분비물 양"], "interventions": ["코 풀기·재채기·빨대 금지(IICP·누출 악화 방지)", "침상머리 상승", "halo sign·당 검사로 CSF 확인", "의사 노티·감염 징후 관찰"], "followUps": ["CSF 누출 확인법", "TSA 수술 후 교육", "수막염 징후"]}, {"id": "NEU-09", "system": "neuro", "day": "D6", "source": "빅6 아산 CASE3", "star": false, "title": "척수공동증 MRSA, 호흡곤란", "scenario": "척수 공동증(syringomyelia) 환자, MRSA 감염. 호흡곤란 있어 흡인했더니 완화됨. 그러나 다시 V/S 측정 시 호흡 25회, SpO2 80%, 그 외 바이탈 정상.", "vitals": {"RR": 25, "SpO2": "80%"}, "labs": null, "primaryDx": "분비물 정체와 관련된 가스교환장애 / 비효과적 기도청결", "additionalDx": ["감염전파 위험(MRSA)", "피부통합성 장애 위험"], "additionalAssessment": ["V/S·SpO2·호흡음", "객담 양상", "MRSA 격리 상태", "욕창 위험(부동)"], "interventions": ["흡인·반좌위·산소", "접촉주의 격리·손위생", "체위변경·욕창 예방", "감염 모니터링"], "followUps": ["접촉주의와 접촉주의 플러스 차이", "욕창 단계별 차이", "MRSA 격리 방법"]}, {"id": "NEU-10", "system": "neuro", "day": "D6", "source": "빅3 삼성 / 삼성2024 기출#23", "star": false, "title": "뇌수막염 요추천자 후 ABR 비협조", "scenario": "뇌수막염 의심으로 요추천자(LP) 시행한 환자가 ABR(절대안정)을 지키지 않고 자꾸 일어나 돌아다니며, 두통을 호소하는 중.", "vitals": null, "labs": null, "primaryDx": "요추천자 후 뇌척수액 누출과 관련된 감염위험성", "additionalDx": ["낙상위험성", "지식부족(ABR 불이행)", "급성 통증(두통)"], "additionalAssessment": ["천자부위 누출·발열·경부강직", "두통 양상·신경학적 사정", "ABR 이행도", "V/S"], "interventions": ["천자 후 6~8시간 앙와위 ABR·베개 금지 교육", "수분 공급(CSF 보충·두통 완화)", "누출·감염징후 사정", "낙상예방·자주 순회하며 안전 확인", "ABR 필요성을 사례 들어 재교육"], "followUps": ["요추천자 후 두통 원인·중재", "ABR이 필요한 이유(비협조 환자 설득)", "뇌수막염 징후(Kernig·Brudzinski)"]}, {"id": "ENDO-01", "system": "endocrine", "day": "D7", "source": "아산65 CASE24", "star": false, "title": "제2형 당뇨 + 당뇨발", "scenario": "65세, 10년째 제2형 당뇨로 입원 치료. 당뇨 합병증으로 오른쪽 발가락 피부 손상. 혼자 생활, 간병 보호자 없음, 질병 관련 질문에 시큰둥.", "vitals": {"BP": "138/96", "HR": 96, "RR": 20, "BT": 37.8}, "labs": null, "primaryDx": "질병과정과 관련된 감염위험성 / 피부통합성 장애", "additionalDx": ["불안정한 혈당치 위험성", "감각지각 장애와 관련된 신체손상위험성", "비효율적 자가건강관리"], "additionalAssessment": ["피부상태·상처부위·BST", "V/S·염증수치", "말초 혈관·감각(neuropathy)", "발 관리 습관", "영양·생활습관"], "interventions": ["혈당 조절(인슐린·식이·운동)", "발 청결·상처 드레싱", "감염 예방·항생제", "당뇨발 발관리 교육"], "followUps": ["당뇨발 발관리 교육", "저혈당 증상·처치(50mg/dL 이하)", "당뇨 3대 증상"]}, {"id": "ENDO-02", "system": "endocrine", "day": "D7", "source": "삼성24 내분비", "star": false, "title": "갑상샘절제 후 저칼슘혈증", "scenario": "갑상샘 절제술 시행한 환자로 저칼슘혈증이 의심되고 쉰 목소리가 나타남. 전해질을 투여 받았는데 주입속도가 빠른 상황.", "vitals": null, "labs": {"Ca": "저하 의심"}, "primaryDx": "부갑상샘 손상과 관련된 전해질 불균형(저칼슘혈증)", "additionalDx": ["손상위험성(테타니)", "비효과적 기도청결(쉰 목소리·후두 부종)"], "additionalAssessment": ["혈청 Ca·전해질", "테타니 징후(Chvostek·Trousseau)", "쉰 목소리·기도 부종", "주입속도·EKG"], "interventions": ["Ca gluconate 투여 준비·침상 옆 비치", "주입속도 즉시 확인·조정", "테타니·경련 사정", "기도 사정(후두 경련 주의)"], "followUps": ["저칼슘혈증 증상(Chvostek·Trousseau·테타니)", "어떤 전해질을 투여할 것인가(칼슘)", "주입속도 빠를 때 중재"]}, {"id": "ENDO-03", "system": "endocrine", "day": "D7", "source": "삼성24 내분비", "star": false, "title": "고칼륨혈증", "scenario": "고칼륨혈증 환자 사례.", "vitals": null, "labs": {"K": "상승"}, "primaryDx": "고칼륨혈증과 관련된 심박출량 감소 위험(치명적 부정맥)", "additionalDx": ["전해질 불균형", "손상위험성"], "additionalAssessment": ["혈청 K·EKG(tall T·QRS 확대)", "근육 약화·이상감각", "신기능·소변량", "심전도 모니터"], "interventions": ["EKG 모니터링", "Ca gluconate(심장 보호)·인슐린+포도당", "Kayexalate(케이엑살레이트) 관장/경구", "고칼륨 식이 제한·필요시 투석"], "followUps": ["고칼륨혈증 증상", "투여 약물(칼슘글루코네이트·인슐린·케이엑살레이트)", "적용 식이"]}, {"id": "ENDO-04", "system": "endocrine", "day": "D7", "source": "삼성2024 기출#13 / 빅6 삼성 CASE8", "star": false, "title": "부비동 수술 전 고칼륨 + 칼륨수액 처방", "scenario": "47세 남성, 부비동염으로 다음날 부비동 내시경 수술 예정. 수술 전 검사 K 5.8mmol/L, 다른 전해질 정상. 자정부터 금식 예정, 칼륨·염화나트륨 포함 포도당(DNK2) 수액이 처방나 있는 상황.", "vitals": {"BP": "138/80", "RR": 18, "BT": 36.2}, "labs": {"K": "5.8 mmol/L"}, "primaryDx": "전해질 불균형 위험(고칼륨혈증)", "additionalDx": ["손상위험성", "투약 오류 위험"], "additionalAssessment": ["혈청 K·EKG", "V/S·I/O", "고칼륨혈증 증상", "처방 적절성"], "interventions": ["처방 재확인 요청('칼륨 높은데 칼륨 수액 그대로 투약할지 확인 부탁드립니다')", "EKG 모니터링", "고칼륨혈증 증상 사정", "혈액검사 추적"], "followUps": ["처방 의심 시 의사소통법", "고칼륨혈증 EKG 변화", "투약 전 확인(Rights)"]}, {"id": "WOMEN-01", "system": "women", "day": "D7", "source": "삼성2024(2024 실제 출제) / 삼성24 여성", "star": true, "title": "자간전증(실제 출제, 여성 대표)", "scenario": "34+3주, 1-0-1-1(4자리 산과력). 황산마그네슘·항고혈압제 투여 중, urine protein+++. 고혈압 있었으나 혈압 180~190으로 본원 전원, 배뭉침 있음. 두통·명치 통증, 매우 불안하며 통증 호소, 아기 걱정. (약은 전부 영어로 기재)", "vitals": {"BP": "180~190/100", "기타": "urine protein +++"}, "labs": null, "primaryDx": "고혈압과 관련된 불안정한 혈압의 위험 / 급성 통증", "additionalDx": ["태아 손상 위험", "경련(자간증) 위험", "불안"], "additionalAssessment": ["혈압·전해질(특히 칼슘·마그네슘)·태아 상태", "두통·명치통증·시야변화(전조)", "심부건반사(DTR)·호흡수·소변량(MgSO4 독성)", "단백뇨·부종"], "interventions": ["황산마그네슘(경련 예방)·항고혈압제", "조용·어두운 환경(자극 최소화)", "MgSO4 독성 모니터링(해독제 calcium gluconate 침상 비치)", "SBAR로 의사 노티", "좌측위·태아 모니터링"], "followUps": ["황산마그네슘을 왜 투여하나(경련 예방)", "MgSO4 투여 시 주의·부작용·모니터링", "사정할 전해질은?(칼슘·마그네슘)", "태아를 위해 해줄 수 있는 중재"]}, {"id": "PSYCH-01", "system": "psych", "day": "D7", "source": "정신 대표(이론·후기 종합)", "star": false, "title": "우울증 — 자살위험 사정 최우선", "scenario": "우울증 환자(대표 케이스). 약물 SSRI(초기 2~4주 자살위험↑), TCA(심독성). 무력감·자존감 저하 동반. 핵심은 자살위험 사정을 최우선으로 두는 것.", "vitals": null, "labs": null, "primaryDx": "자살위험성", "additionalDx": ["무력감", "자존감 저하", "영양불균형 위험", "수면양상장애"], "additionalAssessment": ["자살사고·계획·수단", "약물 복용 이행(숨김 여부)", "지지체계", "식이·수면·활동", "이전 자살시도력"], "interventions": ["안전한 환경(위험물 제거)·관찰 강화", "약물 숨김 확인(복용 후 구강 확인)", "활동 격려·작은 성취 지지", "치료적 의사소통·비판단적 경청"], "followUps": ["SSRI 부작용(초기 자살위험↑)", "자살위험 환자 우선순위", "우울 vs 무력감 진단"]}, {"id": "PSYCH-02", "system": "psych", "day": "D7", "source": "정신 대표(이론·후기 종합)", "star": false, "title": "섬망 — 원인 교정 우선", "scenario": "수술 후·ICU·고령 환자에서 갑작스러운 의식 혼탁·환각·지남력 저하(섬망). 야간 악화. 원인 교정이 최우선.", "vitals": null, "labs": null, "primaryDx": "급성 혼돈(섬망)", "additionalDx": ["손상위험성", "수면양상장애"], "additionalAssessment": ["의식·지남력 변화 추이", "원인(AEIOU-TIPS: 저산소·전해질·약물·감염 등)", "전해질·산소·혈당", "수면·환경 자극"], "interventions": ["원인 교정(저산소·전해질·약물·통증)", "지남력 제공(시계·달력·반복 설명)", "주간 활동·야간 수면 환경", "억제대 최소화·낙상예방"], "followUps": ["섬망 vs 치매 차이", "섬망 원인(AEIOU-TIPS)", "억제대 적용 시 간호"]}, {"id": "HEMA-01", "system": "hematology", "day": "D8", "source": "아산65 CASE4", "star": true, "title": "AML 항암 중 출혈위험(역격리)", "scenario": "33세 여성, 급성골수성백혈병(AML) 항암 위해 입원. HOD7, ANC 500으로 역격리 중, 항암 중단. 소변에서 혈액 검출.", "vitals": {"BP": "80/40", "HR": 130, "RR": 24, "BT": 37.7}, "labs": {"Hb": "9 g/dL", "Plt": "15,000/mm³", "ANC": "500"}, "primaryDx": "항암치료 부작용(골수기능 저하)과 관련된 출혈위험성", "additionalDx": ["감염위험성", "신체손상위험성", "낙상위험성", "불안"], "additionalAssessment": ["V/S(BP·RR)·I/O·피부(창백·반상출혈)", "LAB(Hb·plt·Hct·PT/PTT·WBC)", "잠혈·혈뇨", "수혈 cross matching", "ABGA·SpO2"], "interventions": ["필요시 수혈(Hb<8 PRBC, plt<2만 PC)", "비타민K·가는 바늘·침습 최소화", "낙상·비출혈·점상출혈·변비 예방 교육", "아스피린 등 항응고제 금지", "잠혈 확인 교육"], "followUps": ["수혈 기준(Hb8·plt2만)", "출혈교육·수혈 시 주의", "ANC 계산법"]}, {"id": "HEMA-02", "system": "hematology", "day": "D8", "source": "아산65 #12·#18·#33", "star": false, "title": "ALL 항암 중 혈변", "scenario": "40세 남성, 급성림프구성백혈병(ALL) 항암 중. 대변 시 통증 호소하고 피가 나왔다고 함.", "vitals": {"BP": "110/60", "HR": 80, "RR": 16, "BT": 36.8}, "labs": {"WBC": "1000", "Plt": "4000", "ANC": "46/uL"}, "primaryDx": "골수기능 저하와 관련된 감염위험성 / 출혈위험성", "additionalDx": ["손상위험성", "고체온 위험"], "additionalAssessment": ["CRP·ESR·neutrophil·INR", "대변 피 색(선홍-항문/암적-위장관)", "Hb·Hct·PT/aPTT", "V/S 변화"], "interventions": ["손위생·역격리·무균술(보호자 교육)", "처방 항생제", "익힌 음식만(저균식)", "대변완화제·침상안정"], "followUps": ["ANC 계산(WBC × neutrophil%)", "역격리 vs 격리", "ANC 500 이하 식이"]}, {"id": "HEMA-03", "system": "hematology", "day": "D8", "source": "아산65 CASE2", "star": false, "title": "백혈병 항암 후 발열·감염(요로)", "scenario": "49세 여성, 백혈병 항암 후 퇴원. 금일 오전 BT 39도로 ER. lab상 WBC·ANC 10·plt 낮음, 배뇨 시 통증·빈뇨, 최근 5kg 이상 체중 감소.", "vitals": {"BT": 39}, "labs": {"ANC": "10", "WBC": "저하", "Plt": "저하"}, "primaryDx": "항암치료 부작용(골수기능 저하)과 관련된 감염위험성", "additionalDx": ["출혈위험성", "고체온", "영양부족", "배뇨장애"], "additionalAssessment": ["V/S·I/O(배뇨 양상)", "WBC·ESR·CRP·ANC·plt·UA", "체중·통증 양상", "감염위험요소(상처·인후통)"], "interventions": ["ANC<500 역격리·무균술", "항생제·해열제·수액", "항암 식이 교육(익힌 음식·구강간호)", "개인위생·사람 많은 곳 피하기", "필요시 수혈(micro set·무균)"], "followUps": ["호중구 감소성 발열(FN) 대응", "ANC 계산", "역격리 식이"]}, {"id": "HEMA-04", "system": "hematology", "day": "D8", "source": "아산65 CASE23", "star": false, "title": "ALL 항암 중 구내염·영양불균형", "scenario": "62세, ALL 항암 중. 어제부터 오심·구토, 식사량 현저히 감소. 식사 권유하자 '속 울렁거리고 입안 다 헐어서 못 먹겠어, 숟가락 들 힘도 없어'.", "vitals": null, "labs": {"WBC": "900", "Hb": "8.7", "Plt": "18,000"}, "primaryDx": "항암치료 과정과 관련된 영양불균형(영양부족)", "additionalDx": ["감염위험성", "출혈위험성", "허약감"], "additionalAssessment": ["V/S·I/O·체중·식사양상", "혈청단백질·알부민·IBW·BMI", "구강상태", "혈액수치", "항암 과거력"], "interventions": ["구강간호(헐은 곳 진통제)", "좋아하는 음식 소량 자주·마른크래커", "항구토제·식욕촉진제", "필요시 TPN·위관영양", "수분섭취 격려(요산 희석)"], "followUps": ["항암 화학요법 부작용", "구내염 식이(고단백·고열량·부드러운)", "오심·구토 관리"]}, {"id": "HEMA-05", "system": "hematology", "day": "D8", "source": "아산65 CASE17", "star": false, "title": "CML 항암 후 종양용해증후군", "scenario": "50세 남성, CML(만성골수성백혈병) 화학요법 입원. 항암 시작 후 몸에 힘 없고 근육경련 시작. 소변 거의 안 나옴. lab상 요산·인산·포타슘 증가, 칼슘 감소(종양용해증후군).", "vitals": null, "labs": {"K": "↑", "P": "↑", "Uric acid": "↑", "Ca": "↓"}, "primaryDx": "화학요법 부작용과 관련된 전해질 불균형", "additionalDx": ["체액 불균형", "손상위험성(저칼슘 경련·고칼륨 부정맥)", "배뇨장애"], "additionalAssessment": ["V/S·I/O·체중", "전해질(P·K·Na·Ca)·WBC·plt", "근전도·EKG", "소변량"], "interventions": ["충분한 수액(치료 24~48h 전부터)·소변 알칼리화", "K↓: Kayexalate 관장·저K 식이", "Allopurinol(요산↓)·Ca 보충", "필요시 투석·항암 중단"], "followUps": ["종양용해증후군 4징후(고요산·고칼륨·고인산·저칼슘)", "합병증(급성신부전·부정맥)", "Kayexalate 관장 방법"]}, {"id": "HEMA-06", "system": "hematology", "day": "D8", "source": "아산65 CASE7", "star": false, "title": "설암 절제술 후 영양불균형(VRE)", "scenario": "49세 여성, 발음장애·연하곤란으로 Tongue cancer 진단, subtotal glossectomy ALT FF, POD22. 좌측 허벅지·기관 부위 창상·드레싱, 혀 상처. 149.5cm 32.4kg(IBW 71%), 지속 체중감소, 기침 많고 식사 1/3 못 먹음. VRE(+), greenish loose stool 2회. 기초수급·지적장애·낙상력, ABR 중.", "vitals": {"기타": "V/S 정상"}, "labs": {"Ca": "8.1", "Alb": "2.1", "K": "3.4", "protein": "4.5", "CRP": "6.55"}, "primaryDx": "수술로 인한 음식섭취 불량(연하장애)과 관련된 영양불균형", "additionalDx": ["감염위험성(VRE)", "피부통합성 장애 위험", "낙상위험성", "언어적 의사소통 장애"], "additionalAssessment": ["V/S·I/O·체중·LAB(알부민·단백질)", "식사양상·연하능력", "수술부위·객담 양상", "변 양상·VRE 격리"], "interventions": ["좋아하는 음식 소량 자주·albumin·TPN", "진해거담제·구강간호·드레싱", "식사 시 좌위·연하 교육", "VRE 접촉주의 격리·낙상예방"], "followUps": ["VRE 풀네임·격리 방법(접촉주의)", "IBW 계산((키-100)×0.9)", "영양 사정 지표"]}, {"id": "HEMA-07", "system": "hematology", "day": "D8", "source": "삼성24 기타 / 삼성24 인성 CASE1 / 삼성2024 #5", "star": false, "title": "악성림프종 항암 중심정맥관 감염(고체온)", "scenario": "악성림프종으로 주기적 외래·말초중심정맥 항암 중 감염 의심. 3일 전 체온 38도↑·주사부위 부종·발적으로 바로 제거하고 항생제 시작. 이후 열 없다가 오늘 아침 심한 떨림·오한 호소하며 BP·맥박·호흡·체온 모두 증가. 3일 전 혈액검사 균 배양 음성이나 ESR·CRP 상승.", "vitals": {"기타": "BP·HR·RR·BT 모두 상승"}, "labs": {"ESR": "상승", "CRP": "상승"}, "primaryDx": "감염과 관련된 고체온", "additionalDx": ["감염위험성(패혈증 위험)", "체액부족 위험"], "additionalAssessment": ["V/S·체온", "ESR·CRP·WBC", "주사부위·혈액배양", "오한·떨림·탈수"], "interventions": ["해열제·처방 수액·수분 보충", "혈액배양 후 항생제", "오한기/발열기 간호", "충분한 휴식"], "followUps": ["ESR·CRP가 무엇인가", "환자에게 의심되는 문제(패혈증)", "균 음성인데 감염을 의심하는 이유"]}, {"id": "HEMA-08", "system": "hematology", "day": "D8", "source": "삼성2024 기출#24 / 삼성24 기타", "star": false, "title": "췌장암 당뇨 chemoport, 불안", "scenario": "췌장암 환자, 당뇨 있음. 금식 오래해서 힘없고 우울감 호소. chemoport 니들 삽입해야 하는데 신규간호사(나)가 긴장한 걸 알아채고 불안해하는 중.", "vitals": null, "labs": null, "primaryDx": "침습적 처치와 관련된 불안", "additionalDx": ["불안정한 혈당 조절의 위험", "무력감", "영양부족"], "additionalAssessment": ["불안 정도·표정", "혈당(금식)·V/S", "chemoport 부위·감염징후", "정서상태"], "interventions": ["절차 설명·안심시키기(침착한 태도)", "무균술로 chemoport 삽입", "혈당 모니터링·저혈당 대비", "정서적 지지"], "followUps": ["chemoport는 언제 사용하나", "chemoport 간호·감염 징후", "긴장한 신규로서 환자 안심법"]}, {"id": "HEMA-09", "system": "hematology", "day": "D8", "source": "삼성2024 기출#11 / 삼성24 기타 / 빅6 삼성 CASE3", "star": false, "title": "식도암 항암제 아나필락시스 쇼크", "scenario": "75세 식도암 환자, 매뉴얼대로 부작용 대비 스테로이드 투여 후 항암제를 1시간 속도로 투여. 항암제 투여 17분 만에 오심·어지럼증 호소, 원래 BP 125/77이었는데 78/55로 떨어짐.", "vitals": {"BP": "78/55", "HR": 98, "RR": 18, "SpO2": "98%"}, "labs": null, "primaryDx": "항암제 과민반응(아나필락시스)과 관련된 쇼크의 위험", "additionalDx": ["기도 폐쇄 위험", "불안"], "additionalAssessment": ["V/S·의식수준", "발진·소양증·호흡곤란(과민반응)", "SpO2·기도", "투약 시점·증상 발현"], "interventions": ["즉시 항암제 투약 중지", "에피네프린·코르티코스테로이드·항히스타민제", "V/S·의식 사정·산소", "수액·기도 확보"], "followUps": ["쇼크 증상(빈맥→서맥·저혈압)", "쇼크 종류 구분", "항암제 부작용 대비"]}, {"id": "HEMA-10", "system": "hematology", "day": "D8", "source": "삼성2024 기출#19 / 빅3 삼성", "star": false, "title": "항암제 일혈(extravasation)", "scenario": "항암제(발포성 약물) 정맥 투여 중 일혈이 발생해 주사부위에 부종·발적·통증이 나타난 상황.", "vitals": null, "labs": null, "primaryDx": "약물 일혈과 관련된 비효과적 말초조직관류", "additionalDx": ["피부통합성 장애 위험(조직괴사)", "급성 통증", "감염위험성"], "additionalAssessment": ["주사부위 부종·발적·통증·blanching", "약물 종류(발포성 vesicant 여부)", "혈액 역류·주입 저항", "말초 SMC"], "interventions": ["즉시 주입 중단(카테터는 둔 채 잔류 약물 흡인)", "의사 노티·해독제(antidote)·약물별 냉/온찜질", "부위 거상·경계 표시 후 진행 관찰", "재천자는 다른 부위·다른 사지"], "followUps": ["일혈(extravasation) vs 침윤(infiltration) 차이", "발포성 약물(vesicant)이란", "일혈 발견 시 첫 중재"]}, {"id": "HEMA-11", "system": "hematology", "day": "D8", "source": "아산 후기(삼성2023 복귀)", "star": false, "title": "항암 피부독성 → 자존감 저하", "scenario": "항암치료 중 환자, 손과 발의 피부 껍질이 까지고(수족증후군·피부독성) 소양감·수포(vesicle)가 있음. 외모 변화로 위축되어 있음. (면접 시 앞 지원자가 '피부통합성 장애'를 진단하면, 같은 근거에서 심리 진단으로 차별화 가능 — 단 우선순위는 신체>심리.)", "vitals": null, "labs": null, "primaryDx": "항암치료 부작용(피부독성)과 관련된 피부통합성 장애", "additionalDx": ["상황적 자존감 저하", "감염위험성", "급성 통증/소양감"], "additionalAssessment": ["전신 피부(소양감·vesicle·박리 부위)", "감염징후·이차감염", "자존감 측정(Rosenberg·Likert)", "가족·사회 지지체계"], "interventions": ["피부 청결·보습·자극 최소화·이차감염 예방", "처방 약물로 피부독성·소양감 완화", "감정 표현 격려·경청·지지(심리는 신체 다음 순위)", "자조집단·지지자원 연계"], "followUps": ["vesicle vs bulla 차이", "항암 피부독성(수족증후군) 기전", "자존감 측정 도구"]}, {"id": "URO-01", "system": "urology", "day": "D9", "source": "빅6 아산 CASE1", "star": true, "title": "ESRD + 고혈당(아산 빈출, 꼬리 5개)", "scenario": "63세 여성, 고혈압·ESRD. 요흔성 부종 3+. 주 3회 혈액투석 중, BP 180/70(혈압 외 정상). 혈당 423으로 주치의 보고 후 인슐린 투여. 혈액투석은 전일 시행, 당일 투석 안 함.", "vitals": {"BP": "180/70"}, "labs": {"혈당": "423 mg/dL"}, "primaryDx": "신기능 저하와 관련된 체액과다 / 불안정한 혈당", "additionalDx": ["전해질 불균형(고칼륨)", "피부통합성 장애 위험", "감염위험성"], "additionalAssessment": ["요흔성부종(0~4+)·체중·I/O", "전해질(K)·ABGA", "혈당·인슐린 반응", "BP·투석 스케줄"], "interventions": ["수분·염분 제한·체중 측정", "혈당 조절(인슐린)·저혈당 대비", "고칼륨혈증 사정·EKG", "피부통합성 유지", "투석 일정 관리"], "followUps": ["요흔성부종 진단법", "ESRD 전해질 불균형", "ABGA 결과·근거(대사성 산증)", "고칼륨혈증 가장 중요한 합병증", "인슐린 후 환자 교육(면접관 교육)"]}, {"id": "URO-02", "system": "urology", "day": "D9", "source": "아산65 #25", "star": false, "title": "CKD CAPD 후 감염·자가간호결핍", "scenario": "59세 남성, 1주 전부터 dyspnea·소변량 감소로 ER. 주진단 만성신장병(CKD), stroke(2011)·HTN 과거력. CAPD insertion 수술 후, 투석액 교환 전 손 안 씻는 모습 자주 관찰. 뇌졸중 후 Lt. leg weakness·저림(motor grade4), 투석교육 받아도 절차 기억 못 하고 투석 시간에 잠.", "vitals": null, "labs": {"ANC": "정상범위", "CRP": "1.094"}, "primaryDx": "복막투석 무균술 미흡과 관련된 감염위험성", "additionalDx": ["비효율적 뇌조직관류와 관련된 자가간호결핍", "신체기동성 장애", "지식부족"], "additionalAssessment": ["CAPD 부위·교환 시 무균술", "V/S·SpO2·체액상태", "투석교육 이해도·인지", "Lt. leg ROM·낙상위험"], "interventions": ["손위생·무균술 교육·시범", "복막염 징후(혼탁 배액·복통) 사정", "투석 절차 반복 교육·시각자료", "건측 사용·재활·낙상예방"], "followUps": ["복막염 징후", "CAPD vs HD 차이", "자가간호결핍 중재"]}, {"id": "URO-03", "system": "urology", "day": "D9", "source": "아산65 #2", "star": false, "title": "당뇨·고혈압 CRF, 고칼륨혈증", "scenario": "DM·고혈압 15년, 5년 전 만성신부전, 현재 월 3회 혈액투석 중. 가슴 답답함·다리 저림으로 내원. 헤모글로빈 7대, 칼륨 7대, 혈압 150대, 호흡 14회, 맥박 떨어진 상태.", "vitals": {"BP": "150대", "RR": 14, "HR": "저하"}, "labs": {"Hb": "7대", "K": "7대"}, "primaryDx": "고칼륨혈증과 관련된 심박출량 감소 위험", "additionalDx": ["체액과다", "빈혈과 관련된 활동지속성 장애", "전해질 불균형"], "additionalAssessment": ["혈청 K·EKG(고칼륨 변화)", "V/S·심전도 모니터", "Hb·Hct(빈혈)", "체액·부종·I/O"], "interventions": ["EKG 모니터링·Ca gluconate·인슐린+포도당", "Kayexalate·투석 준비", "빈혈 시 수혈·휴식", "체액·염분 관리"], "followUps": ["고칼륨혈증 EKG 변화", "ESRD 빈혈 원인(EPO↓)", "투석 적응증"]}, {"id": "URO-04", "system": "urology", "day": "D9", "source": "삼성2024 기출#10 / 빅6 삼성 CASE7", "star": false, "title": "전립선비대 수술 후 요정체", "scenario": "어제 전립선비대증(BPH) 수술, N/S로 방광세척하다가 오전 8시 도뇨관 제거. 12시에 요의 있고 방광팽만 있으나 소변 못 보는 상태. 요도 NRS7 통증 호소.", "vitals": null, "labs": null, "primaryDx": "요정체와 관련된 급성 통증", "additionalDx": ["감염위험성", "방광팽만으로 인한 손상위험"], "additionalAssessment": ["방광팽만·잔뇨량(방광스캔)", "소변 양상·결정체", "통증(NRS)·V/S", "도뇨관 제거 후 배뇨 시도 시간"], "interventions": ["배뇨 유도(물소리·따뜻한 물)·프라이버시", "잔뇨 측정·필요시 단순도뇨", "통증 조절·조용한 환경", "수분 섭취·감염 징후 관찰"], "followUps": ["방광세척 목적", "요정체 시 중재 순서", "TURP 후 합병증"]}, {"id": "ORTHO-01", "system": "ortho", "day": "D9", "source": "아산65 #6", "star": false, "title": "고관절치환술 후 ROM 거부", "scenario": "환자가 양쪽 Hip 통증으로 Osteonecrosis(골괴사) 진단, 고관절인공치환술(THA). POD2일경, ROM 필요성 설명했으나 거부하며 아프다고만 하고 계속 누워만 있는 상황.", "vitals": null, "labs": null, "primaryDx": "수술과 관련된 급성 통증", "additionalDx": ["신체기동성 장애", "심부정맥혈전(DVT) 위험", "지식부족"], "additionalAssessment": ["통증(PQRST·NRS)·V/S", "수술부위·배액·출혈", "ROM·움직임 정도", "DVT 징후(부종·열감)"], "interventions": ["진통제 투여 후 ROM 격려", "탈구 예방 자세(고관절 90도 이상 굴곡 금지)", "DVT 예방(조기이상·압박스타킹)", "통증 조절·교육"], "followUps": ["THA 후 탈구 예방 자세", "조기이상이 필요한 이유", "수술 후 출혈 사정"]}, {"id": "ORTHO-02", "system": "ortho", "day": "D9", "source": "아산65 CASE15", "star": false, "title": "간암 척추전이 의심, 허리 통증", "scenario": "48세 여성, 3개월 전부터 목 결림으로 물리치료 받던 중 CT상 간세포암종(HCC) 진단. 2주 전부터 허리가 아파 움직일 수 없고, 발에 감각은 있으나 걸을 수 없다고 호소. 척추 전이 의심으로 보조기 착용 후 ABR 중.", "vitals": null, "labs": null, "primaryDx": "척추 전이와 관련된 급성 통증", "additionalDx": ["신체기동성 장애", "피부통합성 장애 위험", "불용증후군 위험성", "무력감"], "additionalAssessment": ["통증(NRS·PQRST)·ROM", "X-ray·CT·보조기 상태", "감각·운동", "Ca·P 수치·순환상태(ABR)"], "interventions": ["마약성 진통제·PCA·통증 패치", "온/냉요법·편안한 체위(베개·부목)", "등척성→등장성, 수동→능동 ROM", "체위변경·욕창 예방·SMC 사정"], "followUps": ["암성 통증 관리 원칙(규칙적 투여)", "마약성 진통제 부작용·대책", "척추 전이 합병증"]}, {"id": "ORTHO-03", "system": "ortho", "day": "D9", "source": "삼성2024 기출#15(널스에듀 신경계2)", "star": false, "title": "척추 수술 후 안전·도뇨 역류", "scenario": "척추 수술 후 대상자. 이동 시 콜벨 누르고 간호사와 동행하도록 교육했으나 잘 따르지 않음. 휠체어 이동 시 소변주머니를 다리에 올려놓아 역류.", "vitals": null, "labs": null, "primaryDx": "소변주머니 역류와 관련된 감염위험성", "additionalDx": ["낙상위험성", "지식부족"], "additionalAssessment": ["소변주머니 위치(방광보다 아래)·역류", "소변 양상·감염징후", "이동 시 안전·콜벨 사용", "수술부위"], "interventions": ["소변주머니 항상 방광보다 아래 유지 교육", "이동 시 콜벨·동행 재교육", "요로감염 징후 사정", "낙상예방"], "followUps": ["유치도뇨 감염 예방", "역류가 위험한 이유"]}, {"id": "EMER-01", "system": "emergency", "day": "D9", "source": "아산65 CASE10", "star": false, "title": "화상 20% 2도, 쇼크 위험", "scenario": "23세, 얼굴·상체 체표면적 20% 이상 2도 화상으로 응급실 내원. V/S상 혈압 떨어지고 저체온, 시간당 20cc 미만 소변량.", "vitals": {"기타": "BP 하강·저체온"}, "labs": null, "primaryDx": "화상으로 인한 체액 불균형과 관련된 쇼크의 위험", "additionalDx": ["피부통합성 장애", "감염위험성", "기도개방 유지불능", "급성 통증"], "additionalAssessment": ["V/S·I/O(시간당 소변)·체중", "TSA·화상부위·기도(흡입화상)", "전해질·ABGA·CVP·Albumin", "피부상태·SpO2"], "interventions": ["기도·호흡 우선 확보", "수액요법(파크랜드 공식)", "멸균 시트로 체온 유지", "상처 세척·항생제·albumin", "통증 조절"], "followUps": ["화상 환자 기도·호흡 우선 이유", "파크랜드 수액 공식", "시간당 소변량 의미"]}, {"id": "EMER-02", "system": "emergency", "day": "D9", "source": "삼성2024 기출#5", "star": false, "title": "말초정맥관 감염 후 고열·오한", "scenario": "말초정맥관에 감염 생겨 항생제 처방받다가 1일 후, 배양검사는 이상 없으나 고열에 오한·떨림 있는 환자.", "vitals": {"기타": "고열·오한"}, "labs": null, "primaryDx": "감염과 관련된 고체온", "additionalDx": ["감염위험성", "체액부족 위험"], "additionalAssessment": ["V/S·체온", "정맥관 부위·발적", "오한기/발열기", "혈액배양·WBC·CRP"], "interventions": ["해열제·처방 수액·수분 보충", "정맥관 제거·재확보·드레싱", "오한기 보온/발열기 미온수 마사지", "충분한 휴식"], "followUps": ["정맥염(phlebitis) 단계", "고체온 간호", "정맥관 교환 주기"]}, {"id": "EMER-03", "system": "emergency", "day": "D9", "source": "삼성2024 기출#25", "star": false, "title": "삼투성 이뇨제 후 낙상·두부 혈종", "scenario": "삼투성 이뇨제 복용 중인 환자, 2~3시간마다 화장실 가는 중. 아침에 구토함. 낙상했다고 해 확인하니 뒷통수에 혈종, 대답을 제대로 못 함.", "vitals": null, "labs": null, "primaryDx": "두부 손상과 관련된 비효과적 뇌조직관류의 위험", "additionalDx": ["낙상으로 인한 손상위험성", "급성 혼돈"], "additionalAssessment": ["의식(GCS)·동공·구토", "뒷통수 혈종·신경학적 사정", "V/S·IICP 징후", "낙상 경위·전해질"], "interventions": ["의식·신경학적 사정·CT 준비", "IICP 징후 모니터링", "구토 시 흡인 예방", "낙상예방·안전환경"], "followUps": ["두부외상 후 관찰 사항", "IICP 징후", "낙상 고위험 환자 예방"]}, {"id": "COMPLEX-01", "system": "complex", "day": "D10", "source": "삼성24 소화기(복합/상황)", "star": false, "title": "간경화 출혈 + 타환자 낙상(우선순위·롤플레이)", "scenario": "간경화 환자 식도정맥류 출혈 발생. 동시에 타환자 중심정맥관 소독 중이었는데, 간경화 환자가 어지러움으로 낙상 발생. 간경화 환자 보호자는 낙상에 분노, 타환자는 감염되는 것 아니냐며 분노.", "vitals": null, "labs": null, "primaryDx": "출혈과 관련된 쇼크의 위험(우선순위 1순위)", "additionalDx": ["낙상으로 인한 손상위험성", "감염위험성(타환자)"], "additionalAssessment": ["간경화 환자 V/S·출혈·의식", "낙상 후 손상·머리", "타환자 CVC 부위 무균상태"], "interventions": ["생명위협(출혈·낙상 손상) 환자 먼저", "출혈 사정·수액·의사 노티", "낙상 후 손상 평가", "양쪽 보호자 공감·상황 설명(롤플레이)"], "followUps": ["보호자에게 무엇이라 말할 것인가", "타환자 상황 대처", "식도정맥류 발생 원인·낙상 중재"]}, {"id": "COMPLEX-02", "system": "complex", "day": "D10", "source": "삼성24 호흡기(복합/상황)", "star": false, "title": "조직검사 후 저혈압 + 폐색전 환자 항의", "scenario": "한 환자가 조직검사 후 갑작스레 저혈압·HR 상승. 다른 환자는 폐색전증으로 혈액검사 해야 하는데 오랜 대기로 화를 냄. 선배에게 혈액검사를 부탁했지만 바쁘다고 한 상태.", "vitals": {"기타": "저혈압·HR↑"}, "labs": null, "primaryDx": "출혈/쇼크와 관련된 심박출량 감소 위험(조직검사 환자 우선)", "additionalDx": ["불안(대기 환자)", "업무 우선순위 갈등"], "additionalAssessment": ["조직검사 환자 V/S·출혈·의식", "폐색전 환자 SpO2·호흡곤란", "검사 지연 영향"], "interventions": ["생명위협(저혈압 환자) 먼저 안정화", "출혈 사정·산소·수액·노티", "폐색전 환자에게 상황 설명·안심", "선배·동료에게 도움 요청"], "followUps": ["이 상황의 간호사라면 어떻게 행동?", "폐색전 환자에게 설명하듯 말하기", "폐색전증 진단 방법"]}, {"id": "COMPLEX-03", "system": "complex", "day": "D10", "source": "삼성2024 기출#16", "star": false, "title": "신생검 후 의식저하 + 헤파린 환자 항의(두 환자 우선순위)", "scenario": "신생검 받고 온 b환자가 화장실 다녀와서 의식저하 옴. 헤파린 요법 받고 있는 a환자는 고위험약물인데 혈액검사가 b환자 때문에 늦어져 항의함. Q: 간호진단 / 두 환자 중 우선순위는?", "vitals": null, "labs": null, "primaryDx": "의식저하 환자의 출혈/손상과 관련된 비효과적 뇌조직관류 위험(b환자 우선)", "additionalDx": ["출혈위험성(헤파린 a환자)", "손상위험성"], "additionalAssessment": ["b환자 의식·V/S·신생검 부위 출혈", "a환자 헤파린 aPTT·출혈징후", "두 환자 위급도 비교"], "interventions": ["의식저하(생명위협) b환자 먼저 사정·노티", "신생검 후 출혈 평가", "a환자 헤파린 모니터링·검사 조속 진행", "동료에게 도움 요청"], "followUps": ["두 환자 중 우선순위와 근거", "헤파린 고위험 약물 관리", "신생검 후 합병증"]}, {"id": "COMPLEX-04", "system": "complex", "day": "D10", "source": "빅6 서울대 / 현재 HTML(서울대 MODE-D)", "star": false, "title": "서울대형 다중상황 우선순위 판단", "scenario": "여러 상황 동시 제시 → 우선순위와 근거 판단. 예: 흉통 호소 / 간질 발작 / 1시간 늦었다고 컴플레인하는 환자 / 수술실에서 환자 오라고 콜.", "vitals": null, "labs": null, "primaryDx": "생명위협 우선순위 판단(흉통·간질 → 컴플레인·콜)", "additionalDx": ["손상위험성(간질)", "비효과적 조직관류 위험(흉통)"], "additionalAssessment": ["각 상황의 위급도·생명위협 여부", "흉통(심근경색?)·간질(기도?)", "수술실 콜 시급성", "컴플레인 환자 안전"], "interventions": ["생명위협(흉통·간질) 먼저", "간질: 기도개방·손상예방 / 흉통: V/S·EKG·산소", "수술실엔 상황 설명·인계", "컴플레인 환자에겐 양해·후속 조치"], "followUps": ["흉통·간질 환자에게 어떤 중재?", "수술실에는 뭐라고?", "약 달라고 소리 지르는 환자 상황극"]}, {"id": "COMPLEX-05", "system": "complex", "day": "D10", "source": "삼성2024 기출#3", "star": false, "title": "유방암 뇌전이 제거술 후 사출성 구토(IICP)", "scenario": "유방암 환자가 전이되어 뇌종양제거술을 받고 난 뒤 갑자기 사출성(분출성) 구토를 하며 NRS3 통증 호소.", "vitals": null, "labs": null, "primaryDx": "두개내압 상승과 관련된 비효과적 뇌조직관류 위험", "additionalDx": ["흡인위험성", "급성 통증(두통)"], "additionalAssessment": ["GCS·동공·LOC", "IICP 3대징후(투사성 구토·두통·유두부종)", "V/S(쿠싱 3대증상)", "수술부위"], "interventions": ["반좌위·IICP 상승행위 금지", "만니톨·스테로이드", "구토 시 흡인 예방", "신경학적 사정·조용한 환경"], "followUps": ["IICP 간호", "사출성 구토 의미", "GCS 사정"]}], "schedule": {"meta": {"version": "0.3", "window": "2026.06.22(월) ~ 07.03(금), 06.26(금) 제외", "studyDays": 11, "examDay": "2026-07-06", "note": "06.22는 월요일. 06.26(금) 제외. 07.04(토)~07.05(일)은 별도 카드 없이 컨디션 조절·약점 보충·복장/동선 점검 자율일(7.06 빅4 1차 직전). 자기소개서 검토 일정 제거 — 모든 자료(계통 케이스+기본간호학+통합)를 11일 안에 1회전 이상.", "principle": "한 계통을 공부한 날 저녁에 바로 그 계통 케이스를 발표한다."}, "days": [{"d": "D1", "date": "06.22", "dow": "MON", "topic": "킥오프 · 케이스 프레임 정립", "external": false, "caseCount": 0, "dayWork": "널스에듀 아산·삼성 case로 분석 프레임(추가사정→진단→중재) 숙지. 1분 발표 틀 잡기.", "nightWork": "케이스 프레임 함께 정립(RESP-01 예시 분석, 발표 X) · 4인 담당 배정 확정 · 11일 운영 룰 합의.", "cases": [], "checks": ["케이스 프레임 이해", "1분 발표 룰 체득", "4인 담당 배정"]}, {"d": "D2", "date": "06.23", "dow": "TUE", "topic": "기본간호학 총정리", "external": false, "caseCount": 0, "dayWork": "기본간호학 18문항 정리(손위생·5/7 Rights·욕창·수혈·억제대·도뇨·GCS·CVP·CAP). 산소기기 용량·정상수치 암기.", "nightWork": "MODE-C 기본간호학 Q&A 1바퀴 + 플래시카드(수치) 속사포 점검.", "cases": [], "checks": ["기본간호학 18개 답변 가능", "수치 정상범위 암기", "산소기기 용량 암기"]}, {"d": "D3", "date": "06.24", "dow": "WED", "topic": "호흡기 · 삼성 데이", "external": false, "caseCount": 3, "dayWork": "폐렴·COPD·천식·기흉·흉관 + 산소기기 용량·ABGA 정상범위 암기. 아산 호흡 케이스 추가 풀이.", "nightWork": "MODE-A→B 발표 후 삼성 노티 롤플레이 + 호흡 Q&A 8문항.", "cases": ["RESP-01", "RESP-09", "RESP-08"], "checks": ["ABGA 해석 가능", "산소기기 용량 암기", "노티 1회 성공"]}, {"d": "D4", "date": "06.25", "dow": "THU", "topic": "순환기 · 아산 데이", "external": false, "caseCount": 3, "dayWork": "CHF·AMI·협심증·심근병증 + CVP·심효소(CK-MB/Troponin)·NTG 기전.", "nightWork": "MODE-A 수치 기전 꼬리 집중 + 순환 Q&A 8문항.", "cases": ["CARD-08", "CARD-02", "CARD-04"], "checks": ["심근경색 vs 협심증", "Morphine 주의(RR12)", "이뇨제 기전 설명"]}, {"d": "D5", "date": "06.27", "dow": "SAT", "topic": "소화기 · 세브란스 데이", "external": false, "caseCount": 3, "dayWork": "간경화·복수·간성뇌증·식도정맥류·위장관출혈·장루 + Albumin·Ammonia·간수치.", "nightWork": "MODE-A + MODE-C 기본간호학 정의 암송(GCS·CVP·욕창·수혈).", "cases": ["GI-01", "GI-02", "GI-03"], "checks": ["복수 간호", "식도정맥류 쇼크 대응", "기본간호학 정의 막힘 X"]}, {"d": "D6", "date": "06.28", "dow": "SUN", "topic": "신경 · 서울대 데이", "external": true, "caseCount": 3, "dayWork": "뇌졸중·SAH·IICP·경련·연하장애 + GCS·신경사정 3가지(LOC·동공·운동).", "nightWork": "외부 3명 초청 — MODE-B 단독 면접 + MODE-D 우선순위 판단 시뮬(흉통/간질/컴플레인/콜).", "cases": ["NEU-01", "NEU-03", "NEU-04"], "checks": ["IICP 3대징후", "GCS 설명", "우선순위 논리 정립"]}, {"d": "D7", "date": "06.29", "dow": "MON", "topic": "내분비 · 여성 · 정신", "external": false, "caseCount": 3, "dayWork": "당뇨·갑상선·전해질(고K·저Ca) + 자간전증·황산마그네슘 + 우울/섬망.", "nightWork": "MODE-B 자간전증 노티 롤플레이 + 정신 우선순위(자살위험 사정).", "cases": ["WOMEN-01", "ENDO-02", "PSYCH-01"], "checks": ["황산마그네슘 이유·부작용", "저칼슘혈증 증상", "자살위험 우선순위"]}, {"d": "D8", "date": "06.30", "dow": "TUE", "topic": "혈액 · 항암", "external": false, "caseCount": 3, "dayWork": "백혈병(AML/ALL/CML)·항암 부작용·종양용해증후군·수혈 + ANC·역격리.", "nightWork": "MODE-A 출혈/감염 위험 발표 + 혈액 Q&A 8문항.", "cases": ["HEMA-01", "HEMA-05", "HEMA-04"], "checks": ["수혈 기준(Hb8/plt2만)", "ANC 계산", "역격리 vs 격리"]}, {"d": "D9", "date": "07.01", "dow": "WED", "topic": "비뇨 · 근골격 · 응급", "external": false, "caseCount": 3, "dayWork": "ESRD·투석·전립선 + 고관절치환·척추전이 + 화상·쇼크·파크랜드.", "nightWork": "MODE-A 수치 꼬리(ESRD) + 응급 우선순위 발표.", "cases": ["URO-01", "ORTHO-01", "EMER-01"], "checks": ["요흔성부종 진단법", "고칼륨혈증 합병증", "파크랜드 수액 공식"]}, {"d": "D10", "date": "07.02", "dow": "THU", "topic": "통합 · 실전", "external": true, "caseCount": 3, "dayWork": "약물계산·기본간호학 총정리. 복합/우선순위 케이스 정리(생명위협>신체>심리).", "nightWork": "외부 3명 초청 — 면접복 입은 실전 시뮬레이션(MODE 혼합) + 복합 케이스.", "cases": ["COMPLEX-01", "COMPLEX-04", "COMPLEX-03"], "checks": ["약물계산 정확", "다중상황 우선순위", "실전 긴장 적응"]}, {"d": "D11", "date": "07.03", "dow": "FRI", "topic": "전체 랜덤 모의 · 병원별 차별화 · 최종 점검", "external": false, "caseCount": 0, "dayWork": "병원별 차별화 정리(삼성 노티/아산 수치/세브란스 정의/서울대 우선순위/이화 뽑기). 약점 파트만 집중 보충.", "nightWork": "전 계통 랜덤 모의 1~2바퀴 + 기록관 Lv1/2/3 최종 피드백 + 7.06 동선·복장 점검.", "cases": [], "checks": ["전 계통 랜덤 대응", "병원별 차별화 숙지", "7.06 동선·복장 확정"]}]}, "hospitals": {"meta": {"version": "0.1", "note": "출처 연도 표기 유지(§9): 삼성·이화는 2025 채용 최신, 나머지는 2023 채용이 최신. 인하·인천성모는 자료 없음 → '추정' 명시."}, "hospitals": [{"id": "samsung", "name": "삼성서울병원", "tier": "A", "mode": "MODE-B", "modeLabel": "면접관3 : 지원자1", "date": "1차 07.06~07.10", "blind": false, "rows": [["진행", "약식 GSAT(수리·추리) + 인적성(200문항/30분) → 케이스 <b>5분 열람(필기 O)</b> → 입실."], ["케이스", "짧음(한 문단). 환자 상태 + <b>보호자/의사 컴플레인 상황</b>이 같이 나옴 → '의사라 생각하고 노티', '보호자 대처' 롤플레이."], ["포인트", "기출 족보 거의 그대로. 자소서 사실 검증 꼬리 多. 분위기 매우 좋음."]], "source": "2025년 11월 채용 (최신)"}, {"id": "asan", "name": "서울아산병원", "tier": "A", "mode": "MODE-A", "modeLabel": "면접관4 : 지원자2 동시", "date": "1차 07.06~07.10", "blind": false, "rows": [["진행", "케이스 <b>5분 열람(코팅 종이, 필기 X)</b> → 1번→2번 각 <b>1분 발표</b>(추가사정·진단·중재) → 꼬리 → 인성."], ["케이스", "길고 <b>증상·수치 중심</b>. '알부민 정상치·기전', 'ABGA 결과·근거', '고칼륨혈증 합병증'까지."], ["포인트", "옆 지원자 발표 경청 태도가 채점됨. 지식보다 태도. 틀리면 즉시 인정·수정."]], "source": "2023년 채용 (최신 자료)"}, {"id": "snuh", "name": "서울대학교병원", "tier": "B", "mode": "MODE-D", "modeLabel": "우선순위 판단형", "date": "1차 07.06~07.10 · 블라인드", "blind": true, "rows": [["직무", "케이스 종이 없음. <b>여러 상황 동시 제시 → 우선순위 + 근거.</b> (예: 흉통/간질/컴플레인/수술실 콜)"], ["인성", "상황 제시형. '공휴일 day, 동료가 분만하러 가서 3시간 혼자 — 무엇을?'"], ["포인트", "학교·병원 이름 언급 금지. 직무·인성 둘 다 두텁게."]], "source": "2023년 채용 (최신 자료)"}, {"id": "severance", "name": "세브란스병원", "tier": "B", "mode": "MODE-C", "modeLabel": "기본간호학 Q&A", "date": "1차 07.06~07.10", "blind": false, "rows": [["진행", "방 3종(직무 / 직무+인성 / 인성), 랜덤. <b>'세브란스' 대신 '연세의료원'</b>으로 말할 것."], ["직무", "케이스 없이 직접 질문. GCS·CVP·CAP, 5·7 Rights, 손위생, 욕창 단계, 수혈 부작용, 협심증 vs 심근경색."], ["포인트", "기본간호학 암기가 핵심. 약간 압박성."]], "source": "2023년 채용 (최신 자료)"}, {"id": "snubh", "name": "분당서울대병원", "tier": "C", "mode": "자소서 기반 심층면접", "modeLabel": "케이스 없음", "date": "1차 07.10~07.31 · 블라인드", "blind": true, "rows": [["진행", "케이스 없음. 자소서·서류 내용을 <b>육하원칙으로</b> 파고듦. 직무 비중 적음."], ["기출", "자기소개 / 희망부서·이유 / 어려웠던 경험·극복 / 아르바이트(얼마나, 무슨 일)."], ["포인트", "1차 통과 시 2차 경쟁률 1.3:1로 낮음. 자소서 활동 디테일 전부 재숙지."]], "source": "2023년 채용 (최신 자료)"}, {"id": "ewha", "name": "이화의료원", "tier": "C", "mode": "MODE-C · 뽑기", "modeLabel": "면접관3 : 지원자5", "date": "최종면접 07.14~07.16", "blind": false, "rows": [["진행", "서류 합격 시 바로 최종면접. 자기소개 → 직무1 → <b>뽑기1(번호→화면 질문)</b> → 개인 2~3 → 마지막 할 말."], ["직무", "난이도 중하. LC 복수 중재 / 협심증 vs 심근경색 / NTG 기전 / 수혈·억제대·도뇨."], ["포인트", "<b>진솔한 지원동기 여러 번</b> 물음. 뽑기 기출 매해 유사 → 공구 기출 숙지."]], "source": "2025년 11월 채용 (최신)"}, {"id": "inha", "name": "인하대병원", "tier": "C", "mode": "자료 없음 · 추정", "modeLabel": "인성+기본직무 중심(추정)", "date": "1차 07.20~07.25", "blind": false, "rows": [["전략", "프로젝트 자료에 면접 정보 없음(추정). 빅4·이화 준비로 커버."], ["상황", "빅4 면접 이후라 <b>실전 경험이 누적된 상태</b>로 보게 됨. 별도 시간보다 인성 답변 정교화에 집중."]], "source": "자료 없음 — 올해 공고로 확인 필요 (추정)"}, {"id": "ichmc", "name": "인천성모병원", "tier": "C", "mode": "자료 없음 · 추정", "modeLabel": "필기 비중 높음(추정)", "date": "1차 07.21~07.24", "blind": false, "rows": [["전략", "프로젝트 자료 없음(추정). 일반적으로 <b>필기(우선순위·약물계산)가 면접보다 중요</b>하다는 평."], ["상황", "마지막 일정이라 실전 경험 최대 누적. 약물계산 점검에 무게."]], "source": "자료 없음 — 올해 공고로 확인 필요 (추정)"}]}, "qa": {"meta": {"version": "0.1", "note": "기본간호학(세브란스·이화 직접 Q&A 빈출) + 계통별 직무 Q&A. 출처: 빅6 세브란스 직무 리스트, 케이스 추가질문, 후기."}, "qa": [{"id": "BASIC-01", "category": "기본간호학", "q": "손위생 5시점은?", "a": "① 환자 접촉 전 ② 청결/무균처치 전 ③ 체액 노출 위험 후 ④ 환자 접촉 후 ⑤ 환자 주변환경 접촉 후", "hospitals": ["세브란스", "이화"]}, {"id": "BASIC-02", "category": "기본간호학", "q": "투약 5 Rights / 7 Rights는?", "a": "5R: 정확한 대상자·약물·용량·경로·시간. +2R(7R): 정확한 기록·정확한 교육(이유·반응). 일부는 정확한 사정·거부할 권리 추가.", "hospitals": ["세브란스", "이화"]}, {"id": "BASIC-03", "category": "기본간호학", "q": "욕창 단계(NPUAP)는?", "a": "1단계: 비창백성 홍반(피부 손상 X). 2단계: 부분층 손상(수포·찰과상). 3단계: 전층 손상(피하지방 노출). 4단계: 근육·뼈 노출. +미분류·심부조직손상(DTI).", "hospitals": ["세브란스"]}, {"id": "BASIC-04", "category": "기본간호학", "q": "GCS(Glasgow Coma Scale)란?", "a": "의식수준 평가 도구. 눈뜸(E4)·언어반응(V5)·운동반응(M6), 최고 15점·최저 3점. 8점 이하 혼수(기도 확보 고려).", "hospitals": ["세브란스", "삼성"]}, {"id": "BASIC-05", "category": "기본간호학", "q": "CVP(중심정맥압) 정상범위와 의미는?", "a": "정상 5~10 cmH2O(2~6 mmHg). 우심방압·전부하 반영. ↑체액과다·우심부전, ↓체액부족.", "hospitals": ["세브란스"]}, {"id": "BASIC-06", "category": "기본간호학", "q": "의식수준 5단계는?", "a": "Alert(명료) → Drowsy(기면) → Stupor(혼미, 강한 자극에만) → Semicoma(통각에 회피) → Coma(무반응, 대광반사는 존재).", "hospitals": ["아산", "세브란스"]}, {"id": "BASIC-07", "category": "기본간호학", "q": "수혈 부작용과 즉시 간호는?", "a": "용혈반응·발열·알레르기·순환과부담. 발생 시 즉시 중단→N/S 유지→V/S 측정→의사 보고→혈액백 혈액은행 반환. 시작 15분 관찰, 4시간 내 완료.", "hospitals": ["세브란스", "이화"]}, {"id": "BASIC-08", "category": "기본간호학", "q": "내과적 vs 외과적 손씻기 차이는?", "a": "내과적: 일시균 제거, 흐르는 물에 손이 팔꿈치보다 아래로, 비누 사용. 외과적: 상주균까지 제거, 손끝을 팔꿈치보다 높게, 솔로 손톱밑→전완→팔꿈치 순.", "hospitals": ["아산", "세브란스"]}, {"id": "BASIC-09", "category": "기본간호학", "q": "억제대 적용 시 간호는?", "a": "최소 사용·처방 확인, 2시간마다 순환·피부·ROM 사정, 8자 매듭(빨리 풀 수 있게), 침대 고정틀에 묶기(난간 X), 정기적 해제·기록, 대안 우선 고려.", "hospitals": ["아산"]}, {"id": "BASIC-10", "category": "기본간호학", "q": "접촉주의 / 접촉주의 플러스(MRSA·VRE 등) 차이는?", "a": "접촉주의: 장갑·가운, 전용기구, 손위생. 접촉주의 플러스(C.difficile 등): 추가로 비누·물 손위생(알코올 효과 적음), 환경소독 강화. 격리실 사용.", "hospitals": ["아산"]}, {"id": "BASIC-11", "category": "기본간호학", "q": "CAP(지역사회획득폐렴) 무엇인가?", "a": "Community-Acquired Pneumonia. 병원 밖 또는 입원 48시간 이내 발생한 폐렴. (병원획득 HAP와 구분)", "hospitals": ["세브란스"]}, {"id": "BASIC-12", "category": "기본간호학", "q": "비정상 호흡 종류는?", "a": "빈호흡·서호흡·과호흡·무호흡, Cheyne-Stokes(점점 깊어졌다 무호흡 반복), Kussmaul(깊고 빠름, 당뇨성 케토산증), Biot's(불규칙).", "hospitals": ["세브란스"]}, {"id": "RESP-Q1", "category": "respiratory", "q": "산소기기별 용량(L/min)과 농도는?", "a": "비강캐뉼라 1~6L(~40%) · 단순마스크 5~6L(40~60%) · 벤추리마스크 4~12L(24~50%, 정확) · 부분재호흡 6~10L · 비재호흡 10~15L(고농도).", "hospitals": ["아산", "삼성"]}, {"id": "RESP-Q2", "category": "respiratory", "q": "ABGA 정상범위는?", "a": "pH 7.35~7.45 · PaCO2 35~45 mmHg · HCO3 22~26 mEq/L · PaO2 80~100 mmHg · SaO2 95~100%.", "hospitals": ["아산"]}, {"id": "RESP-Q3", "category": "respiratory", "q": "COPD 환자에게 저농도 산소를 주는 이유는?", "a": "만성 고탄산혈증으로 호흡 자극이 CO2가 아닌 저산소(O2)에 의존. 고농도 산소 시 호흡 자극 소실→CO2 정체·호흡 억제. 1~2L 저농도로 SpO2 88~92% 목표.", "hospitals": ["아산"]}, {"id": "RESP-Q4", "category": "respiratory", "q": "객혈 vs 토혈 차이는?", "a": "객혈: 기침과 함께, 선홍색·거품·알칼리성, 객담 섞임, 호흡기 과거력. 토혈: 구토와 함께, 암적색·산성, 음식물 섞임, 위장·간질환 과거력.", "hospitals": ["아산"]}, {"id": "RESP-Q5", "category": "respiratory", "q": "Pursed-lip(입술오므리기) 호흡 원리는?", "a": "호기 시 입술을 오므려 기도 내 양압을 유지→소기도 허탈 방지, 호기를 길게, 잔기량 감소. COPD에서 호흡곤란 완화.", "hospitals": ["아산"]}, {"id": "CARD-Q1", "category": "cardiac", "q": "협심증 vs 심근경색 차이는?", "a": "협심증: 관상동맥 협착, 흉통 1~5분, 휴식·NTG로 완화, 효소 정상. 심근경색: 관상동맥 폐쇄·심근 괴사, 30분 이상, NTG로 안 풀림(Morphine 필요), 심근효소(Troponin·CK-MB)↑, ST 상승.", "hospitals": ["세브란스", "이화", "아산"]}, {"id": "CARD-Q2", "category": "cardiac", "q": "NTG 투여 방법·주의는?", "a": "설하 투여, 5분 간격 3회까지, 효과 시 작열감. 저혈압 주의(IV 시 BP 모니터), 광차단 보관, 항상 휴대 교육.", "hospitals": ["이화", "삼성"]}, {"id": "CARD-Q3", "category": "cardiac", "q": "Morphine 투여 시 주의점은?", "a": "호흡수 12회/분 이하면 투여 금지. 호흡억제·저혈압·서맥 시 길항제 Naloxone 투여. 심근경색 통증·심부담 경감 목적.", "hospitals": ["아산"]}, {"id": "CARD-Q4", "category": "cardiac", "q": "심근효소 종류와 의미는?", "a": "Troponin(가장 특이적, 3~6h 상승·1~2주 지속) · CK-MB(4~6h·2~3일) · Myoglobin(가장 빠름) · LDH(후기). AMI 진단.", "hospitals": ["아산"]}, {"id": "CARD-Q5", "category": "cardiac", "q": "이뇨제 종류별 전해질 영향은?", "a": "Furosemide(loop): 저칼륨·저나트륨, 강력. Thiazide: 저칼륨. Spironolactone(K-sparing): 고칼륨.", "hospitals": ["아산"]}, {"id": "GI-Q1", "category": "gi", "q": "복수(ascites) 발생 기전은?", "a": "문맥성 고혈압→정수압 상승, 저알부민혈증→교질삼투압 감소, 순환혈량 저하→고알도스테론으로 Na·수분 정체. 저염·수분제한·이뇨제·복수천자.", "hospitals": ["세브란스", "이화"]}, {"id": "GI-Q2", "category": "gi", "q": "간성뇌증(혼수) 시 간호는?", "a": "단백질 제한, lactulose(암모니아 배출)·neomycin(장내세균↓), 간대사 약물·진정제 주의, 의식·암모니아 모니터링, 안전환경.", "hospitals": ["빅6 아산"]}, {"id": "GI-Q3", "category": "gi", "q": "덤핑증후군 식이는?", "a": "고단백·고지방·저탄수화물, 수분 적게(식간 섭취), 소량씩 자주, 천천히(40분 이상), 식후 누워 흡수 지연. 위절제 후.", "hospitals": ["아산"]}, {"id": "GI-Q4", "category": "gi", "q": "melena vs hematochezia 차이는?", "a": "Melena: 흑색변, 상부 위장관 출혈(혈액이 소화됨). Hematochezia: 선홍색 혈변, 하부 위장관 출혈.", "hospitals": ["빅6 아산"]}, {"id": "NEU-Q1", "category": "neuro", "q": "IICP(두개내압 상승) 3대 징후는?", "a": "두통·구토(투사성, 오심 없이)·유두부종. 추가로 의식수준 변화(가장 초기), 쿠싱 3대증상(수축기혈압↑·맥압↑·서맥·불규칙 호흡).", "hospitals": ["아산"]}, {"id": "NEU-Q2", "category": "neuro", "q": "신경학적 사정 3가지는?", "a": "의식수준(LOC) · 동공(크기·대광반사) · 운동반응(motor). GCS와 함께 사정.", "hospitals": ["아산"]}, {"id": "NEU-Q3", "category": "neuro", "q": "Paraplegia vs Hemiplegia 구분은?", "a": "Paraplegia: 양측 하지 마비(상지 정상). Hemiplegia: 한쪽 상·하지(편측) 마비.", "hospitals": ["아산"]}, {"id": "NEU-Q4", "category": "neuro", "q": "IICP 상승을 막는 간호는?", "a": "침상머리 30도 상승, valsalva·목 굴곡·회전 금지, 변완화제, 조용·낮은 조명, mannitol·스테로이드, 과도한 흡인 금지.", "hospitals": ["아산"]}, {"id": "ENDO-Q1", "category": "endocrine", "q": "저혈당 증상과 처치는?", "a": "혈당 50mg/dL 이하. 증상: 빈맥·떨림·발한·공복감·혼돈. 의식 있으면 단순당 15g(주스 120cc·각설탕 4개), 의식 없으면 50% DW IV·글루카곤 IM, 15분 후 재확인.", "hospitals": ["삼성"]}, {"id": "ENDO-Q2", "category": "endocrine", "q": "저칼슘혈증 증상은?", "a": "테타니, Chvostek 징후(안면신경 두드림→경련), Trousseau 징후(혈압대 부풀림→손 경련), 후두경련, 저림. 갑상샘절제 후 부갑상샘 손상 주의.", "hospitals": ["삼성"]}, {"id": "ENDO-Q3", "category": "endocrine", "q": "고칼륨혈증 처치는?", "a": "EKG 모니터(tall T·QRS 확대), Ca gluconate(심장보호), 인슐린+포도당·중탄산(세포 내 이동), Kayexalate(배출)·투석, 고칼륨 식이 제한.", "hospitals": ["삼성"]}, {"id": "WOMEN-Q1", "category": "women", "q": "자간전증에 황산마그네슘을 주는 이유와 주의는?", "a": "경련(자간증) 예방. 주의: 독성 시 심부건반사 소실→호흡억제(<12)→소변감소→심정지 순. DTR·RR·소변량 모니터, 해독제 calcium gluconate 침상 비치.", "hospitals": ["삼성"]}, {"id": "WOMEN-Q2", "category": "women", "q": "황산마그네슘 투여 환자에서 사정할 전해질은?", "a": "칼슘(저칼슘 시 MgSO4 독성·반사 영향)과 마그네슘 수치. 혈압·태아 상태 동반 사정.", "hospitals": ["삼성"]}, {"id": "HEMA-Q1", "category": "hematology", "q": "ANC 계산과 역격리 기준은?", "a": "ANC = WBC × (호중구% + 띠호중구%) / 100. ANC 500/μL 이하면 호중구감소증→역격리(보호격리)·저균식이.", "hospitals": ["아산"]}, {"id": "HEMA-Q2", "category": "hematology", "q": "수혈 기준(Hb·혈소판)은?", "a": "Hb 7~8 g/dL 이하 PRBC, 혈소판 2만/mm³ 이하(또는 출혈 시 5만) 혈소판농축액. 1unit PRBC당 Hb 약 1 상승.", "hospitals": ["아산"]}, {"id": "HEMA-Q3", "category": "hematology", "q": "종양용해증후군 4대 전해질 이상은?", "a": "고요산혈증·고칼륨혈증·고인산혈증·저칼슘혈증. 합병증: 급성신부전·치명적 부정맥. 수액·Allopurinol·소변 알칼리화.", "hospitals": ["아산"]}, {"id": "URO-Q1", "category": "urology", "q": "요흔성 부종(pitting edema) 진단법은?", "a": "부종 부위를 5초 이상 눌렀다 떼어 함요 정도로 평가. 1+(2mm)·2+(4mm)·3+(6mm)·4+(8mm). 1cm 이상은 4+.", "hospitals": ["빅6 아산"]}, {"id": "URO-Q2", "category": "urology", "q": "ESRD 환자의 전해질·산-염기 변화는?", "a": "고칼륨·고인산·저칼슘·대사성 산증(HCO3 배설↓), 빈혈(EPO↓), 체액과다. 고칼륨혈증이 가장 위험(치명적 부정맥).", "hospitals": ["빅6 아산"]}, {"id": "EMER-Q1", "category": "emergency", "q": "쇼크의 종류는?", "a": "저혈량성(출혈·화상), 심인성(심박출↓), 패혈성(감염), 신경성(척수손상·교감신경↓), 아나필락틱(과민반응). 공통: 빈맥→서맥, 저혈압, 창백·축축, 핍뇨.", "hospitals": ["삼성"]}, {"id": "EMER-Q2", "category": "emergency", "q": "화상 환자 수액(파크랜드) 공식은?", "a": "Parkland: 4mL × 체중(kg) × 화상 TBSA(%) = 24시간 총량. 첫 8시간에 1/2, 다음 16시간에 1/2. 기도·호흡 확보가 최우선.", "hospitals": ["아산"]}, {"id": "EMER-Q3", "category": "emergency", "q": "저혈량성 쇼크 체위는?", "a": "변형 트렌델렌버그(앙와위+하지거상 45도). 단, 흉부·두부 손상 환자는 제외.", "hospitals": ["아산"]}, {"id": "AS-Q1", "category": "기본간호학", "q": "근육주사(IM) 절차의 핵심은?", "a": "약 카드·환자 확인 → 부위 선택(둔부 배측·복측, 외측광근, 삼각근) → 알코올솜 중앙에서 5cm 원으로 소독 → 90도로 빠르게 자입 → 내관 약간 뽑아 혈액 역류 확인(없으면 천천히 주입) → 빠르게 발침 후 가볍게 마사지(헤파린·인슐린은 마사지 금지).", "hospitals": ["아산"]}, {"id": "AS-Q2", "category": "기본간호학", "q": "직장 좌약 투여 시 체위와 방법은?", "a": "Sims position(좌측위). 장갑 착용·윤활제 도포 후 항문을 노출시켜 손상 없이 삽입, 둔부를 잠시 눌러주고 15~20분간 누워 있게 함. 심호흡은 괄약근을 이완시켜 삽입을 돕는다.", "hospitals": ["아산"]}, {"id": "AS-Q3", "category": "기본간호학", "q": "간호기록이 중요한 이유는?", "a": "법적 증거, 의료진 간 의사소통 수단, 생정통계·감사 자료, 교육·연구 자료가 되기 때문.", "hospitals": ["아산", "세브란스"]}, {"id": "AS-Q4", "category": "기본간호학", "q": "상처 드레싱 순서는?", "a": "가장 깨끗한 곳부터: 가운데 → 왼쪽 → 오른쪽(중앙에서 바깥쪽으로). 무균술 유지.", "hospitals": ["아산"]}, {"id": "AS-Q5", "category": "기본간호학", "q": "수술 전 아트로핀을 투여하는 이유는?", "a": "호흡기 분비물(타액·기관지 분비물)을 억제해 흡인·기도폐쇄를 예방하기 위함.", "hospitals": ["아산"]}, {"id": "AS-Q6", "category": "기본간호학", "q": "수술 후 회복실 입실 환자에게 가장 먼저 할 것은?", "a": "기도 유지 확인 → 활력징후 측정(이후 15분 간격). 의식 없는 환자는 고개를 옆으로 돌려 분비물 배출·흡인 예방.", "hospitals": ["아산"]}, {"id": "AS-Q7", "category": "기본간호학", "q": "A형 간염과 B형 간염의 예방법 차이는?", "a": "A형: 분변-경구 전파 → 개인위생·손씻기 철저. B형: 혈액·체액·성 접촉 전파 → 주삿바늘·개인용품 공동사용 금지, 예방접종.", "hospitals": ["아산"]}, {"id": "AS-Q8", "category": "기본간호학", "q": "DNR의 뜻과 풀네임은?", "a": "Do Not Resuscitate. 환자·보호자 요청에 따라 심정지 시 심폐소생술 등 연명치료를 하지 않는다는 의미.", "hospitals": ["아산"]}, {"id": "AS-Q9", "category": "gi", "q": "역류성 식도염 환자의 가슴통증 예방 간호는?", "a": "침상머리 상승, 처방된 제산제 복용, 조이는 옷 피하기, 커피·초콜릿·취침 2~3시간 전 음식 금지, 식후 바로 눕지 말고 걷기.", "hospitals": ["아산"]}, {"id": "AS-Q10", "category": "gi", "q": "덤핑(급속이동)증후군 예방 식이는?", "a": "위절제·위장문합 후 음식이 빨리 공장으로 이동해 발생. 음식량 줄이고 고단백·고지방·저탄수화물·건조한 식이, 식후 눕기, 식전 1시간~식후 2시간 수분 제한.", "hospitals": ["아산"]}, {"id": "AS-Q11", "category": "gi", "q": "장폐색의 증상과 간호는?", "a": "오심·구토·복통·복명·장습관 변화, 진행 시 패혈증·복막염. 체액·전해질 교정, 장관 삽입(감압), 감염예방·휴식, 필요시 수술. 진단: 체액불균형·조직관류변화·통증·영양부족.", "hospitals": ["아산"]}, {"id": "AS-Q12", "category": "gi", "q": "위루술(gastrostomy)이 필요한 환자는?", "a": "식도가 완전히 폐쇄된 환자나 장기간 구강 영양이 어려운 무의식 환자 등.", "hospitals": ["아산"]}, {"id": "AS-Q13", "category": "gi", "q": "내시경 후 식사는 언제 제공하나?", "a": "구토반사·연하 회복 확인 후, 가스 배출 등 정상 확인되면 보통 2~4시간 후부터 제공.", "hospitals": ["아산"]}, {"id": "AS-Q14", "category": "gi", "q": "식도암으로 식도 폐쇄를 호소할 때 1순위 간호진단은?", "a": "연하곤란과 관련된 기도흡인 위험성(생명위협 우선).", "hospitals": ["아산"]}, {"id": "AS-Q15", "category": "respiratory", "q": "흉곽천자(thoracentesis) 후 간호·체위는?", "a": "30분 내 늑막액 1,500mL 이상 제거 금지. 검사 후 1시간 정도 천자하지 않은 쪽으로 눕혀 폐 확장을 돕고, 천자부위 출혈·기흉·청색증·호흡곤란·심한 기침을 관찰.", "hospitals": ["아산"]}, {"id": "AS-Q16", "category": "respiratory", "q": "긴장성 기흉의 징후와 처치는?", "a": "심한 호흡곤란, 경정맥 팽대, 기관 편위(반대쪽). 응급으로 흉관 삽입(감압). 일반 기흉은 흉관·산소·심호흡·기침.", "hospitals": ["아산"]}, {"id": "AS-Q17", "category": "respiratory", "q": "폐기능검사(PFT) 전 주의사항은?", "a": "검사 6시간 전 금연, 기관지확장제 금지. COPD에서는 잔기량·기능적잔기량 증가, 노력성호기량(FEV1)·폐활량·1회호흡량 감소.", "hospitals": ["아산"]}, {"id": "AS-Q18", "category": "respiratory", "q": "ARDS의 특징과 관리는?", "a": "심한 호흡곤란, 폐 신장성·기능적잔기량 감소. 기계환기(PEEP)로 PaO2 60mmHg·SpO2 90% 이상 유지. 진단: 가스교환장애·비효과적 호흡양상 등.", "hospitals": ["아산"]}, {"id": "AS-Q19", "category": "respiratory", "q": "기관내관(ETT)의 목적과 성인 크기는?", "a": "기도유지·분비물 흡인·인공호흡으로 산소화·환기 증진(단기). 크기: 성인 여 6.5~7.5mm, 남 7.5~8.5mm.", "hospitals": ["아산"]}, {"id": "AS-Q20", "category": "cardiac", "q": "심근경색 환자가 신부전까지 오는 이유는?", "a": "심박출량 감소로 신장으로 가는 혈류량이 줄어 신기능이 저하되기 때문.", "hospitals": ["아산"]}, {"id": "AS-Q21", "category": "endocrine", "q": "칼륨(KCl) 정맥주입 시 주의사항은?", "a": "시간당 20mEq를 초과하지 않게, 5~10% 포도당에 희석해 정맥주입. 절대 IV push 금지(급속·과량 시 부정맥·심정지). 심전도 모니터.", "hospitals": ["아산"]}, {"id": "AS-Q22", "category": "endocrine", "q": "갑상선절제술 후 환자에게 계속 말을 시키는 이유는?", "a": "수술 시 후두신경 손상 가능성이 있어, 목소리 변화(쉰 목소리)를 확인해 손상 여부를 즉시 사정하기 위함.", "hospitals": ["아산"]}, {"id": "AS-Q23", "category": "endocrine", "q": "갑상선기능항진증의 증상·간호진단은?", "a": "체중감소·빈맥·발한·안구돌출·불안·수면장애. 간호진단: 수면장애, 영양부족 등.", "hospitals": ["아산"]}, {"id": "AS-Q24", "category": "women", "q": "분만에 영향을 미치는 5가지 요소(5P)는?", "a": "산도(Passage), 만출물·태아(Passenger), 만출력·자궁수축(Power), 산부의 자세(Position), 산부의 심리적 반응(Psychologic response).", "hospitals": ["아산"]}, {"id": "AS-Q25", "category": "urology", "q": "만성신부전 환자에게 제한해야 할 대표 식이는?", "a": "염분(Na). 더불어 칼륨·인·수분·단백질도 신기능에 따라 제한.", "hospitals": ["아산"]}, {"id": "AS-Q26", "category": "emergency", "q": "다발성 골절 환자에게 즉시 해야 할 간호와 이유는?", "a": "혈압·호흡 즉시 측정. 골절로 손상된 늑골이 폐를 천공하거나 다른 장기 손상·내출혈을 일으킬 수 있어 활력징후로 심·폐 상태를 우선 파악.", "hospitals": ["아산"]}, {"id": "AS-Q27", "category": "emergency", "q": "열화상 응급처치에서 금기는?", "a": "화상 부위에 얼음을 직접 대는 것 금기(조직손상). 찬물로 식히되 3도 화상은 침수 금지, 물집은 터뜨리지 않음. 기도·호흡 확보가 최우선.", "hospitals": ["아산"]}, {"id": "AS-Q28", "category": "neuro", "q": "요추천자(LP) 부위·CSF 압력·검사 후 간호는?", "a": "L3~4 또는 L4~5(척수 손상 위험 없음). 정상 CSF 압력 약 100~180mmH2O. 검사 후 6~8시간 앙와위(베개 금지), 두통 시 수분 공급·진통제, 천자부위 누출·신경학적 사정.", "hospitals": ["아산"]}, {"id": "AS-Q29", "category": "neuro", "q": "유두부종(papilledema)의 원인은?", "a": "두개내압 상승, 시신경 압박. IICP의 객관적 징후 중 하나.", "hospitals": ["아산"]}]}, "reference": {"meta": {"version": "0.1", "note": "플래시카드용 정상수치·진단. 깨끗한 케이스 PDF + 표준 임상범위 기반. 이론집 OCR 미사용으로 needsReview 없음. 병원 검사실마다 기준치 차이 가능."}, "labs": [{"name": "WBC", "normal": "4,000~10,000 /μL", "note": "↑감염·백혈병·스테로이드 ↓골수억제·항암"}, {"name": "ANC", "normal": "2,500~7,000 /μL", "note": "500 이하 역격리. WBC×호중구%/100"}, {"name": "Hb", "normal": "남 13~18 · 여 12~16 g/dL", "note": "7~8 이하 PRBC 수혈 고려"}, {"name": "Hct", "normal": "남 40~54% · 여 37~47%", "note": "탈수 시 상대적 상승"}, {"name": "Plt", "normal": "15만~40만 /μL", "note": "<5만 출혈위험, <2만 자연출혈·수혈"}, {"name": "PT", "normal": "11~15초 (INR 0.8~1.2)", "note": "Warfarin 모니터·외인계"}, {"name": "aPTT", "normal": "30~45초", "note": "Heparin 모니터·내인계"}, {"name": "ESR", "normal": "남 ~15 · 여 ~20 mm/hr", "note": "비특이적 염증 지표"}, {"name": "CRP", "normal": "< 0.5 mg/dL", "note": "급성 염증·감염 시 빠르게 상승"}, {"name": "AST(SGOT)", "normal": "5~40 U/L", "note": "간·심근·근육 손상"}, {"name": "ALT(SGPT)", "normal": "5~35 U/L", "note": "간 손상에 더 특이적"}, {"name": "Total bilirubin", "normal": "0.2~1.2 mg/dL", "note": "↑황달·간담도 질환"}, {"name": "Albumin", "normal": "3.5~5.0 g/dL", "note": "↓영양불량·간기능·복수(교질삼투압)"}, {"name": "Ammonia", "normal": "15~45 μg/dL", "note": "↑간성뇌증·의식변화"}, {"name": "BUN", "normal": "10~20 mg/dL", "note": "↑신기능 저하·탈수·고단백"}, {"name": "Creatinine", "normal": "0.6~1.2 mg/dL", "note": "신기능 가장 중요 지표"}, {"name": "Na", "normal": "135~145 mEq/L", "note": "↑탈수 ↓SIADH·이뇨제"}, {"name": "K", "normal": "3.5~5.0 mEq/L", "note": "고칼륨=치명적 부정맥(ESRD 주의)"}, {"name": "Ca", "normal": "8.5~10.5 mg/dL", "note": "↓테타니(갑상샘절제 후)"}, {"name": "혈당(FBS)", "normal": "70~100 mg/dL", "note": "<50 저혈당 응급, 당뇨 진단 ≥126"}, {"name": "ABGA", "normal": "pH 7.35~7.45 / PaCO2 35~45 / HCO3 22~26 / PaO2 80~100", "note": "호흡성·대사성 산-염기 해석"}, {"name": "CVP", "normal": "5~10 cmH2O", "note": "↑체액과다·우심부전 ↓체액부족"}, {"name": "요비중", "normal": "1.015~1.030", "note": "↑탈수·단백뇨 ↓요붕증"}, {"name": "Uric acid", "normal": "남 3.4~7.0 · 여 2.4~6.0 mg/dL", "note": "↑통풍·종양용해, allopurinol"}], "psychDx": ["무력감", "불안", "자존감 저하", "신체상 장애", "우울감(지지체계 상실)", "치료 불이행", "사고과정 장애", "자살위험성"], "oxygenDevices": [{"device": "비강캐뉼라", "flow": "1~6 L/min", "fio2": "24~44%", "note": "저유량, 장기간·식사 가능"}, {"device": "단순마스크", "flow": "5~6 L/min", "fio2": "40~60%", "note": "5L 미만 시 CO2 재호흡"}, {"device": "벤추리마스크", "flow": "4~12 L/min", "fio2": "24~50%", "note": "정확한 농도, COPD 적합"}, {"device": "부분재호흡마스크", "flow": "6~10 L/min", "fio2": "60~80%", "note": "저장백 1/2~2/3 유지"}, {"device": "비재호흡마스크", "flow": "10~15 L/min", "fio2": "80~95%", "note": "고농도, 일방향 밸브"}]}};
+(function(){
+  "use strict";
+  var D = window.DATA;
+  var $ = function(s,r){return (r||document).querySelector(s)};
+  var el = function(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+  var esc = function(s){return String(s==null?'':s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})};
+  var lsGet = function(k,def){try{var v=localStorage.getItem(k);return v?JSON.parse(v):def}catch(e){return def}};
+  var lsSet = function(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+
+  var SYS = {
+    respiratory:'호흡기',cardiac:'순환기',gi:'소화기',neuro:'신경',endocrine:'내분비',
+    women:'여성',psych:'정신',hematology:'혈액/항암',urology:'비뇨',ortho:'근골격',
+    emergency:'응급',complex:'복합'
+  };
+  var SYS_ORDER = ['respiratory','cardiac','gi','neuro','endocrine','women','psych','hematology','urology','ortho','emergency','complex'];
+
+  /* ---------- D-DAY ---------- */
+  (function(){
+    var target = new Date(2026,6,6,0,0,0);
+    var eln=$('#dday'), sub=$('#ddaysub');
+    var now=new Date(), t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var diff=Math.round((target-t0)/86400000);
+    if(diff>0){eln.textContent=diff;sub.textContent='07.06(월) 서울대·아산·세브란스·삼성 동시';}
+    else if(diff===0){eln.textContent='D';sub.textContent='오늘이 빅4 1차 면접일';}
+    else{eln.textContent='+'+Math.abs(diff);sub.textContent='빅4 1차 면접 경과';}
+  })();
+
+  /* ---------- HERO STATS ---------- */
+  var cases = D.cases||[];
+  var starN = cases.filter(function(c){return c.star}).length;
+  $('#caseTotal').textContent=cases.length;
+  $('#statCases').innerHTML=cases.length+'<span class="u">개</span>';
+  $('#statStar').innerHTML=starN+'<span class="u">개</span>';
+  $('#footTotal').textContent=cases.length;
+
+  /* ---------- CASE ROOM ---------- */
+  var room={mode:'A',sys:'all',star:false,last:null,current:null,timer:null,phaseIdx:0,remain:0,running:false,drawn:0};
+  var MODE_PHASES={A:[{l:'열람',s:300},{l:'발표',s:60}],B:[{l:'열람',s:300}],free:null};
+
+  // system select
+  var sel=$('#sysSelect');
+  sel.appendChild(new Option('전체 계통','all'));
+  SYS_ORDER.forEach(function(k){
+    var n=cases.filter(function(c){return c.system===k}).length;
+    if(n) sel.appendChild(new Option(SYS[k]+' ('+n+')',k));
+  });
+  sel.onchange=function(){room.sys=sel.value;updatePool()};
+  $('#starOnly').onchange=function(){room.star=this.checked;updatePool()};
+  Array.prototype.forEach.call($('#modeSeg').children,function(b){
+    b.onclick=function(){
+      Array.prototype.forEach.call($('#modeSeg').children,function(x){x.classList.remove('on')});
+      b.classList.add('on');room.mode=b.dataset.mode;
+      if(room.current) renderTimer();
+    };
+  });
+  function pool(){
+    return cases.filter(function(c){
+      if(room.sys!=='all'&&c.system!==room.sys) return false;
+      if(room.star&&!c.star) return false;
+      return true;
+    });
+  }
+  function updatePool(){
+    var p=pool();
+    $('#poolNote').innerHTML='현재 풀: <b>'+p.length+'</b>개'+(room.sys!=='all'?' · '+SYS[room.sys]:'')+(room.star?' · ★빈출만':'')+' · 이번 세션 <b>'+room.drawn+'</b>개 뽑음';
+  }
+  $('#drawBtn').onclick=draw;
+  function draw(){
+    var p=pool();
+    if(!p.length){$('#stage').innerHTML='<div class="stage-empty"><div class="big">해당 조건의 케이스가 없습니다</div><div>계통·★빈출 필터를 바꿔보세요.</div></div>';return}
+    var pick;
+    if(p.length===1) pick=p[0];
+    else{do{pick=p[Math.floor(Math.random()*p.length)]}while(room.last&&pick.id===room.last.id)}
+    room.last=pick;room.current=pick;room.drawn++;
+    renderStage(pick);
+    updatePool();
+  }
+  function vlGrid(c){
+    var bits=[];
+    if(c.vitals) for(var k in c.vitals){if(c.vitals[k]!=null)bits.push('<span class="vl"><span class="vk">'+esc(k)+'</span>'+esc(c.vitals[k])+'</span>')}
+    if(c.labs) for(var k2 in c.labs){if(c.labs[k2]!=null)bits.push('<span class="vl lab"><span class="vk">'+esc(k2)+'</span>'+esc(c.labs[k2])+'</span>')}
+    return bits.length?'<div class="vl-grid">'+bits.join('')+'</div>':'';
+  }
+  function renderStage(c){
+    stopTimer();
+    var s=el('div','stage');
+    s.innerHTML=
+      '<div class="stage-head">'+
+        '<span class="stage-id">'+esc(c.id)+'</span>'+
+        '<span class="stage-title">'+esc(c.title||'')+'</span>'+
+        (c.star?'<span class="stage-star">★ 빈출</span>':'')+
+        '<span class="stage-src">'+esc(c.source||'')+'</span>'+
+      '</div>'+
+      '<div class="stage-body">'+
+        '<div class="stage-scn">'+esc(c.scenario)+'</div>'+
+        vlGrid(c)+
+        '<div id="timerSlot"></div>'+
+        '<div class="act-row">'+
+          '<button class="reveal-btn" id="revealBtn">정답 보기 (진단·중재·꼬리)</button>'+
+          '<button class="next-btn" id="nextBtn">다음 케이스 →</button>'+
+        '</div>'+
+        '<div class="answer" id="answer" hidden>'+answerHTML(c)+'</div>'+
+      '</div>';
+    $('#stage').replaceWith(s);s.id='stage';
+    $('#revealBtn').onclick=function(){$('#answer').hidden=false;this.style.display='none'};
+    $('#nextBtn').onclick=draw;
+    renderTimer();
+  }
+  function answerHTML(c){
+    var h='';
+    h+='<div class="ablock dx-primary"><div class="atag">1순위 진단 · 생명위협 우선</div><div class="dxtext">'+esc(c.primaryDx)+'</div><div class="prio-rule">우선순위: 생명 위협 &gt; 신체 문제 &gt; 심리 문제</div></div>';
+    if(c.additionalDx&&c.additionalDx.length) h+='<div class="ablock"><div class="atag">추가 가능 진단</div><div class="chips">'+c.additionalDx.map(function(x){return '<span class="chip dx">'+esc(x)+'</span>'}).join('')+'</div></div>';
+    if(c.additionalAssessment&&c.additionalAssessment.length) h+='<div class="ablock"><div class="atag">추가 사정</div><div class="chips">'+c.additionalAssessment.map(function(x){return '<span class="chip">'+esc(x)+'</span>'}).join('')+'</div></div>';
+    if(c.interventions&&c.interventions.length) h+='<div class="ablock"><div class="atag">간호 중재</div>'+c.interventions.map(function(x){return '<div class="list-line">'+esc(x)+'</div>'}).join('')+'</div>';
+    if(c.followUps&&c.followUps.length) h+='<div class="ablock"><div class="atag">예상 꼬리질문</div><div class="chips">'+c.followUps.map(function(x){return '<span class="chip fu">'+esc(x)+'</span>'}).join('')+'</div></div>';
+    return h;
+  }
+  function fmt(s){var m=Math.floor(s/60),x=s%60;return m+':'+(x<10?'0':'')+x}
+  function renderTimer(){
+    var slot=$('#timerSlot');if(!slot)return;
+    var ph=MODE_PHASES[room.mode];
+    if(!ph){slot.innerHTML='<div class="timerbar"><div class="timer-phase">자유 모드 · <b>타이머 없음</b></div></div>';stopTimer();return}
+    room.phaseIdx=0;room.remain=ph[0].s;room.running=false;
+    slot.innerHTML='<div class="timerbar">'+
+      '<div class="timer-num" id="tNum">'+fmt(room.remain)+'</div>'+
+      '<div><div class="timer-phase" id="tPhase">단계 <b>'+ph[0].l+'</b> · '+(room.mode==='A'?'5분 열람 → 1분 발표':'5분 열람')+'</div></div>'+
+      '<div class="timer-btns"><button class="tbtn primary" id="tStart">시작</button><button class="tbtn" id="tReset">리셋</button></div>'+
+    '</div>';
+    $('#tStart').onclick=toggleTimer;$('#tReset').onclick=function(){stopTimer();renderTimer()};
+  }
+  function toggleTimer(){
+    if(room.running){stopTimer();var b=$('#tStart');if(b)b.textContent='계속';return}
+    room.running=true;var b=$('#tStart');if(b)b.textContent='일시정지';
+    room.timer=setInterval(tick,1000);
+  }
+  function tick(){
+    room.remain--;
+    var num=$('#tNum');
+    if(num){num.textContent=fmt(Math.max(0,room.remain));num.classList.toggle('warn',room.remain<=10)}
+    if(room.remain<=0){
+      beep();
+      var ph=MODE_PHASES[room.mode];
+      if(room.phaseIdx<ph.length-1){
+        room.phaseIdx++;room.remain=ph[room.phaseIdx].s;
+        var p=$('#tPhase');if(p)p.innerHTML='단계 <b>'+ph[room.phaseIdx].l+'</b> · 지금 1분 발표!';
+      } else {
+        stopTimer();var p2=$('#tPhase');if(p2)p2.innerHTML='<b>종료</b> · 정답을 펼쳐 확인하세요';
+        var s=$('#tStart');if(s)s.textContent='시작';
+      }
+    }
+  }
+  function stopTimer(){room.running=false;if(room.timer){clearInterval(room.timer);room.timer=null}}
+  function beep(){try{var a=new (window.AudioContext||window.webkitAudioContext)();var o=a.createOscillator(),g=a.createGain();o.connect(g);g.connect(a.destination);o.frequency.value=880;g.gain.value=.15;o.start();setTimeout(function(){o.stop();a.close()},250)}catch(e){}}
+
+  // jump from a case id (used by schedule chips & bank)
+  window.__loadCase=function(id){
+    var c=cases.filter(function(x){return x.id===id})[0];if(!c)return;
+    room.current=c;room.last=c;renderStage(c);
+    document.getElementById('room').scrollIntoView({behavior:'smooth'});
+  };
+
+  updatePool();
+  draw(); // 페이지를 열면 바로 랜덤 케이스 1개를 띄운다
+
+  /* ---------- CASE BANK ---------- */
+  (function(){
+    var wrap=$('#bankWrap');
+    SYS_ORDER.forEach(function(k){
+      var list=cases.filter(function(c){return c.system===k});
+      if(!list.length)return;
+      var d=el('details','sys');
+      var inner=list.map(function(c){
+        return '<div class="bcase">'+
+          '<div class="bcase-id">'+esc(c.id)+(c.star?' <span class="st">★</span>':'')+' · '+esc(c.title||'')+' <span style="color:var(--ink-soft);font-weight:400">('+esc(c.source||'')+')</span></div>'+
+          '<div class="bcase-sc">'+esc(c.scenario)+'</div>'+
+          '<div class="bcase-dx"><span class="l">1순위</span><b>'+esc(c.primaryDx)+'</b></div>'+
+          (c.followUps&&c.followUps.length?'<div class="bcase-q"><span class="l">꼬리</span>'+c.followUps.map(esc).join(' / ')+'</div>':'')+
+          '<div style="margin-top:7px"><button class="cchip" onclick="window.__loadCase(\''+c.id+'\')">▶ 케이스 룸에서 풀기</button></div>'+
+        '</div>';
+      }).join('');
+      d.innerHTML='<summary><span class="sys-tag">'+SYS[k]+'</span> '+SYS[k]+' <span class="sys-count">· '+list.length+' cases</span></summary><div class="case-list">'+inner+'</div>';
+      wrap.appendChild(d);
+    });
+  })();
+
+  /* ---------- SCHEDULE ---------- */
+  (function(){
+    var grid=$('#dayGrid');var days=(D.schedule&&D.schedule.days)||[];
+    var checks=lsGet('smc_checks_v1',{});
+    days.forEach(function(d){
+      var card=el('div','day'+(d.external?' ext':''));
+      var chips=(d.cases||[]).map(function(id){return '<span class="cchip" onclick="window.__loadCase(\''+id+'\')">'+id+'</span>'}).join('');
+      card.innerHTML=
+        '<div class="day-head"><span class="day-d">'+esc(d.d)+'</span><div class="day-meta"><span class="day-date">'+esc(d.date)+' '+esc(d.dow)+'</span><span class="day-topic">'+esc(d.topic)+'</span></div>'+(d.external?'<span class="day-flag">외부</span>':(d.caseCount?'<span class="day-flag">'+d.caseCount+' CASE</span>':''))+'</div>'+
+        '<div class="day-body">'+
+          '<div class="dblock"><div class="dl dayp">낮 · 개인</div><p>'+esc(d.dayWork)+'</p></div>'+
+          '<div class="dblock"><div class="dl night">저녁 · 스터디</div><p>'+esc(d.nightWork)+'</p>'+(chips?'<div class="cases">'+chips+'</div>':'')+'</div>'+
+          '<div class="day-check"><div class="ct">체크 (눌러서 완료)</div><ul>'+(d.checks||[]).map(function(c,i){var k=d.d+':'+i;return '<li class="chk'+(checks[k]?' done':'')+'" data-k="'+k+'" tabindex="0" role="checkbox" aria-checked="'+(checks[k]?'true':'false')+'">'+esc(c)+'</li>'}).join('')+'</ul></div>'+
+        '</div>';
+      grid.appendChild(card);
+    });
+    function toggleChk(li){var k=li.dataset.k;checks[k]=!checks[k];li.classList.toggle('done',checks[k]);li.setAttribute('aria-checked',checks[k]?'true':'false');lsSet('smc_checks_v1',checks)}
+    grid.addEventListener('click',function(e){var li=e.target.closest('.chk');if(li)toggleChk(li)});
+    grid.addEventListener('keydown',function(e){if((e.key===' '||e.key==='Enter')){var li=e.target.closest('.chk');if(li){e.preventDefault();toggleChk(li)}}});
+  })();
+
+  /* ---------- HOSPITALS ---------- */
+  (function(){
+    var grid=$('#hospGrid');var hs=(D.hospitals&&D.hospitals.hospitals)||[];
+    hs.forEach(function(h){
+      var rows=(h.rows||[]).map(function(r){return '<p><span class="lab">'+esc(r[0])+' ›</span> '+r[1]+'</p>'}).join('');
+      var card=el('div','hosp');
+      card.innerHTML=
+        '<div class="hosp-top"><span class="hosp-tier t-'+esc(h.tier)+'">TIER '+esc(h.tier)+'</span><div><h3>'+esc(h.name)+'</h3><div class="hdate">'+esc(h.date)+'</div></div></div>'+
+        '<div class="hosp-body"><div class="hosp-mode">'+esc(h.mode)+(h.modeLabel?' · '+esc(h.modeLabel):'')+'</div>'+rows+'<div class="src-note">출처: '+esc(h.source)+'</div></div>';
+      grid.appendChild(card);
+    });
+  })();
+
+  /* ---------- Q&A ROOM ---------- */
+  (function(){
+    var qa=(D.qa&&D.qa.qa)||[];var catSel=$('#qaCat');var last=null;
+    var cats=['전체'];qa.forEach(function(q){if(cats.indexOf(q.category)<0)cats.push(q.category)});
+    cats.forEach(function(c){catSel.appendChild(new Option(c==='전체'?'전체 분류':(SYS[c]||c),c))});
+    function poolQ(){var c=catSel.value;return c==='전체'?qa:qa.filter(function(q){return q.category===c})}
+    $('#qaBtn').onclick=function(){
+      var p=poolQ();if(!p.length)return;var pick;
+      if(p.length===1)pick=p[0];else{do{pick=p[Math.floor(Math.random()*p.length)]}while(last&&pick.id===last.id)}
+      last=pick;
+      var host=(pick.hospitals&&pick.hospitals.length)?'<div class="qa-host">자주 묻는 병원: '+pick.hospitals.map(esc).join(' · ')+'</div>':'';
+      $('#qaStage').innerHTML='<div class="qa-card"><div class="qa-cat">'+esc(SYS[pick.category]||pick.category)+'</div><div class="qa-q">'+esc(pick.q)+'</div>'+
+        '<button class="reveal-btn" id="qaReveal" style="width:auto;padding:10px 20px">정답 보기</button>'+
+        '<div class="qa-a" id="qaA" hidden>'+esc(pick.a)+host+'</div></div>';
+      $('#qaReveal').onclick=function(){$('#qaA').hidden=false;this.style.display='none'};
+    };
+  })();
+
+  /* ---------- FLASHCARDS ---------- */
+  (function(){
+    var labs=(D.reference&&D.reference.labs)||[];var grid=$('#fcGrid');
+    $('#fcCount').textContent=labs.length+' 카드';
+    labs.forEach(function(l){
+      var c=el('div','fc hide');
+      c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-label',l.name+' 정상범위 보기');
+      c.innerHTML='<div class="fc-name">'+esc(l.name)+'</div><div class="fc-val">'+esc(l.normal)+'</div><div class="fc-note">'+esc(l.note||'')+'</div><div class="fc-hint">눌러서 펼치기</div>';
+      var flip=function(){c.classList.toggle('hide')};
+      c.onclick=flip;
+      c.onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();flip()}};
+      grid.appendChild(c);
+    });
+    $('#fcHideAll').onclick=function(){Array.prototype.forEach.call(grid.children,function(c){c.classList.add('hide')})};
+    $('#fcShowAll').onclick=function(){Array.prototype.forEach.call(grid.children,function(c){c.classList.remove('hide')})};
+  })();
+
+  /* ---------- SCORING BOARD ---------- */
+  (function(){
+    var MK='smc_members_v1', SK='smc_scores_v1';
+    var members=lsGet(MK,['A','B','C','D']);
+    var scores=lsGet(SK,[]);
+    var lvl='Lv1';
+    var mSel=$('#scMember'), sSel=$('#scSys');
+
+    var mrow=$('#memberRow');
+    members.forEach(function(nm,i){
+      var inp=el('input','m-name');inp.value=nm;inp.maxLength=8;
+      inp.oninput=function(){members[i]=inp.value||('멤버'+(i+1));lsSet(MK,members);fillMembers();render()};
+      mrow.appendChild(inp);
+    });
+    function fillMembers(){var v=mSel.value;mSel.innerHTML='';members.forEach(function(nm){mSel.appendChild(new Option(nm,nm))});if(v)mSel.value=v}
+    fillMembers();
+    sSel.appendChild(new Option('기본간호학','기본간호학'));
+    SYS_ORDER.forEach(function(k){sSel.appendChild(new Option(SYS[k],k))});
+    Array.prototype.forEach.call($('#scLvl').children,function(b){b.onclick=function(){Array.prototype.forEach.call($('#scLvl').children,function(x){x.classList.remove('on')});b.classList.add('on');lvl=b.dataset.lvl}});
+
+    $('#scAdd').onclick=function(){
+      scores.push({ts:Date.now()+Math.floor(Math.random()*1000),member:mSel.value,system:sSel.value,level:lvl,memo:($('#scMemo').value||'').slice(0,60)});
+      lsSet(SK,scores);$('#scMemo').value='';render();
+    };
+    $('#scClear').onclick=function(){if(window.confirm('채점 기록을 전부 지울까요?')){scores=[];lsSet(SK,scores);render()}};
+    function lvColor(l){return l==='Lv1'?'var(--lv1)':l==='Lv2'?'var(--lv2)':'var(--lv3)'}
+
+    function render(){
+      var mt={};members.forEach(function(m){mt[m]={Lv1:0,Lv2:0,Lv3:0}});
+      var sysW={};
+      scores.forEach(function(r){
+        if(!mt[r.member])mt[r.member]={Lv1:0,Lv2:0,Lv3:0};
+        mt[r.member][r.level]=(mt[r.member][r.level]||0)+1;
+        if(r.level!=='Lv3'){sysW[r.system]=(sysW[r.system]||0)+1}
+      });
+      $('#scMembers').innerHTML=members.map(function(m){
+        var t=mt[m]||{Lv1:0,Lv2:0,Lv3:0};
+        return '<div class="sc-mem"><div class="sc-mem-n">'+esc(m)+'</div><div class="sc-tallies"><span class="tal" style="color:var(--lv1)">'+t.Lv1+'</span><span class="tal" style="color:var(--lv2)">'+t.Lv2+'</span><span class="tal" style="color:var(--lv3)">'+t.Lv3+'</span></div></div>';
+      }).join('');
+      var arr=Object.keys(sysW).map(function(k){return [k,sysW[k]]}).sort(function(a,b){return b[1]-a[1]}).slice(0,8);
+      var max=arr.length?arr[0][1]:1;
+      $('#scWeak').innerHTML=arr.length?arr.map(function(p){
+        return '<div class="wrow"><span class="wlbl">'+esc(SYS[p[0]]||p[0])+'</span><span class="wbar"><span style="width:'+(p[1]/max*100)+'%"></span></span><span class="wn">'+p[1]+'</span></div>';
+      }).join(''):'<div class="sc-empty">아직 기록 없음 — Lv1·Lv2가 쌓이면 약점 파트가 보입니다.</div>';
+      var recent=scores.slice(-12).reverse();
+      $('#scLog').innerHTML=recent.length?recent.map(function(r){
+        return '<div class="logrow"><span class="lg-lv" style="background:'+lvColor(r.level)+'">'+r.level+'</span><b>'+esc(r.member)+'</b> · '+esc(SYS[r.system]||r.system)+(r.memo?' · <span style="color:var(--ink-soft)">'+esc(r.memo)+'</span>':'')+'<button class="lg-x" data-ts="'+r.ts+'" aria-label="삭제">×</button></div>';
+      }).join(''):'<div class="sc-empty">기록이 여기 쌓입니다.</div>';
+      Array.prototype.forEach.call($('#scLog').querySelectorAll('.lg-x'),function(b){b.onclick=function(){var ts=+b.dataset.ts;scores=scores.filter(function(x){return x.ts!==ts});lsSet(SK,scores);render()}});
+      $('#scCount').textContent=scores.length+' 건';
+    }
+    render();
+  })();
+})();
+</script>
+</body>
+</html>
