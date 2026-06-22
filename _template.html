@@ -207,6 +207,43 @@ details[open] summary::after{content:"–"}
 .qa-a{font-size:14px;color:var(--ink-2);line-height:1.65;border-top:1px dashed var(--line);padding-top:14px}
 .qa-a[hidden]{display:none}
 .qa-host{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:12px}
+/* Q&A room v2 — chip nav + accordion list + progress */
+.qa-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.qa-subs{margin:-2px 0 14px;padding-top:12px;border-top:1px dashed var(--line)}
+.qa-chip{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;gap:7px}
+.qa-chip:hover{border-color:var(--coral);color:var(--ink)}
+.qa-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.qa-chip.sub.on{background:var(--coral);border-color:var(--coral)}
+.qa-chip-n{font-family:var(--mono);font-size:11px;opacity:.65}
+.qa-bar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin:2px 0 16px}
+.qa-prog{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+.qa-prog-track{display:inline-block;width:140px;height:7px;background:var(--line);border-radius:6px;overflow:hidden}
+.qa-prog-track i{display:block;height:100%;width:0;background:var(--coral);transition:width .3s}
+.qa-actions{display:flex;flex-wrap:wrap;gap:7px}
+.qa-act{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer;transition:.15s}
+.qa-act:hover{border-color:var(--coral);color:var(--ink)}
+.qa-act-reset:hover{border-color:#C0392B;color:#C0392B}
+.qa-list{display:flex;flex-direction:column;gap:9px}
+.qa-item{border:1px solid var(--line);border-radius:11px;background:var(--card);box-shadow:var(--shadow);overflow:hidden;transition:.15s}
+.qa-item.done{opacity:.6}
+.qa-head{display:flex;align-items:flex-start;gap:13px;padding:15px 17px}
+.qa-check{flex:none;width:23px;height:23px;border:2px solid var(--line);border-radius:7px;background:var(--paper);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;line-height:1;color:transparent;transition:.15s;margin-top:1px}
+.qa-check:hover{border-color:var(--coral)}
+.qa-item.done .qa-check{background:var(--coral);border-color:var(--coral);color:#fff}
+.qa-qwrap{flex:1;min-width:0;cursor:pointer}
+.qa-qtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--coral-deep);font-weight:600;margin-bottom:3px}
+.qa-qtext{font-size:15.5px;font-weight:600;color:var(--ink);line-height:1.45}
+.qa-item.done .qa-qtext{text-decoration:line-through;text-decoration-color:var(--ink-soft)}
+.qa-chev{flex:none;color:var(--ink-soft);font-size:12px;margin-top:4px;transition:.2s;cursor:pointer}
+.qa-item.open .qa-chev{transform:rotate(90deg)}
+.qa-body{display:none;padding:0 17px 17px 53px}
+.qa-item.open .qa-body{display:block}
+.qa-atext{font-size:14px;color:var(--ink-2);line-height:1.68;border-top:1px dashed var(--line);padding-top:13px}
+.qa-bhost{font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:11px}
+.qa-flash{animation:qaFlash 1.1s ease}
+@keyframes qaFlash{30%{box-shadow:0 0 0 3px var(--coral)}}
+.qa-empty{color:var(--ink-soft);font-size:14px;padding:24px 2px}
+@media(max-width:640px){.qa-body{padding-left:17px}}
 .fcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
 .fc{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:16px 16px 14px;cursor:pointer;box-shadow:var(--shadow);min-height:104px;display:flex;flex-direction:column;transition:.15s}
 .fc:hover{border-color:var(--coral)}
@@ -389,13 +426,20 @@ details[open] summary::after{content:"–"}
 <section id="qa">
   <div class="wrap">
     <div class="eyebrow">Q&amp;A Room</div>
-    <h2 class="sec">직무 Q&amp;A — 랜덤 출제</h2>
-    <p class="sec-sub">기본간호학·계통 직무 질문을 랜덤으로 뽑는다. 먼저 입으로 답하고 “정답 보기”로 확인.</p>
-    <div class="tool-bar">
-      <div class="ctrl-group"><span class="ctrl-label">분류</span><select class="sys-select" id="qaCat"></select></div>
-      <button class="draw-btn" id="qaBtn" style="margin-left:0">질문 뽑기 →</button>
+    <h2 class="sec">직무 Q&amp;A</h2>
+    <p class="sec-sub">분류를 고르고 질문을 눌러 답을 펼친다. 공부한 항목은 체크하면 ✓로 표시되고 진행률이 저장된다(브라우저 보관).</p>
+    <div class="qa-chips" id="qaCats"></div>
+    <div class="qa-chips qa-subs" id="qaSubs" hidden></div>
+    <div class="qa-bar">
+      <div class="qa-prog"><span id="qaProgTxt">—</span><span class="qa-prog-track"><i id="qaProgFill"></i></span></div>
+      <div class="qa-actions">
+        <button class="qa-act" id="qaRandom">🎲 랜덤</button>
+        <button class="qa-act" id="qaExpand">모두 펼치기</button>
+        <button class="qa-act" id="qaCollapse">모두 접기</button>
+        <button class="qa-act qa-act-reset" id="qaReset">진행 초기화</button>
+      </div>
     </div>
-    <div id="qaStage"></div>
+    <div class="qa-list" id="qaList"></div>
   </div>
 </section>
 
@@ -680,22 +724,108 @@ window.DATA = __INTERVIEW_DATA__;
     });
   })();
 
-  /* ---------- Q&A ROOM ---------- */
+  /* ---------- Q&A ROOM (chip nav + accordion + 진행 추적) ---------- */
   (function(){
-    var qa=(D.qa&&D.qa.qa)||[];var catSel=$('#qaCat');var last=null;
-    var cats=['전체'];qa.forEach(function(q){if(cats.indexOf(q.category)<0)cats.push(q.category)});
-    cats.forEach(function(c){catSel.appendChild(new Option(c==='전체'?'전체 분류':(SYS[c]||c),c))});
-    function poolQ(){var c=catSel.value;return c==='전체'?qa:qa.filter(function(q){return q.category===c})}
-    $('#qaBtn').onclick=function(){
-      var p=poolQ();if(!p.length)return;var pick;
-      if(p.length===1)pick=p[0];else{do{pick=p[Math.floor(Math.random()*p.length)]}while(last&&pick.id===last.id)}
-      last=pick;
-      var host=(pick.hospitals&&pick.hospitals.length)?'<div class="qa-host">자주 묻는 병원: '+pick.hospitals.map(esc).join(' · ')+'</div>':'';
-      $('#qaStage').innerHTML='<div class="qa-card"><div class="qa-cat">'+esc(SYS[pick.category]||pick.category)+'</div><div class="qa-q">'+esc(pick.q)+'</div>'+
-        '<button class="reveal-btn" id="qaReveal" style="width:auto;padding:10px 20px">정답 보기</button>'+
-        '<div class="qa-a" id="qaA" hidden>'+esc(pick.a)+host+'</div></div>';
-      $('#qaReveal').onclick=function(){$('#qaA').hidden=false;this.style.display='none'};
+    var qa=(D.qa&&D.qa.qa)||[];
+    var DONE_KEY='smc_qa_done_v1';
+    var done={};try{done=JSON.parse(localStorage.getItem(DONE_KEY)||'{}')||{}}catch(e){done={}}
+    function save(){try{localStorage.setItem(DONE_KEY,JSON.stringify(done))}catch(e){}}
+    function label(c){return SYS[c]||c}
+
+    var CAT_ORDER=['기본간호학'].concat(SYS_ORDER);
+    var catPresent={};qa.forEach(function(q){catPresent[q.category]=1});
+    var cats=CAT_ORDER.filter(function(c){return catPresent[c]});
+    qa.forEach(function(q){if(cats.indexOf(q.category)<0)cats.push(q.category)});
+
+    var SUB_ORDER=['활력징후·산소화','투약','수혈','감염관리','안전(낙상·욕창)','안위·영양','배뇨·배변','검사·수술','간호과정·기록'];
+    function subsOf(cat){
+      var pset={};qa.forEach(function(q){if(q.category===cat&&q.sub)pset[q.sub]=1});
+      var arr=SUB_ORDER.filter(function(s){return pset[s]});
+      Object.keys(pset).forEach(function(s){if(arr.indexOf(s)<0)arr.push(s)});
+      return arr;
+    }
+
+    var curCat=cats[0]||'기본간호학', curSub='전체';
+    var catsEl=$('#qaCats'), subsEl=$('#qaSubs'), listEl=$('#qaList');
+
+    function doneCount(arr){var n=0;for(var i=0;i<arr.length;i++)if(done[arr[i].id])n++;return n}
+    function pool(){return qa.filter(function(q){
+      if(q.category!==curCat)return false;
+      if(curCat==='기본간호학'&&curSub!=='전체'&&q.sub!==curSub)return false;
+      return true;});}
+    function chipN(arr){return '<span class="qa-chip-n">'+doneCount(arr)+'/'+arr.length+'</span>'}
+
+    function renderCats(){
+      catsEl.innerHTML='';
+      cats.forEach(function(c){
+        var arr=qa.filter(function(q){return q.category===c});
+        var b=el('button','qa-chip'+(c===curCat?' on':''));
+        b.innerHTML=esc(label(c))+chipN(arr);
+        b.onclick=function(){curCat=c;curSub='전체';renderAll()};
+        catsEl.appendChild(b);
+      });
+    }
+    function renderSubs(){
+      if(curCat!=='기본간호학'){subsEl.hidden=true;subsEl.innerHTML='';return}
+      subsEl.hidden=false;subsEl.innerHTML='';
+      ['전체'].concat(subsOf('기본간호학')).forEach(function(s){
+        var arr=qa.filter(function(q){return q.category==='기본간호학'&&(s==='전체'||q.sub===s)});
+        var b=el('button','qa-chip sub'+(s===curSub?' on':''));
+        b.innerHTML=esc(s)+chipN(arr);
+        b.onclick=function(){curSub=s;renderAll()};
+        subsEl.appendChild(b);
+      });
+    }
+    function renderProgress(){
+      var arr=pool(),d=doneCount(arr),pct=arr.length?Math.round(d/arr.length*100):0;
+      $('#qaProgTxt').textContent=label(curCat)+(curCat==='기본간호학'&&curSub!=='전체'?' · '+curSub:'')+' — '+d+' / '+arr.length+' 완료';
+      $('#qaProgFill').style.width=pct+'%';
+    }
+    function renderList(){
+      var arr=pool();listEl.innerHTML='';
+      if(!arr.length){listEl.innerHTML='<div class="qa-empty">항목이 없습니다.</div>';return}
+      arr.forEach(function(q){
+        var item=el('div','qa-item'+(done[q.id]?' done':''));
+        item.setAttribute('data-id',q.id);
+        var tag=q.sub?'<div class="qa-qtag">'+esc(q.sub)+'</div>':'';
+        var host=(q.hospitals&&q.hospitals.length)?'<div class="qa-bhost">자주 묻는 병원: '+q.hospitals.map(esc).join(' · ')+'</div>':'';
+        item.innerHTML=
+          '<div class="qa-head">'+
+            '<div class="qa-check" role="checkbox" aria-checked="'+(done[q.id]?'true':'false')+'" tabindex="0" title="공부 완료 표시">✓</div>'+
+            '<div class="qa-qwrap">'+tag+'<div class="qa-qtext">'+esc(q.q)+'</div></div>'+
+            '<div class="qa-chev">▶</div>'+
+          '</div>'+
+          '<div class="qa-body"><div class="qa-atext">'+esc(q.a)+host+'</div></div>';
+        var chk=item.querySelector('.qa-check');
+        Array.prototype.forEach.call(item.querySelectorAll('.qa-qwrap,.qa-chev'),function(o){o.onclick=function(){item.classList.toggle('open')}});
+        function toggleDone(){if(done[q.id])delete done[q.id];else done[q.id]=1;save();
+          item.classList.toggle('done');chk.setAttribute('aria-checked',done[q.id]?'true':'false');
+          renderProgress();renderCats();renderSubs()}
+        chk.onclick=function(e){e.stopPropagation();toggleDone()};
+        chk.onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggleDone()}};
+        listEl.appendChild(item);
+      });
+    }
+    function renderAll(){renderCats();renderSubs();renderProgress();renderList()}
+
+    $('#qaRandom').onclick=function(){
+      var arr=pool();if(!arr.length)return;
+      var undone=arr.filter(function(q){return !done[q.id]});var src=undone.length?undone:arr;
+      var pick=src[Math.floor(Math.random()*src.length)];
+      var node=listEl.querySelector('[data-id="'+pick.id+'"]');
+      if(node){Array.prototype.forEach.call(listEl.children,function(c){c.classList&&c.classList.remove('open')});
+        node.classList.add('open');node.scrollIntoView({behavior:'smooth',block:'center'});
+        node.classList.remove('qa-flash');void node.offsetWidth;node.classList.add('qa-flash')}
     };
+    $('#qaExpand').onclick=function(){Array.prototype.forEach.call(listEl.children,function(c){if(c.classList&&c.classList.contains('qa-item'))c.classList.add('open')})};
+    $('#qaCollapse').onclick=function(){Array.prototype.forEach.call(listEl.children,function(c){c.classList&&c.classList.remove('open')})};
+    $('#qaReset').onclick=function(){
+      var arr=pool();if(!arr.length)return;
+      if(!confirm(label(curCat)+(curCat==='기본간호학'&&curSub!=='전체'?' · '+curSub:'')+' 진행을 초기화할까요?'))return;
+      arr.forEach(function(q){delete done[q.id]});save();renderAll();
+    };
+
+    renderAll();
   })();
 
   /* ---------- FLASHCARDS ---------- */
