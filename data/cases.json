@@ -3518,6 +3518,210 @@
         "CRF 검사소견(BUN↑Cr↑ K↑Ca↓HCO3↓ 대사성산증)",
         "CRF 식이(칼륨 제한)"
       ]
+    },
+    {
+      "id": "HZ-HEMA-01",
+      "system": "hematology",
+      "day": "D8",
+      "source": "홍지문 아산CASE(개인소장) p59",
+      "star": true,
+      "title": "급성백혈병 항암 후 호중구감소·발열",
+      "scenario": "1년 전 백혈병 진단받은 환자, 2차 항암 위해 입원. 4일 전 중심정맥관으로 항암제 투여 후 구토 반복. 의식 명료하나 무력감으로 누워 있고 식욕저하·불안 호소. ANC 379↓·Hb 10.1↓·PLT 140,000, 발열 38.7.",
+      "vitals": "BP 114/69 · HR 113 · RR 29 · T 38.7",
+      "labs": "ANC 379↓ · Hb 10.1↓ · PLT 140,000 · I/O 430/860",
+      "primaryDx": "면역 저하(호중구감소)와 관련된 감염위험성",
+      "additionalDx": [
+        "출혈위험성(혈소판 저하)",
+        "영양불균형(오심·구토)",
+        "무력감·불안"
+      ],
+      "additionalAssessment": [
+        "WBC·CRP·ESR",
+        "감염징후·체온",
+        "ANC 추이·점막 출혈"
+      ],
+      "interventions": [
+        "역격리·방어적 환경·손위생",
+        "감염징후 모니터",
+        "출혈 예방(처치 최소화)",
+        "구토 시 체위·영양 지원"
+      ],
+      "followUps": [
+        "ANC 500 이하 의미·역격리",
+        "항암제 일혈 시 말초조직관류",
+        "항암 환자 식이"
+      ]
+    },
+    {
+      "id": "HZ-NEU-01",
+      "system": "neuro",
+      "day": "D6",
+      "source": "홍지문 아산CASE(개인소장) p64",
+      "star": false,
+      "title": "교통사고 SDH·개두술+EVD·ICP 상승",
+      "scenario": "기억장애 없던 34세 환자, 출근 중 교통사고(TA) 후 headache·nausea·vomiting 지속되어 응급실 입원. Brain CT상 SDH·IVH 확인되어 craniotomy 후 EVD 삽입, 중환자실 입실. 의식 완전히 깨지 않아 과격하게 움직임. ICP 23↑·pupil 3/3·light reflex prompt.",
+      "vitals": "BP 167/102 · HR 100 · RR 18 · T 36.0 · ICP 23↑",
+      "labs": null,
+      "primaryDx": "두개내압 상승과 관련된 비효과적 뇌조직관류 위험성",
+      "additionalDx": [
+        "손상위험성(과격한 움직임)",
+        "낙상위험성",
+        "급성 혼돈"
+      ],
+      "additionalAssessment": [
+        "의식수준·GCS·동공반사",
+        "ICP·활력징후",
+        "신경학적 사정"
+      ],
+      "interventions": [
+        "ICP 감소(EVD·머리 30도 상승·자극 최소)",
+        "V/S·LOC·pupil reflex 모니터",
+        "침대난간·낙상/손상 예방",
+        "조용한 환경 유지"
+      ],
+      "followUps": [
+        "GCS 사정",
+        "ICP 정상치(5~15mmHg)",
+        "EVD full term(External Ventricular Drainage)"
+      ]
+    },
+    {
+      "id": "HZ-ENDO-01",
+      "system": "endocrine",
+      "day": "D5",
+      "source": "홍지문 아산CASE(개인소장) p69",
+      "star": false,
+      "title": "노인 당뇨·고혈당·저혈당 위험",
+      "scenario": "5년 전 DM 진단받은 80세 환자, hyperglycemia로 수차례 입원한 과거력. 입원해 insulin 투여하며 혈당 305mg/dL↑로 측정되었고 의식이 회복됨. 인지장애가 있는 노인.",
+      "vitals": "혈당 305↑",
+      "labs": "혈당 305mg/dL↑",
+      "primaryDx": "혈당 조절 장애와 관련된 불안정한 혈당 수준의 위험",
+      "additionalDx": [
+        "노인 저혈당 위험",
+        "지식부족",
+        "비효과적 건강관리"
+      ],
+      "additionalAssessment": [
+        "혈당 주기적 측정",
+        "의식수준·인지상태",
+        "발 상태"
+      ],
+      "interventions": [
+        "혈당 규칙적 측정",
+        "인슐린·약물 정확히 투여",
+        "저혈당 증상 교육",
+        "규칙적 식이·운동",
+        "발 간호"
+      ],
+      "followUps": [
+        "II형 당뇨병 설명",
+        "당뇨 3대 증상(다음·다식·다뇨)",
+        "저혈당 증상(현기증·발한·심계항진·떨림·공복감)"
+      ]
+    },
+    {
+      "id": "HZ-ENDO-02",
+      "system": "endocrine",
+      "day": "D5",
+      "source": "홍지문 아산CASE(개인소장) p72",
+      "star": false,
+      "title": "갑상선절제술 후 후두신경 손상·흡인위험",
+      "scenario": "건강검진상 5cm 이상 Rt. thyroid mass 발견되어 입원한 49세 환자, 3일 전 total thyroidectomy 받음. 현재 쉰 목소리·기침 곤란·사레가 자주 걸림. Ca 8.8↓·K 3.4↓.",
+      "vitals": "BP 117/69 · HR 112 · RR 28 · T 37.3 · SpO2 90%",
+      "labs": "Hb 10.2 · PLT 143,000 · Ca 8.8↓ · K 3.4↓ · Na 139",
+      "primaryDx": "후두신경 손상과 관련된 비효과적 호흡양상",
+      "additionalDx": [
+        "흡인위험성",
+        "출혈위험성(수술부위)",
+        "저칼슘혈증(테타니) 위험"
+      ],
+      "additionalAssessment": [
+        "호흡양상·SpO2",
+        "발성 확인(후두신경 손상)",
+        "경부 출혈·부종",
+        "저칼슘 징후(Chvostek·Trousseau)"
+      ],
+      "interventions": [
+        "호흡양상·산소포화도 모니터",
+        "지속적으로 말 시켜 발성 확인",
+        "기관절개세트·suction 준비",
+        "출혈·경부부종 관찰",
+        "저칼슘 대비"
+      ],
+      "followUps": [
+        "갑상선절제 합병증(출혈·호흡곤란·테타니·후두신경 손상)",
+        "갑상선중독증(thyrotoxicosis·갑상선 위기)",
+        "흡인 예방 간호"
+      ]
+    },
+    {
+      "id": "HZ-ORTHO-01",
+      "system": "ortho",
+      "day": "D7",
+      "source": "홍지문 아산CASE(개인소장) p75",
+      "star": false,
+      "title": "퇴행성관절염 TKRA 후 감염",
+      "scenario": "20년 전 퇴행성관절염 진단받은 73세 환자, 통증 악화로 수술 위해 입원. 전일 TKRA(Rt.) 받음. 수술부위 PCA 주입 중이며 통증 NRS 3점. Hemovac·foley 삽입, supine position 유지·거동 불가. 수술부위 악취와 Hemovac에 turbid한 배액 관찰. WBC 13,180↑·CRP 8.48↑.",
+      "vitals": "BP 142/84 · HR 92 · RR 21 · T 37.7",
+      "labs": "WBC 13,180↑ · CRP 8.48↑",
+      "primaryDx": "수술과 관련된 감염위험성",
+      "additionalDx": [
+        "급성 통증",
+        "부동 관련 피부통합성 장애 위험",
+        "신체기동성 장애"
+      ],
+      "additionalAssessment": [
+        "드레싱·수술부위 피부 상태",
+        "Hemovac 배액 양상·양",
+        "WBC·CRP·V/S"
+      ],
+      "interventions": [
+        "V/S·감염징후 관찰",
+        "Hemovac 삽입부위 피부 사정",
+        "무균적 드레싱",
+        "처방 항생제 투여",
+        "통증조절(PCA)"
+      ],
+      "followUps": [
+        "TKRA full term(Total Knee Replacement Arthroplasty)",
+        "PCA 설명",
+        "항생제 전 AST 하는 이유",
+        "부동 환자 욕창 예방"
+      ]
+    },
+    {
+      "id": "HZ-WOMEN-01",
+      "system": "women",
+      "day": "D9",
+      "source": "홍지문 아산CASE(개인소장) p79",
+      "star": false,
+      "title": "유방암 항암 후 영양불균형·구내염",
+      "scenario": "최근 Breast Ca. 진단받고 chemotherapy 받는 환자. 치료 후 오심이 지속되어 식사를 제대로 못 하고 일주일간 체중 약 1.5kg↓·전신 무력. 피부 건조·탄력 저하. 입안 구내염으로 통증·불편 호소. 삶의 의욕이 없다고 표현하며 가족도 환자 상태·질병을 걱정.",
+      "vitals": null,
+      "labs": null,
+      "primaryDx": "부적절한 식이 섭취와 관련된 영양 불균형",
+      "additionalDx": [
+        "구강점막 손상(구내염)",
+        "상황적 자존감 저하·신체상 장애",
+        "오심"
+      ],
+      "additionalAssessment": [
+        "체중·섭취량(I/O)",
+        "구강점막·구내염 상태",
+        "영양 관련 혈액검사"
+      ],
+      "interventions": [
+        "기호 음식 소량 자주 제공",
+        "구강간호(nystatin)·구내염 통증 관리",
+        "처방 진토제",
+        "필요시 TPN",
+        "정서적 지지"
+      ],
+      "followUps": [
+        "매슬로우 기본욕구",
+        "항암 구내염 예방(구강간호)",
+        "유방절제 시 신체상·자존감"
+      ]
     }
   ]
 }
