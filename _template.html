@@ -378,6 +378,10 @@ details[open] summary::after{content:"–"}
         <span class="ctrl-label">계통</span>
         <select class="sys-select" id="sysSelect"></select>
       </div>
+      <div class="ctrl-group">
+        <span class="ctrl-label">병원</span>
+        <select class="sys-select" id="hospSelect"></select>
+      </div>
       <label class="star-toggle"><input type="checkbox" id="starOnly"> ★빈출만</label>
       <button class="draw-btn" id="drawBtn">랜덤 뽑기 →</button>
     </div>
@@ -541,7 +545,8 @@ window.DATA = __INTERVIEW_DATA__;
   $('#footTotal').textContent=cases.length;
 
   /* ---------- CASE ROOM ---------- */
-  var room={mode:'A',sys:'all',star:false,last:null,current:null,timer:null,phaseIdx:0,remain:0,running:false,drawn:0};
+  var room={mode:'A',sys:'all',hosp:'all',star:false,last:null,current:null,timer:null,phaseIdx:0,remain:0,running:false,drawn:0};
+  function hospOf(c){var s=(c.source||'');if(s.indexOf('아산')>=0)return '아산';if(s.indexOf('삼성')>=0)return '삼성';if(s.indexOf('서울대')>=0)return '서울대';if(s.indexOf('세브란스')>=0)return '세브란스';return '기타';}
   var MODE_PHASES={A:[{l:'열람',s:300},{l:'발표',s:60}],B:[{l:'열람',s:300}],free:null};
 
   // system select
@@ -552,6 +557,14 @@ window.DATA = __INTERVIEW_DATA__;
     if(n) sel.appendChild(new Option(SYS[k]+' ('+n+')',k));
   });
   sel.onchange=function(){room.sys=sel.value;updatePool()};
+  // hospital select (출처에서 병원 도출)
+  var hsel=$('#hospSelect'); hsel.appendChild(new Option('전체 병원','all'));
+  var HOSP_ORDER=['아산','삼성','서울대','세브란스','기타'];
+  HOSP_ORDER.forEach(function(k){
+    var n=cases.filter(function(c){return hospOf(c)===k}).length;
+    if(n) hsel.appendChild(new Option(k+' ('+n+')',k));
+  });
+  hsel.onchange=function(){room.hosp=hsel.value;updatePool()};
   $('#starOnly').onchange=function(){room.star=this.checked;updatePool()};
   Array.prototype.forEach.call($('#modeSeg').children,function(b){
     b.onclick=function(){
@@ -563,13 +576,14 @@ window.DATA = __INTERVIEW_DATA__;
   function pool(){
     return cases.filter(function(c){
       if(room.sys!=='all'&&c.system!==room.sys) return false;
+      if(room.hosp!=='all'&&hospOf(c)!==room.hosp) return false;
       if(room.star&&!c.star) return false;
       return true;
     });
   }
   function updatePool(){
     var p=pool();
-    $('#poolNote').innerHTML='현재 풀: <b>'+p.length+'</b>개'+(room.sys!=='all'?' · '+SYS[room.sys]:'')+(room.star?' · ★빈출만':'')+' · 이번 세션 <b>'+room.drawn+'</b>개 뽑음';
+    $('#poolNote').innerHTML='현재 풀: <b>'+p.length+'</b>개'+(room.sys!=='all'?' · '+SYS[room.sys]:'')+(room.hosp!=='all'?' · '+room.hosp:'')+(room.star?' · ★빈출만':'')+' · 이번 세션 <b>'+room.drawn+'</b>개 뽑음';
   }
   $('#drawBtn').onclick=draw;
   function draw(){
