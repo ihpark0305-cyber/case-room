@@ -4,3 +4,8 @@ package-lock.json
 Thumbs.db
 _raw/
 .claude/
+
+# local scratch / derived PDF text (not for repo)
+_pdftext/
+_restore_*.py
+_apply_*.py
