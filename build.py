@@ -19,6 +19,7 @@ bundle = {
     "hospitals": load("hospitals.json"),
     "qa":        load("qa.json"),
     "reference": load("reference.json"),
+    "concepts":  load("concepts.json"),
 }
 # flatten: window.DATA.cases is the array, etc.
 DATA_OBJ = {
@@ -27,6 +28,7 @@ DATA_OBJ = {
     "hospitals": bundle["hospitals"],
     "qa":        bundle["qa"],
     "reference": bundle["reference"],
+    "concepts":  bundle["concepts"]["concepts"],
 }
 
 with open(os.path.join(HERE, "_template.html"), encoding="utf-8") as f:

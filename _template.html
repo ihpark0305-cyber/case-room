@@ -244,6 +244,17 @@ details[open] summary::after{content:"–"}
 @keyframes qaFlash{30%{box-shadow:0 0 0 3px var(--coral)}}
 .qa-empty{color:var(--ink-soft);font-size:14px;padding:24px 2px}
 @media(max-width:640px){.qa-body{padding-left:17px}}
+/* Concept notes (직무 정리본) */
+.cpt-panel{border:1px solid var(--line);border-radius:14px;background:var(--card);box-shadow:var(--shadow);padding:8px 26px 26px}
+.cpt-h{font-family:var(--sans);font-size:15.5px;font-weight:800;color:#fff;background:var(--coral-deep);border-radius:8px;padding:8px 13px;margin:22px 0 12px;letter-spacing:.01em}
+.cpt-panel .cpt-h:first-child{margin-top:14px}
+.cpt-panel p{font-size:14px;color:var(--ink-2);line-height:1.66;margin:6px 0}
+.cpt-int{padding-left:4px;border-left:3px solid var(--line);padding:3px 0 3px 12px;margin:9px 0!important}
+.cpt-int b{color:var(--coral-deep)}
+.cpt-tip{background:var(--panel);border-radius:8px;padding:9px 13px;font-size:13.5px;color:var(--ink);margin:8px 0!important}
+.cpt-ul{margin:8px 0 8px 2px;padding-left:18px;display:flex;flex-direction:column;gap:5px}
+.cpt-ul li{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.cpt-meta{font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);margin:2px 0 16px}
 .fcgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
 .fc{border:1px solid var(--line);border-radius:11px;background:var(--card);padding:16px 16px 14px;cursor:pointer;box-shadow:var(--shadow);min-height:104px;display:flex;flex-direction:column;transition:.15s}
 .fc:hover{border-color:var(--coral)}
@@ -324,6 +335,7 @@ details[open] summary::after{content:"–"}
       <a href="#schedule">일정</a>
       <a href="#hospitals">병원</a>
       <a href="#qa">Q&amp;A</a>
+      <a href="#concepts">개념</a>
       <a href="#cards">플래시카드</a>
       <a href="#score">채점</a>
       <a href="#rubric">평가</a>
@@ -444,6 +456,17 @@ details[open] summary::after{content:"–"}
       </div>
     </div>
     <div class="qa-list" id="qaList"></div>
+  </div>
+</section>
+
+<!-- CONCEPTS (직무 정리본 · 아산) -->
+<section id="concepts">
+  <div class="wrap">
+    <div class="eyebrow">Concept Notes · 아산</div>
+    <h2 class="sec">개념 정리 — 계통별 직무 정리본</h2>
+    <p class="sec-sub">서울아산병원 1차(직무) 면접 정리본. 계통(구역)을 누르면 그 계통의 <b>가능한 간호진단·중재 / 더 사정할 내용 / 교육 내용 / 추가 학습</b>이 한 페이지로 펼쳐진다. 출처: 아산 직무 면접 정리본.</p>
+    <div class="qa-chips" id="cptChips"></div>
+    <div class="cpt-panel" id="cptPanel"></div>
   </div>
 </section>
 
@@ -840,6 +863,30 @@ window.DATA = __INTERVIEW_DATA__;
     };
 
     renderAll();
+  })();
+
+  /* ---------- CONCEPT NOTES (직무 정리본 · 아산) ---------- */
+  (function(){
+    var data = D.concepts || [];
+    var chipsEl = $('#cptChips'), panelEl = $('#cptPanel');
+    if(!chipsEl || !panelEl || !data.length) return;
+    var SK = 'smc_cpt_cur_v1';
+    var cur = lsGet(SK, data[0].system);
+    if(!data.some(function(c){return c.system===cur})) cur = data[0].system;
+
+    function render(){
+      chipsEl.innerHTML = '';
+      data.forEach(function(c){
+        var b = el('button','qa-chip'+(c.system===cur?' on':''));
+        b.textContent = c.label;
+        b.onclick = function(){cur=c.system;lsSet(SK,cur);render();
+          panelEl.scrollIntoView({behavior:'smooth',block:'start'});};
+        chipsEl.appendChild(b);
+      });
+      var sel = data.filter(function(c){return c.system===cur})[0] || data[0];
+      panelEl.innerHTML = '<div class="cpt-meta">'+esc(sel.ko||sel.label)+' · 아산 직무 면접 정리본</div>' + sel.html;
+    }
+    render();
   })();
 
   /* ---------- FLASHCARDS ---------- */
